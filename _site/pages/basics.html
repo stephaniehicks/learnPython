@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Overview</title>
+    
+    <meta name="author" content="Stephanie Hicks">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+      <!-- knitr javascript -->
+    <script src="/assets/themes/twitter/knitr.js" type="text/javascript"></script>
+
+    <!-- mathjax javascript -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">Learn Python</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Overview  <small>Variables, Functions, Conditionals, Iteration</small></h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    
+<p>There are two modes you can write Python code in: <strong>interactive mode</strong> or <strong>script mode</strong>.  If you open up a UNIX command window, you can simply type </p>
+
+<blockquote>
+  <pre><code>python
+</code></pre>
+</blockquote>
+
+<p>and the <strong>interactive mode</strong> will open up.  If you store code in a file ending in <code>.py</code>, and execute the file in the <strong>script mode</strong> using </p>
+
+<blockquote>
+  <pre><code>python myscript.py
+</code></pre>
+</blockquote>
+
+<h1 id="variables-and-operators">Variables and Operators</h1>
+
+<h4 id="variables">Variables</h4>
+<p>Variable names are case sensitive, can contain numbers and letters, can contain underscores, cannot begin with a number, <a href="http://en.wikibooks.org/wiki/Think_Python/Variables,_expressions_and_statements#Variable_names_and_keywords">cannot contain illegal characters and cannot be one of the 31 keywords in Python</a></p>
+
+<h4 id="operators">Operators</h4>
+<ul>
+  <li>Numeric operators are +, -, *, /, ** (exponent), $\%$ (modulus)</li>
+  <li>String operations: + and * . For example, ‘Happy’*3 = ‘HappyHappyHappy’ or ‘Happy’+’Clown’ = ‘HappyClown’</li>
+  <li>The augmented assignment operator <code>+=</code> can be used like n += x which is equal to n = n + x </li>
+  <li>Boolean relational operators: == (equal), != (not equal), &gt;, &lt;, &gt;= (greater than or equal to), &lt;= (less than or equal to)
+    <ul>
+      <li>Boolean expressions will produce <code>True</code> or <code>False</code></li>
+    </ul>
+  </li>
+  <li>Logical operators: <code>and</code>, <code>or</code>, and <code>not</code>. For example, x &gt; 1 <code>and</code> x &lt;=5
+    <ul>
+      <li>Any nonzero number is interpreted as <code>True</code> </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="functions">Functions</h1>
+
+<h4 id="basic-python-functions">Basic Python functions</h4>
+<ul>
+  <li><code>print()</code> = print the argument to the screen; must use <code>print()</code> in script mode or the argument will be evaluated, but not printed. </li>
+  <li><code>type()</code> = function which reports the type of variable, function: 
+    <ol>
+      <li>integer (<code>int</code>) </li>
+      <li>floating-point (<code>float</code>)</li>
+      <li>string (<code>str</code>)</li>
+      <li>function (<code>function</code>)</li>
+      <li>boolean (<code>bool</code>): e.g. True, False</li>
+    </ol>
+  </li>
+  <li><code>int()</code> = converts floats and strings to integers (but chops off the fraction part and doesn’t round)</li>
+  <li><code>isinstance()</code> = verifies the type of of the argument (e.g. isinstance(5, int) would return True)</li>
+</ul>
+
+<h4 id="defining-new-functions">Defining new functions</h4>
+<p>New functions can be defined using one of the 31 keywords in Python <code>def</code>.  </p>
+
+<blockquote>
+  <pre><code>def new_world(): 
+    print 'Hello world!'
+</code></pre>
+</blockquote>
+
+<p>The first line of the function (the header) must start with <code>def</code>, the name of the function (which can contain underscores), parentheses (with any arguments inside of it) and a colon.  The rest of the function (the body) always has an indentation of four spaces.  If you define a function in the interactive mode, the interpreter will print ellipses (…) to let you know the function isn’t complete. To complete the function, enter an empty line (not necessary in a script).  </p>
+
+<p>When defining new functions, you can add a <code>docstring</code> at the beginning of the function that contains the documentation for the function. The docstring is a triple quoted string which allows the line to span more than one line. </p>
+
+<blockquote>
+  <pre><code>def love_chocolate(N):
+    """ A function to explain how much I love 
+    chocolate """
+    print 'I' + 'love'*N + 'chocolate'
+</code></pre>
+</blockquote>
+
+<p>To return a value from a function, use <code>return</code>. The function will immediately terminate and not run any code written past this point.  </p>
+
+<blockquote>
+  <pre><code>def squared(x):
+    return x ** 2
+</code></pre>
+</blockquote>
+
+<h4 id="recursive-functions">Recursive functions</h4>
+<p>Functions can call itself to allow for a recursive pattern. </p>
+
+<blockquote>
+  <pre><code>def fact(n): 
+    if n ==0: 
+        return 1
+    else: 
+        recurse = fact(n-1)
+        result = recurse * n
+        return result
+</code></pre>
+</blockquote>
+
+<p>Here the ‘fact’ function calculates the factorial of a given number in a recursive fashion by calling the ‘fact’ function within itself and returns the result. </p>
+
+<h1 id="conditional-statements">Conditional statements</h1>
+<p>Conditional statements allow us to check if a condition is true and then change the direction of the function accordingly. </p>
+
+<h4 id="if-else-statements">If else statements</h4>
+<p>To define a statement with the <code>if</code> and <code>else</code> statement, we use a similar structure to defining functions by including a colon at the end of the header and four spaces indented for the body.  </p>
+
+<blockquote>
+  <pre><code>if x == 0: 
+    print 'x is equal to 0'
+else: 
+    print 'x is not equal to 0'
+</code></pre>
+</blockquote>
+
+<p>The body must contain at least one statement. The <code>pass</code> statement can be used in the body if no other statements are in the body</p>
+
+<blockquote>
+  <pre><code>if x == 0: 
+    pass		# ignore zeros
+</code></pre>
+</blockquote>
+
+<p>If there are more than two possibilities for the condition you are testing, use <code>if</code>, <code>elif</code> and <code>else</code>. You can also nest conditionals, but they must be indented appropriately. </p>
+
+<blockquote>
+  <pre><code>if x &gt; 0: 
+    if x &lt; 10: 
+        print 'x is bigger than 0 and less than 10'. 
+</code></pre>
+</blockquote>
+
+<p>A more succinct way of doing this is to use logical operators: </p>
+
+<blockquote>
+  <pre><code>if x &gt; 0 and x &lt; 10: 
+    print 'x is bigger than 0 and less than 10'. 
+</code></pre>
+</blockquote>
+
+<h1 id="iteration">Iteration</h1>
+<p>Iterative loops can be written with the <code>for</code>, <code>while</code> and <code>break</code> statements. </p>
+
+<h4 id="for-loops">For loops</h4>
+<p>Defining a <code>for</code> loop is similar to defining a new function. The header ends with a colon and the body is indented with four spaces. The function <code>range(n)</code> takes in an integer n and creates a set of values from 1 to n - 1. </p>
+
+<blockquote>
+  <pre><code>for i in range(4):
+    print 'Hello world!'
+</code></pre>
+</blockquote>
+
+<h4 id="while-loops">while loops</h4>
+<p>Defining a <code>while</code> loop is again similar to defining a <code>for</code> loop or new function. The header ends with a colon and the body is indented with four spaces</p>
+
+<blockquote>
+  <pre><code>def countdown(n):
+    while n &gt; 0:
+        print n
+        n = n-1
+     print 'Blastoff!'
+</code></pre>
+</blockquote>
+
+<p>To jump out of a loop, use <code>break</code></p>
+
+<h2 id="other-useful-information-about-python">Other useful information about Python</h2>
+<ul>
+  <li>Comments in Python are with the pound symbol #</li>
+  <li>There are three types of errors: 
+    <ol>
+      <li><strong>syntax</strong> errors = errors related to the structure of a program preventing the interpreter from executing a program. </li>
+      <li><strong>runtime</strong> errors = error does not appear until after the program has started running</li>
+      <li><strong>semantic</strong> errors = the program will execute successfully, but it will not do the intended thing. For example, if you type an integer with a leading zero, Python interprets it as binary.  Another example of a semantic error is if you write the integer 1 million with commas between the zeros, Python interprets this as a comma-separated sequence of integers. </li>
+    </ol>
+  </li>
+</ul>
+
+
+  </div>
+</div>
+
+
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; 2014 Stephanie Hicks
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+
