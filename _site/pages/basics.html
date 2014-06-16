@@ -90,6 +90,26 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -109,7 +129,7 @@
 <div class="row-fluid">
   <div class="span12">
     
-<p>There are two modes you can write Python code in: <strong>interactive mode</strong> or <strong>script mode</strong>.  If you open up a UNIX command window, you can simply type </p>
+<p>There are two modes you can write Python code in: <strong>interactive mode</strong> or <strong>script mode</strong>.  If you open up a UNIX command window and have a command-line interface, you can simply type <code>python</code> in the shell: </p>
 
 <blockquote>
   <pre><code>python
@@ -130,8 +150,8 @@
 
 <h4 id="operators">Operators</h4>
 <ul>
-  <li>Numeric operators are +, -, *, /, ** (exponent), $\%$ (modulus)</li>
-  <li>String operations: + and * . For example, ‘Happy’*3 = ‘HappyHappyHappy’ or ‘Happy’+’Clown’ = ‘HappyClown’</li>
+  <li>Numeric operators are +, -, *, /, ** (exponent), $\%$ (modulus if applied to integers)</li>
+  <li>String and list operators: + and * . </li>
   <li>The augmented assignment operator <code>+=</code> can be used like n += x which is equal to n = n + x </li>
   <li>Boolean relational operators: == (equal), != (not equal), &gt;, &lt;, &gt;= (greater than or equal to), &lt;= (less than or equal to)
     <ul>
@@ -145,23 +165,45 @@
   </li>
 </ul>
 
-<h1 id="functions">Functions</h1>
+<h4 id="format-operators">Format operators</h4>
+<p>If $\%$ is applied to strings, this operator is the format operator.  It tell Python how to format a list of values in a string.  For example, </p>
 
-<h4 id="basic-python-functions">Basic Python functions</h4>
+<ul>
+  <li>’$\%$d’ says to format the value as an integer</li>
+  <li>’$\%$g’ says to format the value as an float</li>
+  <li>’$\%$s’ says to format the value as an string</li>
+</ul>
+
+<p>If you run: ‘In $\%$d years I have spotted $\%$g $\%$s.’ $\%$ (3, 0.1, ‘camels’)</p>
+
+<p>it will print ‘In 3 years I have spotted 0.1 camels.’</p>
+
+<h1 id="functions">Functions</h1>
+<p>One of the basic built-in Python functions is <code>type()</code> which is a function that reports the type of variable.  A list of the types are: </p>
+
+<pre><code>1. integer (`int`) 
+2. floating-point (`float`)
+3. string (`str`)
+4. list (`list`)
+5. dictionary (`dict`)
+6. tuple (`tuple`)
+7. function (`function`)
+8. boolean (`bool`): e.g. True, False
+9. enumerate (`enumerate`) 
+</code></pre>
+
+<h4 id="basic-built-in-python-functions">Basic built-in Python functions</h4>
 <ul>
   <li><code>print()</code> = print the argument to the screen; must use <code>print()</code> in script mode or the argument will be evaluated, but not printed. </li>
-  <li><code>type()</code> = function which reports the type of variable, function: 
-    <ol>
-      <li>integer (<code>int</code>) </li>
-      <li>floating-point (<code>float</code>)</li>
-      <li>string (<code>str</code>)</li>
-      <li>function (<code>function</code>)</li>
-      <li>boolean (<code>bool</code>): e.g. True, False</li>
-    </ol>
-  </li>
   <li><code>int()</code> = converts floats and strings to integers (but chops off the fraction part and doesn’t round)</li>
+  <li>`str() = converts values to strings</li>
   <li><code>isinstance()</code> = verifies the type of of the argument (e.g. isinstance(5, int) would return True)</li>
+  <li><code>range()</code> = returns a list of indices from 0 to n-1.</li>
+  <li><code>enumerate('myseq')</code> = returns an <code>enumerate</code>object which is accepts a sequence and returns a tuple containing a count (from start which defaults to 0) and the values obtained from iterating over sequence</li>
+  <li><code>repr()</code> = takes in an argument and returns the string representation of the object (helpful for debugging!)</li>
 </ul>
+
+<p>For a more detailed list on the built-in functions in Python, see <a href="https://docs.python.org/2/library/functions.html">Built-in Python Functions</a></p>
 
 <h4 id="defining-new-functions">Defining new functions</h4>
 <p>New functions can be defined using one of the 31 keywords in Python <code>def</code>.  </p>
@@ -189,6 +231,19 @@
 <blockquote>
   <pre><code>def squared(x):
     return x ** 2
+</code></pre>
+</blockquote>
+
+<p>The statement <code>raise</code> can be used in a function to raise an error message whenever the function fails to return a value.  This statement will print a traceback and an error message.  </p>
+
+<p>Variables written inside of a function are considered <strong>local</strong> variables and will disappear when the function ends. Variables written outside of a function are considered <strong>global</strong> variables and will remain after the function ends. To change the value of a global variable inside of a function, you must <strong>declare</strong> the global variable before you use it using the syntax <code>global</code> nameofvariable.  The exception is if the global variable is mutable (e.g. lists, dictionaries), you can modify individual elements it without declaring it.  </p>
+
+<p>Optional arguments can be provided to the functions where each optional argument has a specified default value. If another value is provided to the optional argument, it is over-written.  </p>
+
+<blockquote>
+  <pre><code>def squaredShifted(x, shift = 10):
+    return shift + (x ** 2)
+squaredShifted(5, 20)
 </code></pre>
 </blockquote>
 

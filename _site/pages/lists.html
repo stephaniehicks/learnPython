@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Lists</title>
+    
+    <meta name="author" content="Stephanie Hicks">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+      <!-- knitr javascript -->
+    <script src="/assets/themes/twitter/knitr.js" type="text/javascript"></script>
+
+    <!-- mathjax javascript -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">Learn Python</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Lists  <small>Manipulating lists</small></h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    
+<p>A list a sequence of values which can be characters, integers or even another list (referred to as a nested list). 
+Lists are defined with brackets <code>[</code> and <code>]</code>.  </p>
+
+<blockquote>
+  <pre><code>hobbies = ['running', 'baking', 'blogging']
+</code></pre>
+</blockquote>
+
+<p>You can create an empty list (or initialize a list) with an empty set of brackets.</p>
+
+<blockquote>
+  <pre><code>emptylist = []
+</code></pre>
+</blockquote>
+
+<p>The function <code>len()</code> can be used to calculate the number of elements in a list.  </p>
+
+<blockquote>
+  <pre><code>len(hobbies)
+</code></pre>
+</blockquote>
+
+<p>To convert a string to a list of characters use <code>list</code></p>
+
+<blockquote>
+  <pre><code>list(hobbies[0])
+</code></pre>
+</blockquote>
+
+<h2 id="list-operators">List operators</h2>
+<p>Similar to strings, there are many list operators. For example, the operators + and * also work on lists.  The operator + concatenate lists  and the operator * repeats a list a given number of times. </p>
+
+<blockquote>
+  <pre><code>a = [5, 10]
+b = [26, 30]
+a + b
+a * 3
+</code></pre>
+</blockquote>
+
+<h4 id="bracket-operator">Bracket operator</h4>
+<p>As shown above, a list is define with the bracket operator <code>[]</code>.  List indices are similar to string indices: an integer can be used to return specific elements of a given list. If an index is negative, it returns the elements starting from the end of the list.  The slice operator (or colon) is used again similar to strings</p>
+
+<blockquote>
+  <pre><code>hobbies[0:1]
+</code></pre>
+</blockquote>
+
+<h4 id="in-operator">In operator</h4>
+<p>Similar to strings, the <code>in</code> operator works with lists. The operator will check if an element is in a given list and return a <code>True</code> or <code>False</code>: </p>
+
+<blockquote>
+  <pre><code>'blogging' in hobbies
+</code></pre>
+</blockquote>
+
+<p>The <code>in</code> operator can be used in conditional statements such as <code>if</code> / <code>else</code> statements. </p>
+
+<blockquote>
+  <pre><code>if hob in hobbies: 
+    print hob
+</code></pre>
+</blockquote>
+
+<h4 id="relational-operators-and-aliases">Relational operators and aliases</h4>
+<p>You can create an alias for a given list list which means you are creating more than one name of the same object.  You can test if two lists are aliases using the relational operator <code>is</code>.  The problem is because lists are mutable, if you alter one aliased object, you will alter the other aliased object.  </p>
+
+<blockquote>
+  <pre><code>a = [5, 10]
+b = a
+b is a
+b[0] = 20
+print a
+</code></pre>
+</blockquote>
+
+<p>which will return a list [20, 10]. In general, it’s best to avoid aliases and make copies instead.  </p>
+
+<p>The operator <code>is</code> can be used to test if two lists are equal. The operators &lt;, &gt; can be used to test the alphabetical order of lists. </p>
+
+<h2 id="loop-through-lists">Loop through lists</h2>
+<p>To traverse through the sequence of elements in a list, you can use <code>for</code> loops combined with <code>len</code> and <code>range</code>: </p>
+
+<blockquote>
+  <pre><code>for i in range(len(a)):
+    a[i] = a[i] * 2
+</code></pre>
+</blockquote>
+
+<p>A <code>for</code> loop over an empty list does not execute anything. </p>
+
+<h2 id="list-methods">List methods</h2>
+<p>Similar to strings, there are set of list methods in Python that are useful to manipulate lists. The syntax is the name of the list followed by a dot (or period) followed by the name of the list method.<br />
+If you want to delete a specific element in a list, you can use <code>del</code></p>
+
+<blockquote>
+  <pre><code>del a[1]
+print a
+</code></pre>
+</blockquote>
+
+<h4 id="list-of-list-methods">List of list methods</h4>
+<ul>
+  <li><code>append()</code> = add a new element to the end of a list</li>
+  <li><code>extend()</code> = similar to append except, function can take in a list as an argument and appends all the elements</li>
+  <li><code>sort()</code> = arrange the elements of the list from low to high
+    <ul>
+      <li>sort(reverse=True) = tells sort to go in decreasing order</li>
+    </ul>
+  </li>
+  <li><code>pop()</code> = deletes an element from the list and returns the element that was removed. If no index is provided as an argument, it deletes and returns the last element. </li>
+</ul>
+
+<blockquote>
+  <pre><code>a = [5, 10]
+a.append(35)
+a.extend(b)
+a.sort()
+k = a.pop(0)
+</code></pre>
+</blockquote>
+
+<ul>
+  <li><code>split(delimiter)</code> = breaks a string into words. If no argument is provided it splits based on white spaces. If the delimiter is provided as an argument, it will split based on that parameter</li>
+</ul>
+
+<blockquote>
+  <pre><code>newstring = "Howdy! How are you today?"
+newstring.split()
+</code></pre>
+</blockquote>
+
+<ul>
+  <li><code>join(delimiter)</code> = concatenates a set of strings with a given delimiter</li>
+</ul>
+
+<blockquote>
+  <pre><code>delim = ' '
+hobbies.join(delim)
+</code></pre>
+</blockquote>
+
+<p>It is important to note some of these methods modify the current list and other methods create new lists. For example the operators :, + and * create new lists, but <code>append</code>, <code>extend</code> and <code>sort</code> will modify the current list. In addition, if you try to assign the newly modified list to the same variable </p>
+
+<blockquote>
+  <pre><code>a = a.sort()
+print a
+</code></pre>
+</blockquote>
+
+<p>then nothing will be returned. </p>
+
+
+  </div>
+</div>
+
+
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; 2014 Stephanie Hicks
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

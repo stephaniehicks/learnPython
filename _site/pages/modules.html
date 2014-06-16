@@ -90,6 +90,26 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -132,11 +152,53 @@ from math import *
 <p>Now you can use <code>pi</code> directly. </p>
 
 <h1 id="modules-in-python">Modules in Python</h1>
+
+<h3 id="math-module">math module</h3>
+
+<h3 id="string-module">string module</h3>
 <ul>
-  <li>math</li>
-  <li></li>
+  <li><code>string.punctuation()</code></li>
+  <li><code>string.strip()</code></li>
+  <li><code>string.replace()</code></li>
+  <li><code>string.translate()</code></li>
 </ul>
 
+<h3 id="random-module">random module</h3>
+<p>The random module generates pseudorandom numbers. </p>
+
+<ul>
+  <li><code>random.random()</code> = returns a random float between 0.0 and 1.0</li>
+  <li><code>random.randint(low, high)</code> = takes in a low and high integers and returns a random integer (including both)</li>
+  <li><code>random.choice(t)</code> = returns a random elements from the sequence t</li>
+  <li>also generates random values from continuous probability distributions</li>
+</ul>
+
+<h3 id="anydbm-pickle-and-shelve-modules">anydbm, pickle and shelve modules</h3>
+<p>The <code>anydbm</code> module is interfaces and updates database files. The two methods functions to open and close the databases <code>anydbm.open()</code> and <code>anydbmclose()</code>.  To work with this module, the database must have keys and values as strings!  </p>
+
+<p>If your keys or values are not strings, you can use the <code>pickle</code> module to translate any object into a string which can be then stored in a database using the <code>pickle.dumps()</code> function.  When you want to access the database, the module will translate the string back into the original objects using the <code>pickle.loads()</code> function.  </p>
+
+<p>This method of “pickling” the objects from the <code>pickle</code> module combined with the <code>anydbm</code> module has been implemented in the <code>shelve</code> module.  To open and close files using this module use <code>shelve.open()</code> and <code>shelve.close()</code> which uses the <code>pickle</code> module to open and store the objects. </p>
+
+<h3 id="urllib-module">urllib module</h3>
+<p>This module is useful to manipulate URLs and downloading information from the web.  </p>
+
+<ul>
+  <li><code>urllib.urlopen()</code> = opens a html file from the web</li>
+</ul>
+
+<h1 id="writing-modules">Writing modules</h1>
+<p>Any file that contains Python code and ends in <code>.py</code> can be imported as a module.  If your file name is <code>cool.py</code>, you can import the program directly</p>
+
+<blockquote>
+  <pre><code>import cool
+print cool
+</code></pre>
+</blockquote>
+
+<p>which will print that the object ‘cool’ is a module from ‘cool.py’.  The functions inside the module are accessed in same syntax as before: the name of the module, a dot (or period) and the name of the function.  </p>
+
+<p><strong>Note</strong>: If you import a module that has already been imported, Python will not re-read the file (even if it has changed!).  To reload the module, use the built-in Python function <code>reload</code>.  </p>
 
   </div>
 </div>

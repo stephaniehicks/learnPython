@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Dictionaries</title>
+    
+    <meta name="author" content="Stephanie Hicks">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+      <!-- knitr javascript -->
+    <script src="/assets/themes/twitter/knitr.js" type="text/javascript"></script>
+
+    <!-- mathjax javascript -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">Learn Python</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Dictionaries  <small>Manipulating dictionaries</small></h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    
+<p>A dictionary is a more general version of a <a href="pages/list.html">list</a> because the index does not have to be an integer.  A dictionary is made up a set of <strong>keys</strong> and <strong>values</strong> where there is a mapping between a given key and its corresponding value.  The Python built-in function <code>dict()</code> will define a new dictionary with no items in it.  </p>
+
+<blockquote>
+  <pre><code>names = dict()
+print names
+</code></pre>
+</blockquote>
+
+<p>which will return an empty set of curly brackets representing an empty dictionary.   </p>
+
+<p>The function <code>len()</code> can be used to calculate the number <strong>items</strong> (i.e. key-value pairs) in a dictionary. </p>
+
+<blockquote>
+  <pre><code>len(names)
+</code></pre>
+</blockquote>
+
+<p><strong>Note</strong>: The keys in a dictionary must be immutable. Therefore, items such as lists (which are mutable) cannot be keys in a dictionary, but lists can be values in a dictionary.  The reason is because a dictionary is implemented using a <em>hashtable</em> and the keys must be <em>hashable</em>.  </p>
+
+<h2 id="dictionary-operators">Dictionary operators</h2>
+<p>The operators + and * <strong>do not</strong> work on dictionaries.</p>
+
+<h4 id="bracket--curly-bracket-operator">Bracket / curly bracket operator</h4>
+<p>To add an item (key and value) to the dictionary, you can do one of the following ways: (1) use the bracket operator <code>[]</code> or (2) the curly bracket operator <code>{}</code>:</p>
+
+<blockquote>
+  <pre><code>names['John'] = 'Smith'
+names = {'John': 'Smith', 'Mark': 'Twain'}
+</code></pre>
+</blockquote>
+
+<p>In the second line, you can multiple items with commas separating the key and values where here the <strong>key</strong> is the first name ‘John’ and the <strong>value</strong> is the last name ‘Smith’.  If you want to <strong>lookup</strong> a key given a dictionary and a key, you can use </p>
+
+<blockquote>
+  <pre><code>print names['John']
+</code></pre>
+</blockquote>
+
+<p>which will return the string ‘Smith’. If you have a dictionary (d) and a value (v) and you would like to <strong>reverse lookup</strong> the key (k), this is not as straight forward. There may be more than one key that maps to a given value, so you may have a list of keys that map to a given value.  </p>
+
+<blockquote>
+  <pre><code>def reverse_lookup(d, v):
+    for k in d:
+        if d[k] == v:
+            return k
+    raise ValueError, 'value does not appear in the dictionary'
+</code></pre>
+</blockquote>
+
+<p>The last line uses the statement <code>raise</code> which can take in a detailed error message.  Here, if the value does not exist in the dictionary, then we ‘raise’ an error message.  </p>
+
+<h4 id="in-operator">In operator</h4>
+<p>Similar to strings and lists, the <code>in</code> operator works with dictionaries. The operator will if a <strong>key</strong> exists in a dictionary and return a <code>True</code> or <code>False</code>. </p>
+
+<blockquote>
+  <pre><code>'John' in names
+</code></pre>
+</blockquote>
+
+<p>To check if a value exists in a dictionary, you can use the dictionary method <code>values()</code></p>
+
+<blockquote>
+  <pre><code>printvals = names.values()
+'Smith' in printvals
+</code></pre>
+</blockquote>
+
+<h2 id="loop-through-dictionaries">Loop through dictionaries</h2>
+<p>To traverse through a set of keys in a dictionary, you can use <code>for</code> loops (similar to strings and lists): </p>
+
+<blockquote>
+  <pre><code>for keys in names:
+    print names[keys]
+</code></pre>
+</blockquote>
+
+<p>A <code>for</code> loop over an empty dictionary does not execute anything. </p>
+
+<p>Another way to loop through the items in a dictionary is to use the dictionary method <code>items()</code> which lists all the key-value pairs in the dictionary. Here we assign a name to the keys and a names to the values and then print each parameter. </p>
+
+<blockquote>
+  <pre><code>for key, val in names.items():
+    print key, val
+</code></pre>
+</blockquote>
+
+<h2 id="dictionary-methods">Dictionary methods</h2>
+<p>Similar to strings, there are set of dictionary methods in Python that are useful to manipulate dictionaries. The syntax is the name of the dictionary followed by a dot (or period) followed by the name of the dictionary method.<br />
+If you want to delete a specific item in a dictionary, you can use <code>del</code></p>
+
+<blockquote>
+  <pre><code>del names['Mark']
+print names
+</code></pre>
+</blockquote>
+
+<h4 id="list-of-dictionary-methods">List of dictionary methods</h4>
+<ul>
+  <li><code>keys()</code> = returns all the keys as a list from a dictionary</li>
+  <li><code>values()</code> = returns all the values as a list from a dictionary</li>
+  <li><code>items()</code> = returns the list of items in the diction as a list of tuples</li>
+</ul>
+
+<blockquote>
+  <pre><code>names.keys()
+names.values()
+names.items()
+</code></pre>
+</blockquote>
+
+<ul>
+  <li><code>get()</code> = takes in a key and a default value as arguments and will return the value in the dictionary if the key exists or the second argument if the key does not exist. For example, </li>
+</ul>
+
+<blockquote>
+  <pre><code>names.get('John', 'Cooper')
+</code></pre>
+</blockquote>
+
+<p>will return ‘Smith’, but the following will return ‘Cooper’</p>
+
+<blockquote>
+  <pre><code>names.get('Jack', 'Cooper')
+</code></pre>
+</blockquote>
+
+<ul>
+  <li><code>append()</code> =  </li>
+  <li><code>update()</code> = takes in a list of tuples and adds them to the dictionary as key-value pairs to an existing dictionary</li>
+</ul>
+
+  </div>
+</div>
+
+
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; 2014 Stephanie Hicks
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

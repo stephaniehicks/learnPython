@@ -90,6 +90,26 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -109,13 +129,45 @@
 <div class="row-fluid">
   <div class="span12">
     
-<h1 id="keyboard-input">Keyboard input</h1>
-<p>To accept input from the keyboard, use the keyword <code>raw_input</code> (in Python 2) or <code>input</code> (in Python 3).</p>
+<p>To read or write to a file in the current working directory, you use the function <code>open()</code> to “open” the file. </p>
 
-<h1 id="read-in-files">Read in files</h1>
+<blockquote>
+  <pre><code>fin = open('myfile.txt')
+</code></pre>
+</blockquote>
+
+<p>With the mode <code>w</code> as a second parameters, you can write to the file. </p>
+
+<blockquote>
+  <pre><code>fout = open('myoutput.txt', 'w')
+</code></pre>
+</blockquote>
+
+<p><strong>Note</strong>: If the file already exists, using <code>open()</code> will clear out everything in the file before writing to it. If the file doesn’t exist, the function will create a new file. </p>
+
+<h1 id="reading-and-writing-files">Reading and writing files</h1>
+
+<h2 id="writing-to-files">Writing to files</h2>
+<p>To write to a file in Python, the argument must be a string.  If the argument is not a string, use the function <code>str()</code> to convert the argument to a string. </p>
+
+<p>The methods functions <code>write()</code> and <code>close()</code> will write data to a file and close the file when finished writing to it.  The syntax is the name of the file, a dot (or period), and the function <code>write()</code>.  </p>
+
+<h4 id="writing-to-files-one-line-at-a-time">Writing to files one line at a time</h4>
+<p>To write to a file one line at a time, just recall <code>write</code> again and again. </p>
+
+<blockquote>
+  <pre><code>fout.write("This is my first line.")
+fout.write("This is my second line.")
+fout.close()
+</code></pre>
+</blockquote>
+
+<p>The last line tell Python you are done writing to the file, so it knows to close the file. </p>
+
+<h2 id="reading-files">Reading files</h2>
 
 <h4 id="read-in-files-one-line-at-a-time">Read in files one line at a time</h4>
-<p>If you want to read in a file one line at a time, use the name of the file, dot (or period) and <code>readline()</code>. It will read in the characters from a file until it reaches a new line and returns the result as a string. To read in the next line, run the line again. </p>
+<p>If you want to read in a file one line at a time, use the methods function <code>readline()</code>.  The syntax is the name of the file, dot (or period) and <code>readline()</code>. It will read in the characters from a file until it reaches a new line and returns the result as a string. To read in the next line, run the line again. </p>
 
 <blockquote>
   <pre><code>fin = open('myfile.txt')
@@ -130,6 +182,114 @@ fin.readline()
 for line in fin: 
     word = line.strip()
     print word
+</code></pre>
+</blockquote>
+
+<h4 id="keyboard-input">Keyboard input</h4>
+<p>To accept input from the keyboard, use the keyword <code>raw_input</code> (in Python 2) or <code>input</code> (in Python 3).</p>
+
+<h1 id="paths-and-directories">Paths and directories</h1>
+<p>To print the current working directory, use the function <code>getcwd()</code> from the module <code>os</code>. </p>
+
+<blockquote>
+  <pre><code>import os
+cwd = os.getcwd()
+print cwd
+</code></pre>
+</blockquote>
+
+<p>To find the absolute path to a file use <code>path.abspath()</code>: </p>
+
+<blockquote>
+  <pre><code>os.path.abspath('myfile.text')
+</code></pre>
+</blockquote>
+
+<p>To check if a file exists, use <code>path.exists()</code>:</p>
+
+<blockquote>
+  <pre><code>os.path.exists('myfile.text')
+</code></pre>
+</blockquote>
+
+<p>To check if the argument is a file or a directory, use <code>path.isfile()</code> and <code>path.isdir()</code>: </p>
+
+<blockquote>
+  <pre><code>os.path.isdir('myfile.text')
+os.path.isfile('myfile.text')
+</code></pre>
+</blockquote>
+
+<p>To list the files in a directory use <code>path.listdir()</code>: </p>
+
+<blockquote>
+  <pre><code>os.path.listdir(cwd)
+</code></pre>
+</blockquote>
+
+<h2 id="errors">Errors</h2>
+<ul>
+  <li>If a file doesn’t exist, if you don’t have permission to access a file or if you try to open a directory to read in, you will get an <code>IOError</code>. 
+    <ul>
+      <li>Tip: use functions like <code>os.path.exists()</code> and <code>os.path.isfile()</code> to test before reading in a file</li>
+      <li>Tip: use the <code>try</code> statement (similar to an <code>if</code> statement). </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="databases">Databases</h1>
+<p>A <em>database</em> is a specific type of file with a purpose of storing data.  For example, if you have created a dictionary with <em>keys</em> and <em>values</em>, you can create and update the dictionary database file.  To work with databases, import the Python module <code>anydbm</code>. </p>
+
+<p>To open a database (and create it if it doesn’t already exist): </p>
+
+<blockquote>
+  <pre><code>import anydbm
+db = anydbm.open('mydatabase.db', 'c')
+</code></pre>
+</blockquote>
+
+<p>where the ‘c’ means to create the database if it doesn’t exist.  While interfacing with the database, if you add a key-value pair (i.e. item), then the module <code>anydbm</code> will update the database file.  After you are finished with the database, close it with the methods function <code>close()</code>. </p>
+
+<blockquote>
+  <pre><code>db.close()
+</code></pre>
+</blockquote>
+
+<h4 id="pickling-a-database">Pickling a database</h4>
+<p>The module <code>anydbm</code> ONLY works with databases that have keys and values as strings. If your keys or values are not strings, you can use the <code>pickle</code> module to translate any object into a string which can be then stored in a database.  When you want to access the database, the module will translate the string back into the original objects.  </p>
+
+<blockquote>
+  <pre><code>import pickle
+</code></pre>
+</blockquote>
+
+<p>The methods function <code>pickle.dumps()</code> takes in any object and returns the string representation and <code>pickle.loads()</code> will translate the string object back to the original representation: </p>
+
+<blockquote>
+  <pre><code>x = tuple('yolo')
+xstring = pickle.dumps(x)
+xoriginal = pickle.loads(xstring)
+print xoriginal 
+</code></pre>
+</blockquote>
+
+<p><strong>Note</strong>: pickling and unpickling the object is the same copying the object. It will have the same value, but it not the same object.  </p>
+
+<h4 id="shelve-module">Shelve module</h4>
+<p>The <a href="http://python.wikia.com/wiki/Shelve">module</a> <code>shelve</code> has combined the function in the <code>anydbm</code> and <code>pickle</code> modules into one easy set of functions to use to interact with databases. </p>
+
+<blockquote>
+  <pre><code>import shelve
+shelve.open('mydatabase.db')
+</code></pre>
+</blockquote>
+
+<p>To interact with this database, use the <code>shelve()</code> function</p>
+
+<blockquote>
+  <pre><code>newVar = shelve['mykey']
+shelve['mykey'] = newVar
+shelve.close('mydatabase.db')
 </code></pre>
 </blockquote>
 

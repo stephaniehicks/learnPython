@@ -1,11 +1,16 @@
 
-http://stephaniehicks.github.io/LearnPython/atom.xml
-http://stephaniehicks.github.io/LearnPython/index.html
-http://stephaniehicks.github.io/LearnPython/pages/basics.html
-http://stephaniehicks.github.io/LearnPython/pages/import.html
-http://stephaniehicks.github.io/LearnPython/pages/modules.html
-http://stephaniehicks.github.io/LearnPython/pages/stringsandlists.html
-http://stephaniehicks.github.io/LearnPython/rss.xml
-http://stephaniehicks.github.io/LearnPython/sitemap.txt
+http://stephaniehicks.github.io/learnPython/atom.xml
+http://stephaniehicks.github.io/learnPython/index.html
+http://stephaniehicks.github.io/learnPython/pages/basics.html
+http://stephaniehicks.github.io/learnPython/pages/dictionaries.html
+http://stephaniehicks.github.io/learnPython/pages/import.html
+http://stephaniehicks.github.io/learnPython/pages/IPython.html
+http://stephaniehicks.github.io/learnPython/pages/lists.html
+http://stephaniehicks.github.io/learnPython/pages/modules.html
+http://stephaniehicks.github.io/learnPython/pages/sldt.html
+http://stephaniehicks.github.io/learnPython/pages/strings.html
+http://stephaniehicks.github.io/learnPython/pages/tuples.html
+http://stephaniehicks.github.io/learnPython/rss.xml
+http://stephaniehicks.github.io/learnPython/sitemap.txt
 
-http://stephaniehicks.github.io/LearnPython/lessons/2011/12/29/jekyll-introduction
+http://stephaniehicks.github.io/learnPython/lessons/2011/12/29/jekyll-introduction

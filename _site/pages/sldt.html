@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Overview</title>
+    
+    <meta name="author" content="Stephanie Hicks">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+      <!-- knitr javascript -->
+    <script src="/assets/themes/twitter/knitr.js" type="text/javascript"></script>
+
+    <!-- mathjax javascript -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">Learn Python</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Overview  <small>Strings, Lists, Dictionaries, Tuples</small></h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    
+<p>The four main types of objects you will work with are <a href="pages/strings.html">strings</a>, <a href="pages/lists.html">lists</a>, <a href="pages/dictionaries.html">dictionaries</a> and <a href="pages/tuples.html">tuples</a>.  Knowing how to manipulate these objects is incredibly important in Python. Before discussing each object in detail, I wanted to give an overview of the four objects.  </p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th style="text-align: center">strings</th>
+      <th style="text-align: center">lists</th>
+      <th style="text-align: center">dictionary</th>
+      <th style="text-align: center">tuple</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Immutable or mutable?</td>
+      <td style="text-align: center">immutable</td>
+      <td style="text-align: center">mutable</td>
+      <td style="text-align: center">mutable</td>
+      <td style="text-align: center">immutable</td>
+    </tr>
+    <tr>
+      <td>Indexed by?</td>
+      <td style="text-align: center">integers</td>
+      <td style="text-align: center">integers</td>
+      <td style="text-align: center">any immutable type</td>
+      <td style="text-align: center">integers</td>
+    </tr>
+    <tr>
+      <td>operators + and * ?</td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">No</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+    <tr>
+      <td><code>in</code> operator?</td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Definitions: </p>
+
+<ul>
+  <li>A string is a sequence of characters. </li>
+  <li>A list a sequence of values which can be characters, integers or even another list (referred to as a nested list). </li>
+  <li>A dictionary is a more general version of a list and is made up a set of <strong>keys</strong> and <strong>values</strong> where there is a mapping between a given key and its corresponding value. There is no order to the set of keys and values. </li>
+  <li>A tuple is a sequence of values (any type) which makes them similar to lists, but the difference is they are immutable.  </li>
+</ul>
+
+<p>Immutable vs mutable: </p>
+
+<ul>
+  <li>Strings are <strong>immutable</strong>. When using strings, bracket operators cannot be used on the left side of an assignment with the intention of changing that string. </li>
+  <li>Lists are <strong>mutable</strong>. Unlike strings, you can use the bracket operator on the left side of the assignment to change an element in a given list. </li>
+  <li>Dictionaries are </li>
+  <li>Tuples are <strong>immutable</strong>.  </li>
+</ul>
+
+<p>The <code>in</code> operator: </p>
+
+<ul>
+  <li>The <code>in</code> operator is a boolean operator takes in two arguments that determines if the first argument is a substring or a element of the second argument.<br />
+    <ul>
+      <li>When comparing two strings, the operator searches if the first string appears as a substring in the second and returns a <code>True</code> or <code>False</code>. </li>
+      <li>If the second argument is a list, the operator that can take in two a string and a list to see if the string appears as one of the elements in the list and returns a <code>True</code> or <code>False</code>. </li>
+    </ul>
+  </li>
+</ul>
+
+<p>The function <code>len()</code> can be used to: 
+* Calculate the length of a string
+* Calculate the number of elements in a list
+* Calculate the number of items in a dictionary
+* Calculate the number elements in the tuple</p>
+
+<h1 id="sequences-of-sequences">Sequences of sequences</h1>
+<p>In the subsequent pages, I will compare and contrast the similarities and differences of strings, lists, dictionaries and tuples in greater detail.  In general, lists are more common than tuples (mostly because they are mutable), but there are a few reasons why tuples may be preferable: </p>
+
+<ol>
+  <li>In some contexts, like a return statement, it is syntactically simpler to create a tuple than a list. In other contexts, you might prefer a list.</li>
+  <li>If you want to use a sequence as a dictionary key, you have to use an immutable type like a tuple or string.</li>
+  <li>If you are passing a sequence as an argument to a function, using tuples reduces the potential for unexpected behavior due to aliasing.</li>
+</ol>
+
+<p>Because tuples are immutable, they don?t provide methods like <code>sort</code> and <code>reverse</code>, which modify existing lists. But Python provides the built-in functions <code>sorted</code> and <code>reversed</code>, which take any sequence as a parameter and return a new list with the same elements in a different order.</p>
+
+
+  </div>
+</div>
+
+
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; 2014 Stephanie Hicks
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

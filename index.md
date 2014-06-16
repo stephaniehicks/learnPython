@@ -1,6 +1,6 @@
 ---
 layout: page
-title: LearnPython
+title: learnPython
 tagline: Tutorial for data analysis in Python
 ---
 {% include JB/setup %}
@@ -12,9 +12,13 @@ I break down this tutorial into sections. The first section contains the essenti
 Essentials of programming in Python: 
 
 * [Variables, functions, conditionals and iteration](pages/basics.html)
-* [Strings and Lists](pages/stringsandlists.html)
+* [Strings, lists, dictionaries and tuples](pages/sldt.html)
+	* [Strings](pages/strings.html)
+	* [Lists](pages/lists.html)
+	* [Dictionaries](pages/dictionaries.html)
+	* [Tuples](pages/tuples.html)
 * [Import Modules](pages/modules.html)
-* [Import Data](pages/import.html)
+* [Import/export files and databases](pages/import.html)
 
 Data analysis for Python: 
 

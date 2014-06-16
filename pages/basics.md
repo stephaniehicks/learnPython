@@ -6,7 +6,7 @@ tagline: Variables, Functions, Conditionals, Iteration
 {% include JB/setup %}
 
 
-There are two modes you can write Python code in: **interactive mode** or **script mode**.  If you open up a UNIX command window, you can simply type 
+There are two modes you can write Python code in: **interactive mode** or **script mode**.  If you open up a UNIX command window and have a command-line interface, you can simply type `python` in the shell: 
 
 >	python
 
@@ -21,8 +21,8 @@ and the **interactive mode** will open up.  If you store code in a file ending i
 Variable names are case sensitive, can contain numbers and letters, can contain underscores, cannot begin with a number, [cannot contain illegal characters and cannot be one of the 31 keywords in Python](http://en.wikibooks.org/wiki/Think_Python/Variables,_expressions_and_statements#Variable_names_and_keywords)
 
 #### Operators
-* Numeric operators are +, -, *, /, ** (exponent), $\%$ (modulus)
-* String operations: + and * . For example, 'Happy'*3 = 'HappyHappyHappy' or 'Happy'+'Clown' = 'HappyClown'
+* Numeric operators are +, -, *, /, ** (exponent), $\%$ (modulus if applied to integers)
+* String and list operators: + and * . 
 * The augmented assignment operator `+=` can be used like n += x which is equal to n = n + x 
 * Boolean relational operators: == (equal), != (not equal), >, <, >= (greater than or equal to), <= (less than or equal to)
 	* Boolean expressions will produce `True` or `False`
@@ -30,25 +30,49 @@ Variable names are case sensitive, can contain numbers and letters, can contain 
 	* Any nonzero number is interpreted as `True` 
 
 
+#### Format operators
+If $\%$ is applied to strings, this operator is the format operator.  It tell Python how to format a list of values in a string.  For example, 
+
+* '$\%$d' says to format the value as an integer
+* '$\%$g' says to format the value as an float
+* '$\%$s' says to format the value as an string
+
+If you run: 'In $\%$d years I have spotted $\%$g $\%$s.' $\%$ (3, 0.1, 'camels')
+
+it will print 'In 3 years I have spotted 0.1 camels.'
+
+
 
 # Functions
+One of the basic built-in Python functions is `type()` which is a function that reports the type of variable.  A list of the types are: 
 
-#### Basic Python functions
-* `print()` = print the argument to the screen; must use `print()` in script mode or the argument will be evaluated, but not printed. 
-* `type()` = function which reports the type of variable, function: 
 	1. integer (`int`) 
 	2. floating-point (`float`)
 	3. string (`str`)
-	4. function (`function`)
-	5. boolean (`bool`): e.g. True, False
+	4. list (`list`)
+	5. dictionary (`dict`)
+	6. tuple (`tuple`)
+	7. function (`function`)
+	8. boolean (`bool`): e.g. True, False
+	9. enumerate (`enumerate`) 
+
+
+#### Basic built-in Python functions
+* `print()` = print the argument to the screen; must use `print()` in script mode or the argument will be evaluated, but not printed. 
 * `int()` = converts floats and strings to integers (but chops off the fraction part and doesn't round)
+* `str() = converts values to strings
 * `isinstance()` = verifies the type of of the argument (e.g. isinstance(5, int) would return True)
+* `range()` = returns a list of indices from 0 to n-1.
+* `enumerate('myseq')` = returns an `enumerate`object which is accepts a sequence and returns a tuple containing a count (from start which defaults to 0) and the values obtained from iterating over sequence
+* `repr()` = takes in an argument and returns the string representation of the object (helpful for debugging!)
+
+For a more detailed list on the built-in functions in Python, see [Built-in Python Functions](https://docs.python.org/2/library/functions.html)
 
 #### Defining new functions
 New functions can be defined using one of the 31 keywords in Python `def`.  
 
 >	def new_world(): 
-> 	    print 'Hello world!'
+>	    print 'Hello world!'
 
 The first line of the function (the header) must start with `def`, the name of the function (which can contain underscores), parentheses (with any arguments inside of it) and a colon.  The rest of the function (the body) always has an indentation of four spaces.  If you define a function in the interactive mode, the interpreter will print ellipses (...) to let you know the function isn't complete. To complete the function, enter an empty line (not necessary in a script).  
 
@@ -64,6 +88,15 @@ To return a value from a function, use `return`. The function will immediately t
 >	def squared(x):
 >	    return x ** 2
 
+The statement `raise` can be used in a function to raise an error message whenever the function fails to return a value.  This statement will print a traceback and an error message.  
+
+Variables written inside of a function are considered **local** variables and will disappear when the function ends. Variables written outside of a function are considered **global** variables and will remain after the function ends. To change the value of a global variable inside of a function, you must **declare** the global variable before you use it using the syntax `global` nameofvariable.  The exception is if the global variable is mutable (e.g. lists, dictionaries), you can modify individual elements it without declaring it.  
+
+Optional arguments can be provided to the functions where each optional argument has a specified default value. If another value is provided to the optional argument, it is over-written.  
+
+>	def squaredShifted(x, shift = 10):
+>	    return shift + (x ** 2)
+>	squaredShifted(5, 20)
 
 #### Recursive functions
 Functions can call itself to allow for a recursive pattern. 
