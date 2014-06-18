@@ -110,6 +110,10 @@
       
     
   
+    
+      
+    
+  
 
 
 
@@ -129,7 +133,7 @@
 <div class="row-fluid">
   <div class="span12">
     
-<p>The four main types of objects you will work with are <a href="pages/strings.html">strings</a>, <a href="pages/lists.html">lists</a>, <a href="pages/dictionaries.html">dictionaries</a> and <a href="pages/tuples.html">tuples</a>.  Knowing how to manipulate these objects is incredibly important in Python. Before discussing each object in detail, I wanted to give an overview of the four objects.  </p>
+<p>The four main types of objects you will work with are <a href="strings.html">strings</a>, <a href="lists.html">lists</a>, <a href="dictionaries.html">dictionaries</a> and <a href="tuples.html">tuples</a>.  Knowing how to manipulate these objects is incredibly important in Python. Before discussing each object in detail, I wanted to give an overview of the four objects.  </p>
 
 <table>
   <thead>
@@ -173,8 +177,7 @@
   </tbody>
 </table>
 
-<p>Definitions: </p>
-
+<h4 id="definitions">Definitions:</h4>
 <ul>
   <li>A string is a sequence of characters. </li>
   <li>A list a sequence of values which can be characters, integers or even another list (referred to as a nested list). </li>
@@ -182,8 +185,7 @@
   <li>A tuple is a sequence of values (any type) which makes them similar to lists, but the difference is they are immutable.  </li>
 </ul>
 
-<p>Immutable vs mutable: </p>
-
+<h4 id="immutable-vs-mutable">Immutable vs mutable:</h4>
 <ul>
   <li>Strings are <strong>immutable</strong>. When using strings, bracket operators cannot be used on the left side of an assignment with the intention of changing that string. </li>
   <li>Lists are <strong>mutable</strong>. Unlike strings, you can use the bracket operator on the left side of the assignment to change an element in a given list. </li>
@@ -191,24 +193,25 @@
   <li>Tuples are <strong>immutable</strong>.  </li>
 </ul>
 
-<p>The <code>in</code> operator: </p>
+<h4 id="the-in-operator">The <code>in</code> operator:</h4>
+<p>The <code>in</code> operator is a boolean operator takes in two arguments that determines if the first argument is a substring or a element of the second argument.  </p>
 
 <ul>
-  <li>The <code>in</code> operator is a boolean operator takes in two arguments that determines if the first argument is a substring or a element of the second argument.<br />
-    <ul>
-      <li>When comparing two strings, the operator searches if the first string appears as a substring in the second and returns a <code>True</code> or <code>False</code>. </li>
-      <li>If the second argument is a list, the operator that can take in two a string and a list to see if the string appears as one of the elements in the list and returns a <code>True</code> or <code>False</code>. </li>
-    </ul>
-  </li>
+  <li>When comparing two strings, the operator searches if the first string appears as a substring in the second and returns a <code>True</code> or <code>False</code>. </li>
+  <li>If the second argument is a list, the operator that can take in two a string and a list to see if the string appears as one of the elements in the list and returns a <code>True</code> or <code>False</code>. </li>
 </ul>
 
-<p>The function <code>len()</code> can be used to: 
-* Calculate the length of a string
-* Calculate the number of elements in a list
-* Calculate the number of items in a dictionary
-* Calculate the number elements in the tuple</p>
+<h4 id="the-len-function">The len function:</h4>
+<p>The function <code>len()</code> can be used to: </p>
 
-<h1 id="sequences-of-sequences">Sequences of sequences</h1>
+<ul>
+  <li>Calculate the length of a string</li>
+  <li>Calculate the number of elements in a list</li>
+  <li>Calculate the number of items in a dictionary</li>
+  <li>Calculate the number elements in the tuple</li>
+</ul>
+
+<h1 id="when-to-use-which-object">When to use which object?</h1>
 <p>In the subsequent pages, I will compare and contrast the similarities and differences of strings, lists, dictionaries and tuples in greater detail.  In general, lists are more common than tuples (mostly because they are mutable), but there are a few reasons why tuples may be preferable: </p>
 
 <ol>
@@ -217,7 +220,9 @@
   <li>If you are passing a sequence as an argument to a function, using tuples reduces the potential for unexpected behavior due to aliasing.</li>
 </ol>
 
-<p>Because tuples are immutable, they don?t provide methods like <code>sort</code> and <code>reverse</code>, which modify existing lists. But Python provides the built-in functions <code>sorted</code> and <code>reversed</code>, which take any sequence as a parameter and return a new list with the same elements in a different order.</p>
+<p>Because tuples are immutable, they don’t provide methods like <code>sort</code> and <code>reverse</code>, which modify existing lists. But Python provides the built-in functions <code>sorted</code> and <code>reversed</code>, which take any sequence as a parameter and return a new list with the same elements in a different order.</p>
+
+<p>In addition to the built-in objects in Python, you can also create your own object (or class).  I will <a href="classes.html">discuss this idea</a> in greater detail a bit further on. For now, let’s formally discuss <a href="strings.html">strings</a>, <a href="lists.html">lists</a>, <a href="dictionaries.html">dictionaries</a> and <a href="tuples.html">tuples</a>. </p>
 
 
   </div>

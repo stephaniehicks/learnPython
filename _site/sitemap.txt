@@ -2,6 +2,7 @@
 http://stephaniehicks.github.io/learnPython/atom.xml
 http://stephaniehicks.github.io/learnPython/index.html
 http://stephaniehicks.github.io/learnPython/pages/basics.html
+http://stephaniehicks.github.io/learnPython/pages/classes.html
 http://stephaniehicks.github.io/learnPython/pages/dictionaries.html
 http://stephaniehicks.github.io/learnPython/pages/import.html
 http://stephaniehicks.github.io/learnPython/pages/IPython.html

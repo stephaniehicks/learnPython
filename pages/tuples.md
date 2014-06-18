@@ -5,7 +5,7 @@ tagline: Manipulating tuples
 ---
 {% include JB/setup %}
 
-A tuple is a sequence of values (any type) which makes them similar to [list](pages/list.html), but the difference is they are immutable (i.e. you cannot modify one of the elements of a tuple on the left side of the assignment operator). Tuples are indexed by only integers similar to strings and lists. A tuple is defined by a sequence of comma-separated values (and can be enclosed in parentheses or not)
+A tuple is a sequence of values (any type) which makes them similar to [list](list.html), but the difference is they are immutable (i.e. you cannot modify one of the elements of a tuple on the left side of the assignment operator). Tuples are indexed by only integers similar to strings and lists. A tuple is defined by a sequence of comma-separated values (and can be enclosed in parentheses or not)
 
 >	x = 'y', 'o'
 >	x = ('y', 'o')

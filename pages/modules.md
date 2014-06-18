@@ -62,3 +62,9 @@ Any file that contains Python code and ends in `.py` can be imported as a module
 which will print that the object 'cool' is a module from 'cool.py'.  The functions inside the module are accessed in same syntax as before: the name of the module, a dot (or period) and the name of the function.  
 
 **Note**: If you import a module that has already been imported, Python will not re-read the file (even if it has changed!).  To reload the module, use the built-in Python function `reload`.  
+
+
+
+### copy module
+* `copy.copy()` = function to duplicate any object (not create an alias)
+

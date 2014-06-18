@@ -5,7 +5,7 @@ tagline: Manipulating dictionaries
 ---
 {% include JB/setup %}
 
-A dictionary is a more general version of a [list](pages/list.html) because the index does not have to be an integer.  A dictionary is made up a set of **keys** and **values** where there is a mapping between a given key and its corresponding value.  The Python built-in function `dict()` will define a new dictionary with no items in it.  
+A dictionary is a more general version of a [list](list.html) because the index does not have to be an integer.  A dictionary is made up a set of **keys** and **values** where there is a mapping between a given key and its corresponding value.  The Python built-in function `dict()` will define a new dictionary with no items in it.  
 
 >	names = dict()
 >	print names
