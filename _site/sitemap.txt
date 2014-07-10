@@ -4,11 +4,14 @@ http://stephaniehicks.github.io/learnPython/index.html
 http://stephaniehicks.github.io/learnPython/pages/basics.html
 http://stephaniehicks.github.io/learnPython/pages/classes.html
 http://stephaniehicks.github.io/learnPython/pages/dictionaries.html
+http://stephaniehicks.github.io/learnPython/pages/documentation.html
 http://stephaniehicks.github.io/learnPython/pages/import.html
 http://stephaniehicks.github.io/learnPython/pages/IPython.html
 http://stephaniehicks.github.io/learnPython/pages/lists.html
 http://stephaniehicks.github.io/learnPython/pages/modules.html
+http://stephaniehicks.github.io/learnPython/pages/numpy_scipy.html
 http://stephaniehicks.github.io/learnPython/pages/sldt.html
+http://stephaniehicks.github.io/learnPython/pages/startingPython.html
 http://stephaniehicks.github.io/learnPython/pages/strings.html
 http://stephaniehicks.github.io/learnPython/pages/tuples.html
 http://stephaniehicks.github.io/learnPython/rss.xml

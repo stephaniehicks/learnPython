@@ -114,6 +114,18 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -174,8 +186,11 @@ x.topFoods = dict(zip(('spaghetti', 'salmon', 'tacos'), (1,2,3)))
 
 <blockquote>
   <pre><code>hasattr(x, 'topFoods')
+hasattr(x, '__doc__')
 </code></pre>
 </blockquote>
+
+<p>To test if there is a doc string, test if one of the attributes of x is <code>__doc__</code>.</p>
 
 <h1 id="user-defined-methods">User-defined methods</h1>
 <p>In addition to creating user-defined types (or objects), you can also create user-defined <strong>methods</strong> which are associated with a particular class of objects.  For example, there are a set of methods associated with strings, lists, dictionaries and tuples that we have already seen.  Methods associated with a specific type of object are similar to functions except: </p>

@@ -7,12 +7,13 @@ tagline: Strings, Lists, Dictionaries, Tuples
 
 The four main types of objects you will work with are [strings](strings.html), [lists](lists.html), [dictionaries](dictionaries.html) and [tuples](tuples.html).  Knowing how to manipulate these objects is incredibly important in Python. Before discussing each object in detail, I wanted to give an overview of the four objects.  
 
-| | strings | lists | dictionary | tuple | 
+| | string | list | dictionary | tuple | 
 | --- | :---: | :---: | :---: | :---: |
 | Immutable or mutable? | immutable | mutable | mutable | immutable |
 | Indexed by? | integers | integers | any immutable type | integers |
 | operators + and * ? | Yes | Yes | No | Yes | 
 | `in` operator? | Yes | Yes | Yes | Yes |
+| apply methods? | Yes | Yes | Yes | No | 
 
 
 #### Definitions: 
@@ -25,12 +26,12 @@ The four main types of objects you will work with are [strings](strings.html), [
 #### Immutable vs mutable: 
 * Strings are **immutable**. When using strings, bracket operators cannot be used on the left side of an assignment with the intention of changing that string. 
 * Lists are **mutable**. Unlike strings, you can use the bracket operator on the left side of the assignment to change an element in a given list. 
-* Dictionaries are 
-* Tuples are **immutable**.  
+* Dictionaries are **mutable**. You can modify any item (key-value pair) in a dictionary using the bracket operator on the left side of the assignment. 
+* Tuples are **immutable**.  You can extract elements, but you cannot modify elements of a tuple on the left side of the assignment operator. 
 
 
 #### The `in` operator: 
-The `in` operator is a boolean operator takes in two arguments that determines if the first argument is a substring or a element of the second argument.  
+The `in` operator (and `not in` operator) is a boolean operator takes in two arguments that determines if the first argument is a substring or a element of the second argument.  
 
 * When comparing two strings, the operator searches if the first string appears as a substring in the second and returns a `True` or `False`. 
 * If the second argument is a list, the operator that can take in two a string and a list to see if the string appears as one of the elements in the list and returns a `True` or `False`. 
@@ -41,9 +42,18 @@ The function `len()` can be used to:
 
 * Calculate the length of a string
 * Calculate the number of elements in a list
-* Calculate the number of items in a dictionary
+* Calculate the number of items (key-value pairs) in a dictionary
 * Calculate the number elements in the tuple
 
+
+
+#### Methods for each type of object (dot notation)
+For strings, lists and dictionaries, there are set of methods you can use to manipulate the objects.  Because tuples are immutable, there are no methods to modify the objects.  In general, the notation for methods is the **dot notation**.  The syntax is the name of the objects followed by a dot (or period) followed by the name of the method.  
+
+>	x = "Hello Boston!"
+>	x.split()
+
+Here we use the method `split()` which is applied to a string (making this a string method).  The method splits the string at a given delimiter (in this case the white space " ").  
 
 
 # When to use which object? 
@@ -53,7 +63,7 @@ In the subsequent pages, I will compare and contrast the similarities and differ
 2. If you want to use a sequence as a dictionary key, you have to use an immutable type like a tuple or string.
 3. If you are passing a sequence as an argument to a function, using tuples reduces the potential for unexpected behavior due to aliasing.
 
-Because tuples are immutable, they don't provide methods like `sort` and `reverse`, which modify existing lists. But Python provides the built-in functions `sorted` and `reversed`, which take any sequence as a parameter and return a new list with the same elements in a different order.
+Again, because tuples are immutable, they do not provide methods like `split()`. 
 
 In addition to the built-in objects in Python, you can also create your own object (or class).  I will [discuss this idea](classes.html) in greater detail a bit further on. For now, let's formally discuss [strings](strings.html), [lists](lists.html), [dictionaries](dictionaries.html) and [tuples](tuples.html). 
 

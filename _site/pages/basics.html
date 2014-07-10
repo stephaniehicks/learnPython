@@ -114,6 +114,18 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -133,19 +145,7 @@
 <div class="row-fluid">
   <div class="span12">
     
-<p>There are two modes you can write Python code in: <strong>interactive mode</strong> or <strong>script mode</strong>.  If you open up a UNIX command window and have a command-line interface, you can simply type <code>python</code> in the shell: </p>
-
-<blockquote>
-  <pre><code>python
-</code></pre>
-</blockquote>
-
-<p>and the <strong>interactive mode</strong> will open up.  If you store code in a file ending in <code>.py</code>, and execute the file in the <strong>script mode</strong> using </p>
-
-<blockquote>
-  <pre><code>python myscript.py
-</code></pre>
-</blockquote>
+<p>Everything in Python is an object.  You can define variables, functions, and modules which are all objects. We can operate on this objects with what are called <strong>operators</strong> (e.g. addition, subtraction, concatenation or other operations), define/apply functions, test/apply for <em>conditionals</em> statements, (e.g. <code>if</code>, <code>else</code> statements) or iterate over the objects. </p>
 
 <h1 id="variables-and-operators">Variables and Operators</h1>
 
@@ -154,36 +154,51 @@
 
 <h4 id="operators">Operators</h4>
 <ul>
-  <li>Numeric operators are +, -, *, /, ** (exponent), $\%$ (modulus if applied to integers)</li>
+  <li>Numeric operators are +, -, *, /, ** (exponent), % (modulus if applied to integers)</li>
   <li>String and list operators: + and * . </li>
-  <li>The augmented assignment operator <code>+=</code> can be used like n += x which is equal to n = n + x </li>
+  <li>Assignment operator: =</li>
+  <li>The augmented assignment operator <code>+=</code> (or <code>-=</code>) can be used like n += x which is equal to n = n + x </li>
   <li>Boolean relational operators: == (equal), != (not equal), &gt;, &lt;, &gt;= (greater than or equal to), &lt;= (less than or equal to)
     <ul>
       <li>Boolean expressions will produce <code>True</code> or <code>False</code></li>
     </ul>
   </li>
-  <li>Logical operators: <code>and</code>, <code>or</code>, and <code>not</code>. For example, x &gt; 1 <code>and</code> x &lt;=5
+  <li>Logical operators: <code>and</code>, <code>or</code>, and <code>not</code>. e.g. x &gt; 1 <code>and</code> x &lt;=5
     <ul>
       <li>Any nonzero number is interpreted as <code>True</code> </li>
+      <li>Values are evaluated left to right. e.g. ‘yes’ and ‘no’ will return ‘no’ because ‘yes’ is evaluated as True AND ‘no’ is evaluated as True.</li>
+      <li>0, ‘ ‘, [ ], ( ), { }, <code>None</code> are evaluated as False. </li>
+      <li>Order of operations for logic operators: <code>not</code>, <code>and</code>, <code>or</code>. Use parentheses <code>( )</code>  to evaluate in order of preference.</li>
     </ul>
   </li>
 </ul>
 
 <h4 id="format-operators">Format operators</h4>
-<p>If $\%$ is applied to strings, this operator is the format operator.  It tell Python how to format a list of values in a string.  For example, </p>
+<p>If % is applied to strings, this operator is the format operator.  It tell Python how to format a list of values in a string.  For example, </p>
 
 <ul>
-  <li>’$\%$d’ says to format the value as an integer</li>
-  <li>’$\%$g’ says to format the value as an float</li>
-  <li>’$\%$s’ says to format the value as an string</li>
+  <li><code>%d</code> says to format the value as an integer</li>
+  <li><code>%g</code> says to format the value as an float</li>
+  <li><code>%s</code> says to format the value as an string</li>
 </ul>
 
-<p>If you run: ‘In $\%$d years I have spotted $\%$g $\%$s.’ $\%$ (3, 0.1, ‘camels’)</p>
+<blockquote>
+  <pre><code>'In %d days I have eaten %g %s.'  % (2, 3.5, 'lobsters')
+</code></pre>
+</blockquote>
 
-<p>it will print ‘In 3 years I have spotted 0.1 camels.’</p>
+<p>The above line will print ‘In 3 years I have spotted 0.1 camels.’ Note, the list of strings before the % symbol must be equal to the number defined formats (e.g. number of of %s). </p>
 
 <h1 id="functions">Functions</h1>
-<p>One of the basic built-in Python functions is <code>type()</code> which is a function that reports the type of variable.  A list of the types are: </p>
+<p>Python contains a small list of very useful built-in functions. All other functions need defined by the user or need to be imported from <a href="modules.html">modules</a> which will be discussed in a little bit. For a more detailed list on the built-in functions in Python, see <a href="https://docs.python.org/2/library/functions.html">Built-in Python Functions</a></p>
+
+<h2 id="really-useful-built-in-functions">Really useful built-in functions:</h2>
+
+<p>First, we’ll discuss <code>type()</code>, <code>print()</code>, <code>dir()</code> and <code>str()</code></p>
+
+<h4 id="type">type()</h4>
+
+<p>The first function we’ll discuss, <code>type()</code>, reports the type of any object, which is very useful when handling multiple data types (<strong>remember</strong>, everything in Python is an object). Here are some the mains types you will encounter: </p>
 
 <pre><code>1. integer (`int`) 
 2. floating-point (`float`)
@@ -192,22 +207,113 @@
 5. dictionary (`dict`)
 6. tuple (`tuple`)
 7. function (`function`)
-8. boolean (`bool`): e.g. True, False
-9. enumerate (`enumerate`) 
+8. module (`module`)
+9. boolean (`bool`): e.g. True, False
+10. enumerate (`enumerate`)
 </code></pre>
 
-<h4 id="basic-built-in-python-functions">Basic built-in Python functions</h4>
-<ul>
-  <li><code>print()</code> = print the argument to the screen; must use <code>print()</code> in script mode or the argument will be evaluated, but not printed. </li>
-  <li><code>int()</code> = converts floats and strings to integers (but chops off the fraction part and doesn’t round)</li>
-  <li>`str() = converts values to strings</li>
-  <li><code>isinstance()</code> = verifies the type of of the argument (e.g. isinstance(5, int) would return True)</li>
-  <li><code>range()</code> = returns a list of indices from 0 to n-1.</li>
-  <li><code>enumerate('myseq')</code> = returns an <code>enumerate</code>object which is accepts a sequence and returns a tuple containing a count (from start which defaults to 0) and the values obtained from iterating over sequence</li>
-  <li><code>repr()</code> = takes in an argument and returns the string representation of the object (helpful for debugging!)</li>
-</ul>
+<p>If we asked for the type of a string “Go Red Sox!”</p>
 
-<p>For a more detailed list on the built-in functions in Python, see <a href="https://docs.python.org/2/library/functions.html">Built-in Python Functions</a></p>
+<blockquote>
+  <pre><code>type("Go Red Sox!")
+</code></pre>
+</blockquote>
+
+<p>This would return the <code>str</code> type. </p>
+
+<h4 id="print">print()</h4>
+<p>The function <code>print</code> will accept an argument and print the argument to the screen. Print can be used in two ways: </p>
+
+<blockquote>
+  <pre><code>print("Go Red Sox!")
+print "Wally the Green Monster"
+</code></pre>
+</blockquote>
+
+<p><strong>Note</strong>: When writing a python script, you must use <code>print</code> to call the argument you want returned or the argument will be evaluated, but not printed.</p>
+
+<h4 id="dir">dir()</h4>
+<p>The next function we’ll discuss is called <code>dir()</code> which takes in an object and returns all the methods of that object. If there is no argument provided, <code>dir()</code> returns a list of all the objects currently imported and available to work with.  </p>
+
+<blockquote>
+  <pre><code>dir()
+</code></pre>
+</blockquote>
+
+<p>Here is an example that returns all the methods (you can think of them as functions) that operate on <a href="strings.html">string</a> objects: </p>
+
+<blockquote>
+  <pre><code>dir("Three strikes and you're out!") 
+</code></pre>
+</blockquote>
+
+<p>Besides strings, the function <code>dir()</code> also can be applied to any other type of object. For example, <a href="modules.html">modules</a> are another type of object in Python which can be imported into Python to access functions in that module. Applying the <code>dir()</code> function to a module called <code>nameofmodule</code>, will return a list of methods (or functions) available in that particular module. </p>
+
+<blockquote>
+  <pre><code>dir(nameofmodule)
+</code></pre>
+</blockquote>
+
+<p>We’ll discuss <a href="modules.html">modules</a> in a little bit.  I will note, above when you listed all the objects currently available to work with, one of the items was <code>__builtins__</code>, which is a special module that that is automatically imported on the startup.  To find a list of all the built in functions in Python, you can use the module name <code>__builtins__</code>. </p>
+
+<blockquote>
+  <pre><code>dir()
+type(__builtins__)
+dir(__builtins__)
+</code></pre>
+</blockquote>
+
+<h4 id="str">str()</h4>
+<p>Another powerful built-in function is called <code>str()</code> which takes in an input and coerces the input to a string. Every datatype (or object) can be coerced into a string, even modules! </p>
+
+<h2 id="other-basic-built-in-python-functions">Other basic built-in Python functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function name</th>
+      <th>Description</th>
+      <th>Example use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>callable()</code></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>enumerate()</code></td>
+      <td>accepts a string and returns an <code>enumerate</code> object type which is tuple containing a count (from start which defaults to 0) and the values obtained from iterating over string</td>
+      <td><code>enumerate('myseq')</code></td>
+    </tr>
+    <tr>
+      <td><code>int()</code></td>
+      <td>converts floats and strings to integers (but chops off the fraction part and doesn’t round)</td>
+      <td><code>int(3.75)</code> returns 3</td>
+    </tr>
+    <tr>
+      <td><code>isinstance()</code></td>
+      <td>verifies the type of of the argument</td>
+      <td><code>isinstance(5, int)</code> returns <code>True</code></td>
+    </tr>
+    <tr>
+      <td><code>range(n)</code></td>
+      <td>accepts an integer and returns a list of integers from 0 to n-1</td>
+      <td><code>range(5)</code></td>
+    </tr>
+    <tr>
+      <td><code>repr()</code></td>
+      <td>accepts any input and returns the string representation of the object (helpful for debugging!)</td>
+      <td><code>repr(range(5))</code></td>
+    </tr>
+    <tr>
+      <td><code>getattr()</code></td>
+      <td>accepts any object as input and returns any attribute of that object; technically works on any object, except tuples have no methods</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
 <h4 id="defining-new-functions">Defining new functions</h4>
 <p>New functions can be defined using one of the 31 keywords in Python <code>def</code>.  </p>
@@ -218,9 +324,20 @@
 </code></pre>
 </blockquote>
 
-<p>The first line of the function (the header) must start with <code>def</code>, the name of the function (which can contain underscores), parentheses (with any arguments inside of it) and a colon.  The rest of the function (the body) always has an indentation of four spaces.  If you define a function in the interactive mode, the interpreter will print ellipses (…) to let you know the function isn’t complete. To complete the function, enter an empty line (not necessary in a script).  </p>
+<p>The first line of the function (the header) must start with <code>def</code>, the name of the function (which can contain underscores), parentheses (with any arguments inside of it) and a colon.  The arguments can be specified in any order. </p>
 
-<p>When defining new functions, you can add a <code>docstring</code> at the beginning of the function that contains the documentation for the function. The docstring is a triple quoted string which allows the line to span more than one line. </p>
+<p>The rest of the function (the body) always has an indentation of four spaces.  If you define a function in the interactive mode, the interpreter will print ellipses (…) to let you know the function isn’t complete. To complete the function, enter an empty line (not necessary in a script).  </p>
+
+<p>To return a value from a function, use <code>return</code>. The function will immediately terminate and not run any code written past this point.  </p>
+
+<blockquote>
+  <pre><code>def squared(x):
+    return x ** 2
+</code></pre>
+</blockquote>
+
+<h4 id="the-docstring">The docstring</h4>
+<p>When defining new functions, you can add a <code>docstring</code> (aka documentation of function) at the beginning of the function that documents what the function does. The docstring is a triple quoted (multi-line) string. </p>
 
 <blockquote>
   <pre><code>def love_chocolate(N):
@@ -230,13 +347,17 @@
 </code></pre>
 </blockquote>
 
-<p>To return a value from a function, use <code>return</code>. The function will immediately terminate and not run any code written past this point.  </p>
+<p>To print the <code>docstring</code> from <code>love_chocolate()</code> function, use <code>__doc__</code> which is one of the functions <strong>attributes</strong>.  </p>
 
 <blockquote>
-  <pre><code>def squared(x):
-    return x ** 2
+  <pre><code>love_chocolate.__doc__
+squared.__doc__ == None
 </code></pre>
 </blockquote>
+
+<p>Because everything in Python is an object, each object can have a set of built-in attributes and a set of built-in methods. All functions have a built-in attribute <code>__doc__</code> which returns the <code>docstring</code>.   </p>
+
+<p>Variables can be defined over multiple lines with a backslash (“\”) as the line-continuation marker. </p>
 
 <p>The statement <code>raise</code> can be used in a function to raise an error message whenever the function fails to return a value.  This statement will print a traceback and an error message.  </p>
 
@@ -267,8 +388,26 @@ squaredShifted(5, 20)
 
 <p>Here the ‘fact’ function calculates the factorial of a given number in a recursive fashion by calling the ‘fact’ function within itself and returns the result. </p>
 
+<h4 id="lambda-functions">Lambda functions</h4>
+<p>Lambda functions are one-line functions. We defined the <code>squared()</code> function above using the following syntax.  </p>
+
+<blockquote>
+  <pre><code>def squared(x):
+    return x ** 2
+squared(3)
+</code></pre>
+</blockquote>
+
+<p>To define this function using the <code>lambda</code> function, you do not need to include the <code>return</code> argument.  </p>
+
+<blockquote>
+  <pre><code>f = lambda x: x**2
+f(3)
+</code></pre>
+</blockquote>
+
 <h1 id="conditional-statements">Conditional statements</h1>
-<p>Conditional statements allow us to check if a condition is true and then change the direction of the function accordingly. </p>
+<p>Conditional statements allow us to check if a condition is true and then execute some portion of the function accordingly. </p>
 
 <h4 id="if-else-statements">If else statements</h4>
 <p>To define a statement with the <code>if</code> and <code>else</code> statement, we use a similar structure to defining functions by including a colon at the end of the header and four spaces indented for the body.  </p>
@@ -285,11 +424,11 @@ else:
 
 <blockquote>
   <pre><code>if x == 0: 
-    pass		# ignore zeros
+    pass  # ignore zeros
 </code></pre>
 </blockquote>
 
-<p>If there are more than two possibilities for the condition you are testing, use <code>if</code>, <code>elif</code> and <code>else</code>. You can also nest conditionals, but they must be indented appropriately. </p>
+<p>If there are more than two possibilities for the condition you are testing, use <code>if</code>, <code>elif</code> (short for <code>else if</code>) and <code>else</code>. You can also nest conditionals, but they must be indented appropriately. </p>
 
 <blockquote>
   <pre><code>if x &gt; 0: 
@@ -310,13 +449,15 @@ else:
 <p>Iterative loops can be written with the <code>for</code>, <code>while</code> and <code>break</code> statements. </p>
 
 <h4 id="for-loops">For loops</h4>
-<p>Defining a <code>for</code> loop is similar to defining a new function. The header ends with a colon and the body is indented with four spaces. The function <code>range(n)</code> takes in an integer n and creates a set of values from 1 to n - 1. </p>
+<p>Defining a <code>for</code> loop is similar to defining a new function. The header ends with a colon and the body is indented with four spaces. The function <code>range(n)</code> takes in an integer n and creates a set of values from 0 to n - 1. </p>
 
 <blockquote>
   <pre><code>for i in range(4):
     print 'Hello world!'
 </code></pre>
 </blockquote>
+
+<p><code>for</code> loops are not just for counters, but they can iterate through many types of objects.  For example, a <code>for</code> loop can iterate through a <a href="dictionaries.html">dictionary</a>.  </p>
 
 <h4 id="while-loops">while loops</h4>
 <p>Defining a <code>while</code> loop is again similar to defining a <code>for</code> loop or new function. The header ends with a colon and the body is indented with four spaces</p>

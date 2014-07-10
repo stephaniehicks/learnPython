@@ -114,6 +114,18 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -133,10 +145,17 @@
 <div class="row-fluid">
   <div class="span12">
     
-<p>There are many modules in Python that you can import to access familiar functions.  </p>
+<p>A module in Python is a file (ending in <code>.py</code>) that contains a set of definitions (variables and functions) that you can use when they are imported. Modules are considered as objects, just as everything else is in Python. Many methods can operate on modules.  As <a href="basics.html">mentioned previously</a>, the <code>dir()</code> function can list all the objects imported and available to work with in your active Python session. The name of the module that contains all the built-in Python functions is called <code>__builtins__</code> and can be accessed: </p>
+
+<blockquote>
+  <pre><code>dir(__builtins__)
+</code></pre>
+</blockquote>
+
+<p>Another example of a method that can operate on modules is the <code>str()</code> function, returning a string representation of the module including the pathname on your local disk.  Outside of the <code>__builtins__</code> module, there are many modules in Python that you can import to access familiar functions. </p>
 
 <h1 id="importing-modules">Importing modules</h1>
-<p>There are two ways to import modules.  The first is to use the word <code>import</code> and the name of the module: </p>
+<p>There are two ways to import modules.  The first is to use the word <code>import</code> followed by the name of the module: </p>
 
 <blockquote>
   <pre><code>import math
@@ -153,11 +172,54 @@ from math import *
 </code></pre>
 </blockquote>
 
-<p>Now you can use <code>pi</code> directly. </p>
+<p>Now you can use <code>pi</code> directly.  To see all the variables and functions available in the math module, use <code>dir()</code>. </p>
+
+<blockquote>
+  <pre><code>dir(math)
+</code></pre>
+</blockquote>
+
+<p>Going back to the <code>__builtins__</code> modules, you can think of Python automatically importing this module on the startup of your Python session: </p>
+
+<blockquote>
+  <pre><code>from __builtins__ import *
+</code></pre>
+</blockquote>
+
+<h1 id="module-attributes">Module attributes</h1>
+<p>Every Python class has a built-in class attribute <code>__module__</code> which is the name of the module in which the class is defined. For example, the following will tell us the function <code>sin()</code> came from the math module.  </p>
+
+<blockquote>
+  <pre><code>sin.__module__
+</code></pre>
+</blockquote>
+
+<h1 id="writing-modules">Writing modules</h1>
+<p>Any file that contains Python code and ends in <code>.py</code> can be imported as a module.  If your file name is <code>cool.py</code>, you can import the program directly</p>
+
+<blockquote>
+  <pre><code>import cool
+print cool
+</code></pre>
+</blockquote>
+
+<p>which will print that the object ‘cool’ is a module from ‘cool.py’.  The functions inside the module are accessed in same syntax as before: the name of the module, a dot (or period) and the name of the function.  </p>
+
+<p><strong>Note</strong>: If you import a module that has already been imported, Python will not re-read the file (even if it has changed!).  To reload the module, use the built-in Python function <code>reload</code>.  </p>
 
 <h1 id="modules-in-python">Modules in Python</h1>
 
 <h3 id="math-module">math module</h3>
+
+<h3 id="datetime-module">datetime module</h3>
+<p>The datetime module can be used to print out the date and time. the function <code>now()</code> will print out the current day and time. Some attributes inclue <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>, <code>second</code>. </p>
+
+<blockquote>
+  <pre><code>import datetime 
+now = datetime.now()
+print '%s/%s/%s' % (now.month, now.day, now.year)
+</code></pre>
+</blockquote>
 
 <h3 id="string-module">string module</h3>
 <ul>
@@ -184,30 +246,170 @@ from math import *
 
 <p>This method of “pickling” the objects from the <code>pickle</code> module combined with the <code>anydbm</code> module has been implemented in the <code>shelve</code> module.  To open and close files using this module use <code>shelve.open()</code> and <code>shelve.close()</code> which uses the <code>pickle</code> module to open and store the objects. </p>
 
-<h3 id="urllib-module">urllib module</h3>
-<p>This module is useful to manipulate URLs and downloading information from the web.  </p>
-
-<ul>
-  <li><code>urllib.urlopen()</code> = opens a html file from the web</li>
-</ul>
-
-<h1 id="writing-modules">Writing modules</h1>
-<p>Any file that contains Python code and ends in <code>.py</code> can be imported as a module.  If your file name is <code>cool.py</code>, you can import the program directly</p>
+<p>### glob module and listing files in directories
+The glob module is useful when listing directories, but you do not have the name of the files (just a wildcard e.g. *.txt).  The <code>glob()</code> function will match all the *.txt files in a directory and return the them as a list</p>
 
 <blockquote>
-  <pre><code>import cool
-print cool
+  <pre><code>import glob
+glob.glob('*.txt')
 </code></pre>
 </blockquote>
 
-<p>which will print that the object ‘cool’ is a module from ‘cool.py’.  The functions inside the module are accessed in same syntax as before: the name of the module, a dot (or period) and the name of the function.  </p>
+<h3 id="urllib-module">urllib module</h3>
+<p>This module is useful to getting information about and retrieving data from the web. The function <code>urlopen()</code> open a URL (similar to opening a file).  The file-like object has some of the methods as a file object.  For example, to read the entire HTML of the webpage into a single string, use the method <code>read()</code>. <code>readlines()</code> can read in the text line by line. </p>
 
-<p><strong>Note</strong>: If you import a module that has already been imported, Python will not re-read the file (even if it has changed!).  To reload the module, use the built-in Python function <code>reload</code>.  </p>
+<blockquote>
+  <pre><code>import urllib
+x = urllib.urlopen("http://diveintopython.org")
+htmlSource = x.read()
+x.close()
+print htmlSource
+</code></pre>
+</blockquote>
+
+<p>Once you have the HTML source code, you have to parse it and clean it up.  </p>
+
+<h3 id="sgmllib-module">sgmllib module</h3>
+<p>The sgmllib module is a simple SGML (Standard Generalized Mark-up Language) parser.  The goal of the module is to process HTML code.  The main function is <code>SGMLParser</code> which parses HTML code into 8 kinds of data: </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Definition</th>
+      <th>Example</th>
+      <th>SGMLParser function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>start tag</em></td>
+      <td>an HTML tag that starts a block</td>
+      <td>&lt;html&gt;, &lt;head&gt;, &lt;body&gt;</td>
+      <td><code>start_tagname</code>, <code>do_tagname</code></td>
+    </tr>
+    <tr>
+      <td><em>end tag</em></td>
+      <td>an HTML tag that ends a block</td>
+      <td>&lt;/html&gt;, &lt;/head&gt;, &lt;/body&gt;</td>
+      <td><code>end_tagname</code></td>
+    </tr>
+    <tr>
+      <td><em>character reference</em></td>
+      <td>an escaped character referenced by its decimal</td>
+      <td> </td>
+      <td><code>handle_charref</code></td>
+    </tr>
+    <tr>
+      <td><em>entity reference</em></td>
+      <td>an HTML entity</td>
+      <td>\&amp; copy;</td>
+      <td><code>handle_entityref</code></td>
+    </tr>
+    <tr>
+      <td><em>comment</em></td>
+      <td>an HTML comment</td>
+      <td>comments inclosed in &lt;|– … –&gt;</td>
+      <td><code>handle_comment</code></td>
+    </tr>
+    <tr>
+      <td><em>processing instruction</em></td>
+      <td>an HTML processing instruction</td>
+      <td>instruction enclosed in &lt;? … &gt;</td>
+      <td><code>handle_pi</code></td>
+    </tr>
+    <tr>
+      <td><em>declaration</em></td>
+      <td>an HTML declaration</td>
+      <td>DOCTYPE enclosed in &lt;! … &gt;</td>
+      <td><code>handle_dec1</code></td>
+    </tr>
+    <tr>
+      <td><em>text data</em></td>
+      <td>a block of text</td>
+      <td>anything that does not fall into the other 7 categories</td>
+      <td><code>handle_data</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="copy-module">copy module</h3>
 <ul>
   <li><code>copy.copy()</code> = function to duplicate any object (not create an alias)</li>
 </ul>
+
+<h3 id="types-module">types module</h3>
+<p>This module can be used to compare the types of any object. </p>
+
+<blockquote>
+  <pre><code>import types
+type(os) == types.ModuleType
+</code></pre>
+</blockquote>
+
+<h3 id="re-module">re module</h3>
+<p>This module is used to manipulate regular expressions.  The function <code>sub()</code> searches a string (s) and replaces all the words that match the regular expression. </p>
+
+<blockquote>
+  <pre><code>import re
+re.sub(regex, replacementword, stringtosearch)
+re.search()
+re.compile()
+</code></pre>
+</blockquote>
+
+<p>Useful regular expressions in Python</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Interpretation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>^</td>
+      <td>matches the beginning of a string</td>
+    </tr>
+    <tr>
+      <td>$</td>
+      <td>matches the end of a string</td>
+    </tr>
+    <tr>
+      <td>\b</td>
+      <td>matches a word boundary</td>
+    </tr>
+    <tr>
+      <td>\d</td>
+      <td>matches any numeric digit</td>
+    </tr>
+    <tr>
+      <td>\D</td>
+      <td>matches any non-numeric digit</td>
+    </tr>
+    <tr>
+      <td>x?</td>
+      <td>matches an optional x character</td>
+    </tr>
+    <tr>
+      <td>x*</td>
+      <td>matches x zero or more times</td>
+    </tr>
+    <tr>
+      <td>x+</td>
+      <td>matches x one or more times</td>
+    </tr>
+    <tr>
+      <td>x{n, m}</td>
+      <td>matches x at least n times, but not more than m times</td>
+    </tr>
+    <tr>
+      <td>(a | b | c)</td>
+      <td>matches either a, b or c</td>
+    </tr>
+  </tbody>
+</table>
 
 
   </div>

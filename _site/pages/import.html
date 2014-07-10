@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Importing Data into Python</title>
+    <title>Working with Data in Python</title>
     
     <meta name="author" content="Stephanie Hicks">
 
@@ -114,6 +114,18 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -127,7 +139,7 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>Importing Data into Python </h1>
+  <h1>Working with Data in Python </h1>
 </div>
 
 <div class="row-fluid">
@@ -151,24 +163,15 @@
 
 <h1 id="reading-and-writing-files">Reading and writing files</h1>
 
-<h2 id="writing-to-files">Writing to files</h2>
-<p>To write to a file in Python, the argument must be a string.  If the argument is not a string, use the function <code>str()</code> to convert the argument to a string. </p>
-
-<p>The methods functions <code>write()</code> and <code>close()</code> will write data to a file and close the file when finished writing to it.  The syntax is the name of the file, a dot (or period), and the function <code>write()</code>.  </p>
-
-<h4 id="writing-to-files-one-line-at-a-time">Writing to files one line at a time</h4>
-<p>To write to a file one line at a time, just recall <code>write</code> again and again. </p>
-
-<blockquote>
-  <pre><code>fout.write("This is my first line.")
-fout.write("This is my second line.")
-fout.close()
-</code></pre>
-</blockquote>
-
-<p>The last line tell Python you are done writing to the file, so it knows to close the file. </p>
+<p>As you have seen, everything is an object in Python.  When you define files such as <code>fin</code> and <code>fout</code> above, these are file objects have an associated set of methods.  </p>
 
 <h2 id="reading-files">Reading files</h2>
+
+<blockquote>
+  <pre><code>fin = open('myfile.txt')
+fin
+</code></pre>
+</blockquote>
 
 <h4 id="read-in-files-one-line-at-a-time">Read in files one line at a time</h4>
 <p>If you want to read in a file one line at a time, use the methods function <code>readline()</code>.  The syntax is the name of the file, dot (or period) and <code>readline()</code>. It will read in the characters from a file until it reaches a new line and returns the result as a string. To read in the next line, run the line again. </p>
@@ -176,6 +179,45 @@ fout.close()
 <blockquote>
   <pre><code>fin = open('myfile.txt')
 fin.readline()
+</code></pre>
+</blockquote>
+
+<h4 id="current-line-position-in-file">Current line position in file</h4>
+<p>The method <code>tell()</code> reports the current position of the open file.  When you open a file, the current position is the beginning of the file (position 0). </p>
+
+<blockquote>
+  <pre><code>fin.tell()
+</code></pre>
+</blockquote>
+
+<h4 id="read-in-file-at-a-specific-position">Read in file at a specific position</h4>
+<p>To start reading the file at a different position than the current position, use the <code>seek()</code> method. The second argument describes how to interpret the first argument (number of bytes) .  </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Position</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0</code></td>
+      <td>move to absolute position (from start of file)</td>
+    </tr>
+    <tr>
+      <td><code>1</code></td>
+      <td>move to a relative position (from current position)</td>
+    </tr>
+    <tr>
+      <td><code>2</code></td>
+      <td>move to a position relative to the end of the file.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <pre><code>fin.seek(5, 0)
 </code></pre>
 </blockquote>
 
@@ -191,6 +233,36 @@ for line in fin:
 
 <h4 id="keyboard-input">Keyboard input</h4>
 <p>To accept input from the keyboard, use the keyword <code>raw_input</code> (in Python 2) or <code>input</code> (in Python 3).</p>
+
+<blockquote>
+  <pre><code>raw_input("How tall are you?")
+</code></pre>
+</blockquote>
+
+<h2 id="writing-to-files">Writing to files</h2>
+<p>To write to a file in Python, the argument must be a string.  If the argument is not a string, use the function <code>str()</code> to convert the argument to a string. </p>
+
+<p>The methods functions <code>write()</code> and <code>close()</code> will write data to a file and close the file when finished writing to it.  The syntax is the name of the file, a dot (or period), and the function <code>write()</code>.  </p>
+
+<blockquote>
+  <pre><code>fin.close()
+fin.closed
+</code></pre>
+</blockquote>
+
+<p>The method <code>closed</code> will test if the file has been closed returning a True or False. </p>
+
+<h4 id="writing-to-files-one-line-at-a-time">Writing to files one line at a time</h4>
+<p>To write to a file one line at a time, just recall <code>write</code> again and again. </p>
+
+<blockquote>
+  <pre><code>fout.write("This is my first line.")
+fout.write("This is my second line.")
+fout.close()
+</code></pre>
+</blockquote>
+
+<p>The last line tell Python you are done writing to the file, so it knows to close the file. Once a file has been closed</p>
 
 <h1 id="paths-and-directories">Paths and directories</h1>
 <p>To print the current working directory, use the function <code>getcwd()</code> from the module <code>os</code>. </p>
@@ -216,6 +288,21 @@ print cwd
 </code></pre>
 </blockquote>
 
+<p>To <strong>split</strong> the file and return a tuple containing the path and file name, use <code>path.split()</code>. To split the file and return a tuple containing the file name and the file extension, use <code>path.splitext()</code>. </p>
+
+<blockquote>
+  <pre><code>(pathdir, nameofile) = os.path.split('~/pathtofile/myfile.txt')
+(nameofile, extension) = os.path.splitext('myfile.text')
+</code></pre>
+</blockquote>
+
+<p>To <strong>join</strong> a path and the name of a file, use <code>path.join()</code></p>
+
+<blockquote>
+  <pre><code>os.path.join("nameofnewpath", "myfile.txt")
+</code></pre>
+</blockquote>
+
 <p>To check if the argument is a file or a directory, use <code>path.isfile()</code> and <code>path.isdir()</code>: </p>
 
 <blockquote>
@@ -231,15 +318,43 @@ os.path.isfile('myfile.text')
 </code></pre>
 </blockquote>
 
+<p>To loop through the files in a directory, combine a <code>for</code> loop with <code>os.listdir()</code>: </p>
+
+<blockquote>
+  <pre><code>[os.path.join("~/nameofnewpath", elem) for elem in os.listdir(cwd)]
+</code></pre>
+</blockquote>
+
 <h2 id="errors">Errors</h2>
 <ul>
-  <li>If a file doesn’t exist, if you don’t have permission to access a file or if you try to open a directory to read in, you will get an <code>IOError</code>. 
+  <li>If a module doesn’t exist and you try to import it, Python will raise an <code>ImportError</code> exception. </li>
+  <li>If a file doesn’t exist, if you don’t have permission to access a file or if you try to open a directory to read in, you will get an <code>IOError</code> exception. 
     <ul>
       <li>Tip: use functions like <code>os.path.exists()</code> and <code>os.path.isfile()</code> to test before reading in a file</li>
-      <li>Tip: use the <code>try</code> statement (similar to an <code>if</code> statement). </li>
+      <li>Tip: use the <code>try</code> and <code>except</code> statements (similar to an <code>if</code> statement). </li>
     </ul>
   </li>
 </ul>
+
+<blockquote>
+  <pre><code>try:
+    fin = open('myfile.txt')
+except IOError:
+    print "This file does not exist."
+print "File opened."
+</code></pre>
+</blockquote>
+
+<p>The line <code>except IOError</code> catches when the file does not exist and executes your own code. </p>
+
+<h4 id="the-glob-module-and-listing-files-in-directories">The glob module and listing files in directories</h4>
+<p>The glob module is useful when listing directories, but you do not have the name of the files (just a wildcard e.g. *.txt).  The <code>glob()</code> function will match all the *.txt files in a directory and return the them as a list</p>
+
+<blockquote>
+  <pre><code>import glob
+glob.glob('*.txt')
+</code></pre>
+</blockquote>
 
 <h1 id="databases">Databases</h1>
 <p>A <em>database</em> is a specific type of file with a purpose of storing data.  For example, if you have created a dictionary with <em>keys</em> and <em>values</em>, you can create and update the dictionary database file.  To work with databases, import the Python module <code>anydbm</code>. </p>

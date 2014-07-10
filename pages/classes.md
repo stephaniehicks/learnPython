@@ -36,6 +36,9 @@ To the `cookbookClass` object, I created a topFoods element which contains my to
 To check if an object has a specific attribute, use the built-in function `hasattr` which return a `True`/`False` value if the the second argument (must be a string) is one of the attributes of the objects (listed as the first object). 
 
 >	hasattr(x, 'topFoods')
+>	hasattr(x, '__doc__')
+
+To test if there is a doc string, test if one of the attributes of x is `__doc__`.
 
 
 # User-defined methods

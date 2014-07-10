@@ -5,18 +5,21 @@ tagline: Manipulating dictionaries
 ---
 {% include JB/setup %}
 
-A dictionary is a more general version of a [list](list.html) because the index does not have to be an integer.  A dictionary is made up a set of **keys** and **values** where there is a mapping between a given key and its corresponding value.  The Python built-in function `dict()` will define a new dictionary with no items in it.  
+A dictionary is a more general version of a [list](list.html) because the index does not necessarily have to be an integer. A dictionary is defined by a set of *case-sensitive* **unordered** items (pairs of **keys** and **values**) where there is a mapping between a given key and its corresponding value. There is no order among the items in a dictionary.  To define a new dictionary, use the Python built-in function `dict()` or empty curly braces: 
 
 >	names = dict()
+>	names = {}
 >	print names
 
-which will return an empty set of curly brackets representing an empty dictionary.   
+The second line will return an empty set of curly brackets representing an empty dictionary.   
 
 The function `len()` can be used to calculate the number **items** (i.e. key-value pairs) in a dictionary. 
 
 >	len(names)
 
-**Note**: The keys in a dictionary must be immutable. Therefore, items such as lists (which are mutable) cannot be keys in a dictionary, but lists can be values in a dictionary.  The reason is because a dictionary is implemented using a *hashtable* and the keys must be *hashable*.  
+**Note about dictionary keys**: Though the keys (or indices for a dictionary) can be values other than integers, the keys must be immutable. Keys can be strings, integers or [tuples](tuples.html) which is discussed in the next section.  Items such as lists (which are mutable) cannot be used as keys in a dictionary, but lists can be values in a dictionary.  The reason is because a dictionary is implemented using a *hashtable* and the keys must be *hashable*.  
+
+**Note about dictionary values**: Dictionaries values can be any type (strings, integers, other objects, or even other dictionaries).  
 
 ## Dictionary operators 
 The operators + and * **do not** work on dictionaries.
@@ -27,11 +30,15 @@ To add an item (key and value) to the dictionary, you can do one of the followin
 >	names['John'] = 'Smith'
 >	names = {'John': 'Smith', 'Mark': 'Twain'}
 
-In the second line, you can multiple items with commas separating the key and values where here the **key** is the first name 'John' and the **value** is the last name 'Smith'.  If you want to **lookup** a key given a dictionary and a key, you can use 
+In the second line, you can multiple items with commas separating the key and values where here the **key** is the first name 'John' and the **value** is the last name 'Smith'.  If you want to **lookup** a value given a dictionary and a key, you can use 
 
 >	print names['John']
 
-which will return the string 'Smith'. If you have a dictionary (d) and a value (v) and you would like to **reverse lookup** the key (k), this is not as straight forward. There may be more than one key that maps to a given value, so you may have a list of keys that map to a given value.  
+which will return the string 'Smith'. 
+
+**Note**: You cannot have duplicate keys in a dictionary. Assigning a value to an existing key will over-write the old value. 
+
+**Note**: You cannot **reverse lookup** a key (k) given a dictionary (d) and a value (v). There may be more than one key that maps to a given value, so you may have a list of keys that map to a given value.  
 
 >	def reverse_lookup(d, v):
 >	    for k in d:
@@ -41,8 +48,14 @@ which will return the string 'Smith'. If you have a dictionary (d) and a value (
 
 The last line uses the statement `raise` which can take in a detailed error message.  Here, if the value does not exist in the dictionary, then we 'raise' an error message.  
 
+If you want to delete a specific item in a dictionary, you can use `del`
+
+>	del names['Mark']
+> 	print names
+
+
 #### In operator
-Similar to strings and lists, the `in` operator works with dictionaries. The operator will if a **key** exists in a dictionary and return a `True` or `False`. 
+Similar to strings and lists, the `in` (and `not in`) operator works with dictionaries. The operator will if a **key** exists in a dictionary and return a `True` or `False`. 
 
 >	'John' in names
 
@@ -69,10 +82,6 @@ Another way to loop through the items in a dictionary is to use the dictionary m
 
 ## Dictionary methods
 Similar to strings, there are set of dictionary methods in Python that are useful to manipulate dictionaries. The syntax is the name of the dictionary followed by a dot (or period) followed by the name of the dictionary method.  
-If you want to delete a specific item in a dictionary, you can use `del`
-
->	del names['Mark']
-> 	print names
 
 
 #### List of dictionary methods
@@ -94,3 +103,6 @@ will return 'Smith', but the following will return 'Cooper'
 
 * `append()` =  
 * `update()` = takes in a list of tuples and adds them to the dictionary as key-value pairs to an existing dictionary
+* `clear()`= deletes all items from a dictionary
+
+>	del names.clear()

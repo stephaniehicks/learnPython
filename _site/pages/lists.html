@@ -114,6 +114,18 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -133,18 +145,11 @@
 <div class="row-fluid">
   <div class="span12">
     
-<p>A list a sequence of values which can be characters, integers or even another list (referred to as a nested list). 
-Lists are defined with brackets <code>[</code> and <code>]</code>.  </p>
-
-<blockquote>
-  <pre><code>hobbies = ['running', 'baking', 'blogging']
-</code></pre>
-</blockquote>
-
-<p>You can create an empty list (or initialize a list) with an empty set of brackets.</p>
+<p>A list a <strong>ordered</strong> sequence of elements which can be characters, integers or even another list (referred to as a nested list). Lists are defined with brackets <code>[</code> and <code>]</code>.  You can create an empty list (or initialize a list) with an empty set of brackets or add elements to the lists. </p>
 
 <blockquote>
   <pre><code>emptylist = []
+hobbies = ['running', 'baking', 'blogging']
 </code></pre>
 </blockquote>
 
@@ -155,18 +160,21 @@ Lists are defined with brackets <code>[</code> and <code>]</code>.  </p>
 </code></pre>
 </blockquote>
 
-<p>To convert a string to a list of characters use <code>list</code></p>
+<p>To access a specific element in a list, use its index (similar to string indices).  A list index must be an integer and list indices start at 0 (not 1). </p>
 
 <blockquote>
-  <pre><code>list(hobbies[0])
+  <pre><code>hobbies[0]
+list(hobbies[0])
 </code></pre>
 </blockquote>
+
+<p>The last line converts a string to a list of characters using the function <code>list()</code>. </p>
 
 <h2 id="list-operators">List operators</h2>
 <p>Similar to strings, there are many list operators. For example, the operators + and * also work on lists.  The operator + concatenate lists  and the operator * repeats a list a given number of times. </p>
 
 <blockquote>
-  <pre><code>a = [5, 10]
+  <pre><code>a = [5, 10, 15, 20]
 b = [26, 30]
 a + b
 a * 3
@@ -174,15 +182,31 @@ a * 3
 </blockquote>
 
 <h4 id="bracket-operator">Bracket operator</h4>
-<p>As shown above, a list is define with the bracket operator <code>[]</code>.  List indices are similar to string indices: an integer can be used to return specific elements of a given list. If an index is negative, it returns the elements starting from the end of the list.  The slice operator (or colon) is used again similar to strings</p>
+<p>As shown above, a list is define with the bracket operator <code>[]</code>. The <code>slice</code> operator (or colon) is used again similar to strings to extract multiple elements. The first element in a string starts with integer 0.  If an index is negative, it returns the elements starting from the end of the list. Interestingly, the <code>slice</code> operator starts at the index before the colon and up to <em>but not including</em> the integer after the index.  </p>
 
 <blockquote>
-  <pre><code>hobbies[0:1]
+  <pre><code>hobbies[0:2]
+hobbies[:]
+</code></pre>
+</blockquote>
+
+<p>Not specifying indices when using the slice operator will return all the elements in the list. Also, lists are <em>mutable</em> meaning they can be assigned values on the left side of the assignment operator: </p>
+
+<blockquote>
+  <pre><code>hobbies[0] = "skiing"
+</code></pre>
+</blockquote>
+
+<p>If you want to delete a specific element in a list, you can use <code>del</code></p>
+
+<blockquote>
+  <pre><code>del a[1]
+print a
 </code></pre>
 </blockquote>
 
 <h4 id="in-operator">In operator</h4>
-<p>Similar to strings, the <code>in</code> operator works with lists. The operator will check if an element is in a given list and return a <code>True</code> or <code>False</code>: </p>
+<p>Similar to strings, the <code>in</code> (and <code>not in</code>) operator works with lists. The operator will check if an element is in a given list and return a <code>True</code> or <code>False</code>: </p>
 
 <blockquote>
   <pre><code>'blogging' in hobbies
@@ -201,7 +225,7 @@ a * 3
 <p>You can create an alias for a given list list which means you are creating more than one name of the same object.  You can test if two lists are aliases using the relational operator <code>is</code>.  The problem is because lists are mutable, if you alter one aliased object, you will alter the other aliased object.  </p>
 
 <blockquote>
-  <pre><code>a = [5, 10]
+  <pre><code>a = [5, 10, 15, 20]
 b = a
 b is a
 b[0] = 20
@@ -214,6 +238,13 @@ print a
 <p>The operator <code>is</code> can be used to test if two lists are equal. The operators &lt;, &gt; can be used to test the alphabetical order of lists. </p>
 
 <h2 id="loop-through-lists">Loop through lists</h2>
+
+<blockquote>
+  <pre><code>for variable in list_name:
+    print variable
+</code></pre>
+</blockquote>
+
 <p>To traverse through the sequence of elements in a list, you can use <code>for</code> loops combined with <code>len</code> and <code>range</code>: </p>
 
 <blockquote>
@@ -224,31 +255,38 @@ print a
 
 <p>A <code>for</code> loop over an empty list does not execute anything. </p>
 
-<h2 id="list-methods">List methods</h2>
-<p>Similar to strings, there are set of list methods in Python that are useful to manipulate lists. The syntax is the name of the list followed by a dot (or period) followed by the name of the list method.<br />
-If you want to delete a specific element in a list, you can use <code>del</code></p>
+<h2 id="list-comprehensions">List comprehensions</h2>
+<p>Another powerful feature of Python is <strong>list comprehension</strong> which maps one list onto another list and applying a function to each element. </p>
 
 <blockquote>
-  <pre><code>del a[1]
-print a
+  <pre><code>x1 = [i*2 for i in a]
+x2 = [i*2 for i in a if i != 10]
 </code></pre>
 </blockquote>
 
+<p>Here, we take each element in the list <code>a</code> (temporarily assigning it the value i) and multiply each element in the list by 2.  This creates a new list and does not modify <code>a</code>.  In the second line, we can add a conditional statements.</p>
+
+<h2 id="list-methods">List methods</h2>
+<p>Similar to strings, there are set of list methods in Python that are useful to manipulate lists. The syntax is the name of the list followed by a dot (or period) followed by the name of the list method.  </p>
+
 <h4 id="list-of-list-methods">List of list methods</h4>
 <ul>
-  <li><code>append()</code> = add a new element to the end of a list</li>
-  <li><code>extend()</code> = similar to append except, function can take in a list as an argument and appends all the elements</li>
-  <li><code>sort()</code> = arrange the elements of the list from low to high
+  <li><code>append()</code> = add a single element to the end of a list</li>
+  <li><code>insert(position, element)</code> = inserts a single element into a list where the first argument is the index of where the element should be put and all the other elements get shifted one</li>
+  <li><code>extend()</code> = concatenates lists. Similar to <code>append()</code> except, function can take in a list as an argument and appends all the elements</li>
+  <li><code>sort()</code> = arrange the elements from low to high (or in alphabetical order) [<strong>Note</strong>: <code>sort()</code> modifies the original list rather than returning a new list]
     <ul>
       <li>sort(reverse=True) = tells sort to go in decreasing order</li>
     </ul>
   </li>
+  <li><code>remove(element)</code> = removes the first occurrence of a value from a list [<strong>Note</strong>: <code>remove()</code> modifies the original list and does not return the element deleted]</li>
   <li><code>pop()</code> = deletes an element from the list and returns the element that was removed. If no index is provided as an argument, it deletes and returns the last element. </li>
 </ul>
 
 <blockquote>
   <pre><code>a = [5, 10]
 a.append(35)
+a.insert(2, 22)
 a.extend(b)
 a.sort()
 k = a.pop(0)
@@ -256,22 +294,30 @@ k = a.pop(0)
 </blockquote>
 
 <ul>
-  <li><code>split(delimiter)</code> = breaks a string into words. If no argument is provided it splits based on white spaces. If the delimiter is provided as an argument, it will split based on that parameter</li>
+  <li><code>index(element)</code> = finds the first occurrence of a value in a list and returns the index</li>
 </ul>
 
 <blockquote>
-  <pre><code>newstring = "Howdy! How are you today?"
-newstring.split()
+  <pre><code>a.index(10)
 </code></pre>
 </blockquote>
 
 <ul>
-  <li><code>join(delimiter)</code> = concatenates a set of strings with a given delimiter</li>
+  <li><code>join()</code> = concatenates a set of strings from a list (or a string with a given delimiter) into one string. But this method only works on lists of strings. There are two ways of joining elements of a list.  </li>
 </ul>
 
 <blockquote>
-  <pre><code>delim = ' '
-hobbies.join(delim)
+  <pre><code>hob2 = hobbies.join("/")
+hob2 = "/".join(hobbies)
+</code></pre>
+</blockquote>
+
+<p>Because “/” is a string, the <code>join()</code> method operates on the “/” object and joins together the strings in the list <code>hobbies</code>, separating them using the “/”.  Using the string method <code>split()</code> can reverse <code>join()</code> by splitting a string into multiple elements based on a delimiter or vice versa. </p>
+
+<blockquote>
+  <pre><code>s = "Boston	is\n a\t beautiful\t city"
+s.split()
+" ".join(s.split())
 </code></pre>
 </blockquote>
 

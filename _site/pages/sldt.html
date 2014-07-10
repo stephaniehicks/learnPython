@@ -114,6 +114,18 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -139,8 +151,8 @@
   <thead>
     <tr>
       <th> </th>
-      <th style="text-align: center">strings</th>
-      <th style="text-align: center">lists</th>
+      <th style="text-align: center">string</th>
+      <th style="text-align: center">list</th>
       <th style="text-align: center">dictionary</th>
       <th style="text-align: center">tuple</th>
     </tr>
@@ -174,6 +186,13 @@
       <td style="text-align: center">Yes</td>
       <td style="text-align: center">Yes</td>
     </tr>
+    <tr>
+      <td>apply methods?</td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">No</td>
+    </tr>
   </tbody>
 </table>
 
@@ -189,12 +208,12 @@
 <ul>
   <li>Strings are <strong>immutable</strong>. When using strings, bracket operators cannot be used on the left side of an assignment with the intention of changing that string. </li>
   <li>Lists are <strong>mutable</strong>. Unlike strings, you can use the bracket operator on the left side of the assignment to change an element in a given list. </li>
-  <li>Dictionaries are </li>
-  <li>Tuples are <strong>immutable</strong>.  </li>
+  <li>Dictionaries are <strong>mutable</strong>. You can modify any item (key-value pair) in a dictionary using the bracket operator on the left side of the assignment. </li>
+  <li>Tuples are <strong>immutable</strong>.  You can extract elements, but you cannot modify elements of a tuple on the left side of the assignment operator. </li>
 </ul>
 
 <h4 id="the-in-operator">The <code>in</code> operator:</h4>
-<p>The <code>in</code> operator is a boolean operator takes in two arguments that determines if the first argument is a substring or a element of the second argument.  </p>
+<p>The <code>in</code> operator (and <code>not in</code> operator) is a boolean operator takes in two arguments that determines if the first argument is a substring or a element of the second argument.  </p>
 
 <ul>
   <li>When comparing two strings, the operator searches if the first string appears as a substring in the second and returns a <code>True</code> or <code>False</code>. </li>
@@ -207,9 +226,20 @@
 <ul>
   <li>Calculate the length of a string</li>
   <li>Calculate the number of elements in a list</li>
-  <li>Calculate the number of items in a dictionary</li>
+  <li>Calculate the number of items (key-value pairs) in a dictionary</li>
   <li>Calculate the number elements in the tuple</li>
 </ul>
+
+<h4 id="methods-for-each-type-of-object-dot-notation">Methods for each type of object (dot notation)</h4>
+<p>For strings, lists and dictionaries, there are set of methods you can use to manipulate the objects.  Because tuples are immutable, there are no methods to modify the objects.  In general, the notation for methods is the <strong>dot notation</strong>.  The syntax is the name of the objects followed by a dot (or period) followed by the name of the method.  </p>
+
+<blockquote>
+  <pre><code>x = "Hello Boston!"
+x.split()
+</code></pre>
+</blockquote>
+
+<p>Here we use the method <code>split()</code> which is applied to a string (making this a string method).  The method splits the string at a given delimiter (in this case the white space “ “).  </p>
 
 <h1 id="when-to-use-which-object">When to use which object?</h1>
 <p>In the subsequent pages, I will compare and contrast the similarities and differences of strings, lists, dictionaries and tuples in greater detail.  In general, lists are more common than tuples (mostly because they are mutable), but there are a few reasons why tuples may be preferable: </p>
@@ -220,7 +250,7 @@
   <li>If you are passing a sequence as an argument to a function, using tuples reduces the potential for unexpected behavior due to aliasing.</li>
 </ol>
 
-<p>Because tuples are immutable, they don’t provide methods like <code>sort</code> and <code>reverse</code>, which modify existing lists. But Python provides the built-in functions <code>sorted</code> and <code>reversed</code>, which take any sequence as a parameter and return a new list with the same elements in a different order.</p>
+<p>Again, because tuples are immutable, they do not provide methods like <code>split()</code>. </p>
 
 <p>In addition to the built-in objects in Python, you can also create your own object (or class).  I will <a href="classes.html">discuss this idea</a> in greater detail a bit further on. For now, let’s formally discuss <a href="strings.html">strings</a>, <a href="lists.html">lists</a>, <a href="dictionaries.html">dictionaries</a> and <a href="tuples.html">tuples</a>. </p>
 
