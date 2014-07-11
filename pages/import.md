@@ -82,6 +82,12 @@ To write to a file one line at a time, just recall `write` again and again.
 The last line tell Python you are done writing to the file, so it knows to close the file. Once a file has been closed
 
 
+## with and as
+There is a short cut to opening and closing files using the `with` and `as` keywords.  The syntax is
+
+>	with open("file.txt", "w") as textfile:
+>	    textfile.write("Success!")
+>	    # Read or write to the file
 
 
 # Paths and directories 

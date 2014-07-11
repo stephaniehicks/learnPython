@@ -5,7 +5,7 @@ tagline: Variables, Functions, Conditionals, Iteration
 ---
 {% include JB/setup %}
 
-Everything in Python is an object.  You can define variables, functions, and modules which are all objects. We can operate on this objects with what are called **operators** (e.g. addition, subtraction, concatenation or other operations), define/apply functions, test/apply for *conditionals* statements, (e.g. `if`, `else` statements) or iterate over the objects. 
+Everything in Python is an object.  Think of an object as a data structure that contains both data as well as functions. These objects can be variables, functions, and modules which are all objects. We can operate on this objects with what are called **operators** (e.g. addition, subtraction, concatenation or other operations), define/apply functions, test/apply for *conditionals* statements, (e.g. `if`, `else` statements) or iterate over the objects. 
 
 # Variables and Operators
 
@@ -79,7 +79,7 @@ The next function we'll discuss is called `dir()` which takes in an object and r
 
 >	dir()
 
-Here is an example that returns all the methods (you can think of them as functions) that operate on [string](strings.html) objects: 
+Here is an example that returns all the **methods** (you can think of them as functions of objects) that operate on [string](strings.html) objects: 
 
 >	dir("Three strikes and you're out!") 
 
@@ -109,6 +109,8 @@ Function name | Description | Example use
 `range(n)` | accepts an integer and returns a list of integers from 0 to n-1 | `range(5)`
 `repr()` | accepts any input and returns the string representation of the object (helpful for debugging!) | `repr(range(5))`
 `getattr()` | accepts any object as input and returns any attribute of that object; technically works on any object, except tuples have no methods | 
+`bin()` | accepts an integer and returns the binary representation | `bin(8)`
+
 
 
 
