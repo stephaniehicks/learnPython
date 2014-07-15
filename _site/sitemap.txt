@@ -9,7 +9,8 @@ http://stephaniehicks.github.io/learnPython/pages/import.html
 http://stephaniehicks.github.io/learnPython/pages/IPython.html
 http://stephaniehicks.github.io/learnPython/pages/lists.html
 http://stephaniehicks.github.io/learnPython/pages/modules.html
-http://stephaniehicks.github.io/learnPython/pages/numpy_scipy.html
+http://stephaniehicks.github.io/learnPython/pages/numpy.html
+http://stephaniehicks.github.io/learnPython/pages/scipy.html
 http://stephaniehicks.github.io/learnPython/pages/sldt.html
 http://stephaniehicks.github.io/learnPython/pages/startingPython.html
 http://stephaniehicks.github.io/learnPython/pages/strings.html

@@ -126,6 +126,10 @@
       
     
   
+    
+      
+    
+  
 
 
 
@@ -145,19 +149,50 @@
 <div class="row-fluid">
   <div class="span12">
     
+<h1 id="python">Python</h1>
+
 <p>There are two modes you can write Python code in: <strong>interactive mode</strong> or <strong>script mode</strong>.  If you open up a UNIX command window and have a command-line interface, you can simply type <code>python</code> in the shell: </p>
 
 <blockquote>
-  <pre><code>python
+  <pre><code>$ python
 </code></pre>
 </blockquote>
 
-<p>and the <strong>interactive mode</strong> will open up.  If you store code in a file ending in <code>.py</code>, and execute the file in the <strong>script mode</strong> using </p>
+<p>and the <strong>interactive mode</strong> will open up.  You can write code in the interactive mode and Python will <em>interpret</em> the code using the <strong>python interpreter</strong>.  Another way to pass code to Python is to store code in a file ending in <code>.py</code>, and execute the file in the <strong>script mode</strong> using </p>
 
 <blockquote>
-  <pre><code>python myscript.py
+  <pre><code>$ python myscript.py
 </code></pre>
 </blockquote>
+
+<p>To check what version of Python you are using, type the following in the shell:</p>
+
+<blockquote>
+  <pre><code>$ python --version
+</code></pre>
+</blockquote>
+
+<h1 id="ipython">IPython</h1>
+
+<p>Python by itself is pretty cool, but there are some limitations that make it not very user-friendly.  For example, it lacks tab auto-completion, in-line editing of code, support for parallel processing, command history (with the up and down arrows).  <a href="http://ipython.org">IPython</a> an <em>interactive</em> command-line tool that solves all of these problems.  Some of the features include tab completion, shell syntax, data visualizations, tools for parallel computing.  To start IPython, type <code>ipython</code> in the shell: </p>
+
+<blockquote>
+  <pre><code>$ ipython
+</code></pre>
+</blockquote>
+
+<h1 id="ipython-notebook">IPython notebook</h1>
+
+<p>One of the more popular features is the <a href="http://ipython.org/notebook.html">browser-based IPython notebook</a> which can combine code (and evaluate it), text, equations and plots all in one environment.  To start an IPython notebook session, type <code>ipython notebook</code> in the shell: </p>
+
+<blockquote>
+  <pre><code>$ ipython notebook
+</code></pre>
+</blockquote>
+
+<h1 id="spyder">Spyder</h1>
+
+<p>The Scientific Python Development EnviRonment or <a href="https://code.google.com/p/spyderlib/">Spyder</a> is another tool similar to using <a href="https://www.rstudio.com">Rstudio</a> when writing code in the <a href="http://cran.us.r-project.org">R</a> programming language. </p>
 
 
   </div>

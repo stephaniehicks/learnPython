@@ -7,10 +7,18 @@ tagline: Variables, Functions, Conditionals, Iteration
 
 Everything in Python is an object.  Think of an object as a data structure that contains both data as well as functions. These objects can be variables, functions, and modules which are all objects. We can operate on this objects with what are called **operators** (e.g. addition, subtraction, concatenation or other operations), define/apply functions, test/apply for *conditionals* statements, (e.g. `if`, `else` statements) or iterate over the objects. 
 
+Not all objects are required to have **attributes** and **methods** to operate on the objects in Python, but **everything is an object** (i.e. all objects can be assigned to a variable or passed as an argument to a function).  A user can work with built-in defined classes of objects or can create new classes of objects.  Using these objects, a user can perform operations on the objects by modifying / interacting with them. 
+
+
 # Variables and Operators
 
 #### Variables
-Variable names are case sensitive, can contain numbers and letters, can contain underscores, cannot begin with a number, [cannot contain illegal characters and cannot be one of the 31 keywords in Python](http://en.wikibooks.org/wiki/Think_Python/Variables,_expressions_and_statements#Variable_names_and_keywords)
+Variable names are case sensitive, can contain numbers and letters, can contain underscores, cannot begin with a number, [cannot contain illegal characters and cannot be one of the 31 keywords in Python](http://en.wikibooks.org/wiki/Think_Python/Variables,_expressions_and_statements#Variable_names_and_keywords): 
+
+>	and, as, assert, break, class, continue, def, del, elif, else, except, 
+>	exec, finally, for, from, global, if, import, in, is, lambda, not, or, 
+>	pass, print, raise, return, try, while, with, yield
+
 
 #### Operators
 * Numeric operators are +, -, *, /, ** (exponent), % (modulus if applied to integers)

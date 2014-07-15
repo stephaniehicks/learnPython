@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>NumPy</title>
+    
+    <meta name="author" content="Stephanie Hicks">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+      <!-- knitr javascript -->
+    <script src="/assets/themes/twitter/knitr.js" type="text/javascript"></script>
+
+    <!-- mathjax javascript -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">Learn Python</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>NumPy </h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    
+<p>NumPy and SciPy are modules in Python for scientific computing.  <a href="http://www.numpy.org">NumPy</a> lets you do fast, vectorized operations on arrays and <a href="http://www.scipy.org">SciPy</a> is a collection of mathematical and scientific modules built on top of NumPy.  </p>
+
+<p>Why use these modules?  Because working with these modules gives you the performance of using low-level code (e.g. C or Fortran) with the benefit of writing the code in an interpreted scripting language (all while keeping the native Python code). For example, the objects created by NumPy (e.g. arrays) are memory efficient and support mathematical functions.  </p>
+
+<h1 id="import-numpy">Import NumPy</h1>
+
+<blockquote>
+  <pre><code>from numpy import *
+</code></pre>
+</blockquote>
+
+<h1 id="creating-numpy-arrays">Creating NumPy arrays</h1>
+
+<p>To create a <code>numpy</code> array, use the <code>numpy.array()</code> method on a python <code>list</code> or <code>tuple</code> or reading data from files. This will create a <code>ndarray</code> object. </p>
+
+<blockquote>
+  <pre><code>x = array([1,2,3,4])
+y = array([[1,2], [3,4]])
+type(x), type(y)
+</code></pre>
+</blockquote>
+
+<h4 id="properties-of-numpy-arrays">Properties of NumPy arrays</h4>
+<p>There are a set of properties about the numpy arrays such the dimensions, the size, etc.  </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>y.shape</code> (or <code>shape(y)</code></td>
+      <td>Shape or dimension of the array</td>
+    </tr>
+    <tr>
+      <td><code>y.size</code> (or <code>size(y)</code>)</td>
+      <td>Number of elements in the array</td>
+    </tr>
+    <tr>
+      <td><code>y.dtype</code></td>
+      <td>Data type</td>
+    </tr>
+    <tr>
+      <td><code>y.astype(float)</code></td>
+      <td>Forces the data type to be a <code>float</code> (or <code>bool</code>, etc)</td>
+    </tr>
+    <tr>
+      <td><code>y.nbytes</code></td>
+      <td>Number of bytes</td>
+    </tr>
+    <tr>
+      <td><code>y.itemsize</code></td>
+      <td>Number of bytes per element</td>
+    </tr>
+    <tr>
+      <td><code>y.ndim</code></td>
+      <td>number of dimensions</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="various-other-ways-to-generate-numpy-arrays">Various other ways to generate NumPy arrays</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>arange(start,stop,step)</code></td>
+      <td>Create a range between the start and stop arguments</td>
+    </tr>
+    <tr>
+      <td><code>linspace(start,stop,length)</code></td>
+      <td>Create a range between start and stop (both ends included)</td>
+    </tr>
+    <tr>
+      <td><code>logspace(start, stop, length, base)</code></td>
+      <td>Create a range in the log space with a define base)</td>
+    </tr>
+    <tr>
+      <td><code>mgrid[0:n, 0:m]</code></td>
+      <td>Create a meshgrid</td>
+    </tr>
+    <tr>
+      <td><code>random.rand(n, m)</code></td>
+      <td>Generate uniform random numbers in [0,1] of dim n x m</td>
+    </tr>
+    <tr>
+      <td><code>random.randn(n, m)</code></td>
+      <td>Generate standard normal random numbers of dim n x m</td>
+    </tr>
+    <tr>
+      <td><code>diag([1,2,3], k=offset)</code></td>
+      <td>Generate a diagonal matrix with the input on the diagonal with an offset</td>
+    </tr>
+    <tr>
+      <td><code>zeros((3,3))</code></td>
+      <td>Generate a zeros matrix</td>
+    </tr>
+    <tr>
+      <td><code>ones((3,3,))</code></td>
+      <td>Generate a ones matrix</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="reshaping-resizing-and-stacking-numpy-arrays">Reshaping, resizing and stacking Numpy arrays</h4>
+
+<p>To reshape an array, use <code>reshape()</code>:</p>
+
+<blockquote>
+  <pre><code>z = arange(0, 10)
+z.reshape((2,5)) # dim 2 x 5
+shape(z)
+</code></pre>
+</blockquote>
+
+<p>To flatten an array (convert a higher dimensional array into a vector), use <code>flatten()</code>: </p>
+
+<blockquote>
+  <pre><code>A = random.rand(4,4)
+B = A.flatten()
+shape(B)
+</code></pre>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>z.reshape((n,m))</code></td>
+      <td>Reshape z to have dim or shape <code>n</code>, <code>m</code></td>
+    </tr>
+    <tr>
+      <td><code>z.flatten()</code></td>
+      <td>Flatten a higher dimensional array into a vector</td>
+    </tr>
+    <tr>
+      <td><code>z[:, newaxis]</code></td>
+      <td>Added a new dimension to the z array using <code>newaxis</code></td>
+    </tr>
+    <tr>
+      <td><code>z.repeat(n)</code></td>
+      <td>Repeat each element in z <code>n</code> times.</td>
+    </tr>
+    <tr>
+      <td><code>z.repeat(n)</code></td>
+      <td>Repeat each element in z <code>n</code> times.</td>
+    </tr>
+    <tr>
+      <td><code>tile(z, n)</code></td>
+      <td>Repeat the entire array z <code>n</code> times.</td>
+    </tr>
+    <tr>
+      <td><code>concatenate((a,b), axis = 0)</code></td>
+      <td>Concatenate two arrays (a, b) along the columns</td>
+    </tr>
+    <tr>
+      <td><code>concatenate((a,b), axis = 1)</code></td>
+      <td>Concatenate two arrays (a, b) along the rows</td>
+    </tr>
+    <tr>
+      <td><code>hstack((a,b))</code></td>
+      <td>horizontally stack two arrays</td>
+    </tr>
+    <tr>
+      <td><code>vstack((a,b))</code></td>
+      <td>vertically stack two arrays</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="reading-and-writing-from-csv-files">Reading and writing from CSV files</h4>
+<p>To read comma-separated values (CSV) data from a file into numpy arrays, use the <code>numpy.genfromtxt()</code> function in <code>numpy</code>.  </p>
+
+<blockquote>
+  <pre><code>data = genfromtxt('myfile.csv')
+data.shape
+</code></pre>
+</blockquote>
+
+<p>To save a <code>numpy</code> array in a CSV format, use <code>numpy.savetxt()</code> where <code>fmt</code> specifies the format to save in</p>
+
+<blockquote>
+  <pre><code>dat = random.rand(3,3)
+savetxt("output.csv", dat, fmt = '%.5f')
+</code></pre>
+</blockquote>
+
+<h4 id="reading-and-writing-from-numpys-native-file-format">Reading and writing from NumPy’s native file format</h4>
+<p>To read from the numpy native file format (<code>.npy</code>), use the <code>numpy.save()</code> and <code>numpy.load()</code> functions. </p>
+
+<blockquote>
+  <pre><code>dat = random.rand(3,3)
+save("output.npy", dat, fmt = '%.5f')
+load("output.npy"))
+output.npy
+</code></pre>
+</blockquote>
+
+<h1 id="operating-on-numpy-arrays">Operating on NumPy arrays</h1>
+
+<h4 id="assigning-values">Assigning values</h4>
+<p>To assign values to a specific element in a <code>ndarray</code>, use the assignment operator.  <strong>Note</strong>: You cannot assign a value of the wrong type to a <code>ndarray</code> (e.g. strings), but you can define the type data using the <code>dtype</code> property (such as <code>int</code>,<code>float</code>, <code>complex</code>, <code>bool</code> etc)</p>
+
+<blockquote>
+  <pre><code>y[0,0] = 10
+y[0,0] = "Boston"
+y = array([[1.1,2.2], [3.1,4.2]], dtype = float)
+</code></pre>
+</blockquote>
+
+<h4 id="indexing-arrays">Indexing arrays</h4>
+<p>To extract elements of the NumPy arrays, use the bracket operator and the slice (i.e. colon) operator.  To slice specific elements in the array, use <code>dat[lower:upper:step]</code>. To extract the diagonal (and subdiagonal) elements, use <code>diag()</code>. </p>
+
+<blockquote>
+  <pre><code>dat = random.rand(3:3)
+dat[0, :] # row 1
+dat[:, 0] # column 1
+dat[0:3:2, 0] # first and third elements in column 1
+diag(dat, -1) 
+</code></pre>
+</blockquote>
+
+<h4 id="subsetting-arrays-using-a-mask">Subsetting arrays using a mask</h4>
+<p>You can subset for elements in an array using a conditional statement. </p>
+
+<blockquote>
+  <pre><code>z = array([i for i in range(11)])
+my_mask = (2 &lt; z) * (z &lt; 8) # check is the elements of z are larger than 2 and less than 8
+z[my_mask]
+</code></pre>
+</blockquote>
+
+<p>To determine the position index of a mask, use the <code>where()</code> function. The <code>take()</code> function is similar to the subsetting above, except it works on </p>
+
+<blockquote>
+  <pre><code>keep_indices = where(my_mask)
+z.take(keep_indices)
+take(z, keep_indices)
+</code></pre>
+</blockquote>
+
+<p>Finally, the <code>choose()	</code> function creates an array from picking elements from several arrays</p>
+
+<blockquote>
+  <pre><code>which = [1, 0, 1, 0]
+choices = [[-2,-2,-2,-2], [5,5,5,5]]
+choose(which, choices)
+</code></pre>
+</blockquote>
+
+<h4 id="iterating-over-array-elements">Iterating over array elements</h4>
+<p>Iterating over array elements is not suggested (very slow compared to vectorized operations), but sometimes they are unavoidable.  To iterate over array elements, use a <code>for</code> loop: </p>
+
+<blockquote>
+  <pre><code>z = arange(0, 10)
+for elem in z:
+    print elem
+</code></pre>
+</blockquote>
+
+<h4 id="linear-algebra">Linear algebra</h4>
+
+<p>Performing matrix and vector operations is very straightforward with NumPy.  Arithmetic operators (+, - , * ) can be used with arrays. </p>
+
+<blockquote>
+  <pre><code>A = array([ [n+m for n in range(5)] for m in range(5)])
+A + 5
+A * 10
+A * A  # element wise multiplication 
+dot(A, A) # matrix multiplication on arrays
+</code></pre>
+</blockquote>
+
+<h1 id="creating-numpy-matrices">Creating NumPy matrices</h1>
+
+<p>To convert a numpy <code>array</code> to a numpy <code>matrix</code>, use the <code>matrix()</code> function.  This allows the standard arithmetic operators (+, -, *) to use matrix algebra. </p>
+
+<blockquote>
+  <pre><code>x = matrix(A)
+y = matrix(arange(0, 5))
+yT = y.T # makes it a column vector
+x * x
+x * yT
+shape(x * yT)
+</code></pre>
+</blockquote>
+
+<p>Other useful matrix computations</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>inv(x)</code></td>
+      <td>Inverse of the matrix x</td>
+    </tr>
+    <tr>
+      <td><code>det(x)</code></td>
+      <td>Determinant of matrix x</td>
+    </tr>
+    <tr>
+      <td><code>sum(x)</code> (or <code>x.sum()</code>)</td>
+      <td>Sum of the values</td>
+    </tr>
+    <tr>
+      <td><code>prod(x + 1)</code></td>
+      <td>Product of all values</td>
+    </tr>
+    <tr>
+      <td><code>cumsum(x)</code></td>
+      <td>Cumulative sum</td>
+    </tr>
+    <tr>
+      <td><code>mean(x[:, 0])</code></td>
+      <td>Mean of the first column</td>
+    </tr>
+    <tr>
+      <td><code>std(x[0,:])</code></td>
+      <td>Standard deviation of first row</td>
+    </tr>
+    <tr>
+      <td><code>var(x[0, :])</code></td>
+      <td>Variance of first row</td>
+    </tr>
+    <tr>
+      <td><code>x.min()</code>, <code>x.min(axis=0)</code>, <code>x.min(axis=</code>)</td>
+      <td>global min, min in each column (or row)</td>
+    </tr>
+    <tr>
+      <td><code>x.max()</code>, <code>x.max(axis=0)</code>, <code>x.max(axis=</code>)</td>
+      <td>global max, max in each column (or row)</td>
+    </tr>
+    <tr>
+      <td><code>trace(x)</code></td>
+      <td>Trace (Same as <code>diag(x).sum()</code>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="vectorizing-functions">Vectorizing functions</h1>
+
+<p>It is important to state again that you should avoid looping through elements in vectors if at all possible.  One way to get around that when writing functions is to use what are called <strong>vectorized functions</strong>.  Say you wrote a function <code>f</code> which accepts some input <code>x</code> and checks if <code>x</code> is bigger or smaller than 0.  </p>
+
+<blockquote>
+  <pre><code>def f(x):
+    if x &gt;=0:
+    	return True
+    else:
+        return False
+print f(3)
+</code></pre>
+</blockquote>
+
+<p>If we give the function an array instead of just one value (e.g. 3), then Python will give an error because there is more than one element in <code>x</code>.  The way to get around this is to <strong>vectorize</strong> the function.  </p>
+
+<blockquote>
+  <pre><code>f_vec = vectorize(f)
+f_vec(arange(-5, 6))
+</code></pre>
+</blockquote>
+
+<p>Instead of vectorizing the function, you can also make the function itself aware that it will be accepting vectors from the beginning. </p>
+
+<blockquote>
+  <pre><code>def f(x):
+    return (x &gt;=0)
+print f(3)
+</code></pre>
+</blockquote>
+
+<h4 id="using-conditional-statements-in-arrays">Using conditional statements in arrays</h4>
+
+<p>To check if <code>any</code> or <code>all</code> elements in an array meet a certain criteria, use <code>any()</code> and <code>all()</code>. </p>
+
+<blockquote>
+  <pre><code>if (x &gt; 0).any()
+</code></pre>
+</blockquote>
+
+<p>or </p>
+
+<blockquote>
+  <pre><code>if (x &gt; 0).all()
+</code></pre>
+</blockquote>
+
+<h4 id="resources">Resources</h4>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=I_XLoTQSuUk">Video of Walt Mankowski on NumPy and SciPy</a></li>
+  <li><a href="https://github.com/jrjohansson/scientific-python-lectures">Scientific Lectures (python notebooks) on Github from Robert Johansson</a></li>
+</ul>
+
+  </div>
+</div>
+
+
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; 2014 Stephanie Hicks
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

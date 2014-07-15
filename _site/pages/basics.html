@@ -126,6 +126,10 @@
       
     
   
+    
+      
+    
+  
 
 
 
@@ -145,12 +149,21 @@
 <div class="row-fluid">
   <div class="span12">
     
-<p>Everything in Python is an object.  You can define variables, functions, and modules which are all objects. We can operate on this objects with what are called <strong>operators</strong> (e.g. addition, subtraction, concatenation or other operations), define/apply functions, test/apply for <em>conditionals</em> statements, (e.g. <code>if</code>, <code>else</code> statements) or iterate over the objects. </p>
+<p>Everything in Python is an object.  Think of an object as a data structure that contains both data as well as functions. These objects can be variables, functions, and modules which are all objects. We can operate on this objects with what are called <strong>operators</strong> (e.g. addition, subtraction, concatenation or other operations), define/apply functions, test/apply for <em>conditionals</em> statements, (e.g. <code>if</code>, <code>else</code> statements) or iterate over the objects. </p>
+
+<p>Not all objects are required to have <strong>attributes</strong> and <strong>methods</strong> to operate on the objects in Python, but <strong>everything is an object</strong> (i.e. all objects can be assigned to a variable or passed as an argument to a function).  A user can work with built-in defined classes of objects or can create new classes of objects.  Using these objects, a user can perform operations on the objects by modifying / interacting with them. </p>
 
 <h1 id="variables-and-operators">Variables and Operators</h1>
 
 <h4 id="variables">Variables</h4>
-<p>Variable names are case sensitive, can contain numbers and letters, can contain underscores, cannot begin with a number, <a href="http://en.wikibooks.org/wiki/Think_Python/Variables,_expressions_and_statements#Variable_names_and_keywords">cannot contain illegal characters and cannot be one of the 31 keywords in Python</a></p>
+<p>Variable names are case sensitive, can contain numbers and letters, can contain underscores, cannot begin with a number, <a href="http://en.wikibooks.org/wiki/Think_Python/Variables,_expressions_and_statements#Variable_names_and_keywords">cannot contain illegal characters and cannot be one of the 31 keywords in Python</a>: </p>
+
+<blockquote>
+  <pre><code>and, as, assert, break, class, continue, def, del, elif, else, except, 
+exec, finally, for, from, global, if, import, in, is, lambda, not, or, 
+pass, print, raise, return, try, while, with, yield
+</code></pre>
+</blockquote>
 
 <h4 id="operators">Operators</h4>
 <ul>
@@ -240,7 +253,7 @@ print "Wally the Green Monster"
 </code></pre>
 </blockquote>
 
-<p>Here is an example that returns all the methods (you can think of them as functions) that operate on <a href="strings.html">string</a> objects: </p>
+<p>Here is an example that returns all the <strong>methods</strong> (you can think of them as functions of objects) that operate on <a href="strings.html">string</a> objects: </p>
 
 <blockquote>
   <pre><code>dir("Three strikes and you're out!") 
@@ -311,6 +324,11 @@ dir(__builtins__)
       <td><code>getattr()</code></td>
       <td>accepts any object as input and returns any attribute of that object; technically works on any object, except tuples have no methods</td>
       <td> </td>
+    </tr>
+    <tr>
+      <td><code>bin()</code></td>
+      <td>accepts an integer and returns the binary representation</td>
+      <td><code>bin(8)</code></td>
     </tr>
   </tbody>
 </table>

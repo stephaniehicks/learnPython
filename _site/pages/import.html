@@ -126,6 +126,10 @@
       
     
   
+    
+      
+    
+  
 
 
 
@@ -263,6 +267,16 @@ fout.close()
 </blockquote>
 
 <p>The last line tell Python you are done writing to the file, so it knows to close the file. Once a file has been closed</p>
+
+<h2 id="with-and-as">with and as</h2>
+<p>There is a short cut to opening and closing files using the <code>with</code> and <code>as</code> keywords.  The syntax is</p>
+
+<blockquote>
+  <pre><code>with open("file.txt", "w") as textfile:
+    textfile.write("Success!")
+    # Read or write to the file
+</code></pre>
+</blockquote>
 
 <h1 id="paths-and-directories">Paths and directories</h1>
 <p>To print the current working directory, use the function <code>getcwd()</code> from the module <code>os</code>. </p>

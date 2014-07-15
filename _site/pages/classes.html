@@ -126,6 +126,10 @@
       
     
   
+    
+      
+    
+  
 
 
 
@@ -146,47 +150,62 @@
   <div class="span12">
     
 <h1 id="user-defined-objects">User-defined objects</h1>
-<p>In Python, there many built-in types (or <strong>objects</strong>) such as <code>int</code>, <code>float</code>, <code>str</code>, <code>list</code>, <code>dict</code>, <code>tuple</code>, etc and which were discussed in greater detail <a href="basics.html">here</a>.  In addition to the built-in objects in Python, you can also create your own object (or class).  One advantage of creating your own class of objects is the object is <strong>mutable</strong> which means you can change the object by modifying the attributes. </p>
+<p>In Python, there many built-in types (or <strong>objects</strong>) such as <code>int</code>, <code>float</code>, <code>str</code>, <code>list</code>, <code>dict</code>, <code>tuple</code>, etc and which were discussed in greater detail <a href="basics.html">here</a>.  In addition to the built-in objects in Python, you can also create your own objects with its own characteristics. These are called <strong>classes</strong> which is just a way of pro ducting objects with similar attributes and methods.  One advantage of creating your own class of objects is the object is <strong>mutable</strong> which means you can change the object by modifying the attributes. </p>
 
 <p>A user can use the built-in types (or objects) provided by Python, or a user can create user-defined type (also known as a <strong>class</strong>).  To define a new class, the syntax is</p>
 
 <blockquote>
-  <pre><code>class cookbookClass(object):
-    """Description of new class object.""""
+  <pre><code>class Employee(object):
+    """ Creates and Employee class object. """"
 </code></pre>
 </blockquote>
 
-<p>The header starts with the word <code>class</code> followed by the name of the new class (which is a kind of <code>object</code>) where <code>object</code> is a built in type.  The body is a <code>docstring</code> that describes what the class does.  </p>
+<p>The header starts with the word <code>class</code> followed by the name of the new class (which is a kind of <code>object</code>) where <code>object</code> is a built in type.  The body of the class contains a <code>docstring</code> that describes what the class does.  </p>
+
+<p>Next, when you define a class, you must <strong>initialize</strong> the objects that the class will create. This is done with the <code>__init__()</code> function which always takes at least one argument (by convention this is called <code>self</code>) which refers to the object being created.  This must be the first argument passed to <code>__init__()</code>.  Think of <code>__init__()</code> as the function that creates each object that the class creates.  </p>
 
 <blockquote>
-  <pre><code>print cookbookClass
+  <pre><code>class Employee(object):
+    """ Creates and Employee class object. """"
+    def __init__(self, firstname, lastname, age):
 </code></pre>
 </blockquote>
 
-<p>To create an object of the type <code>cookbookClass</code>, you call it like a function. To assign values (or <em>attributes</em> which are the elements of the object) to the <code>cookbookClass</code> object, you use the dot notation. </p>
+<p>There can be other parameters passed to <code>__init__()</code>.  Here, I pass the parameters <code>firstname</code>, <code>lastname</code> and <code>age</code> which are <strong>attributes</strong> of the class <code>Employee</code>.  The attributes of the new class can be listed in the <code>docstring</code> when defining the new class.  To access the attributes of the objects, use the dot notation.</p>
 
 <blockquote>
-  <pre><code>x = cookbookClass()
-x.topFoods = dict(zip(('spaghetti', 'salmon', 'tacos'), (1,2,3)))
+  <pre><code>class Employee(object):
+    """ Creates and Employee class object. 
+         Attributes: first name, last name, age. """"
+    def __init__(self, firstname, lastname, age):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.age = age
 </code></pre>
 </blockquote>
 
-<p>To the <code>cookbookClass</code> object, I created a topFoods element which contains my top three favorite foods with their rank. The topFoods element is in a dictionary type, so I can recall the rank of each of my favorite foods.  The attributes of the new class can be listed in the <code>doctoring</code> when defining the new class: </p>
+<p>Here we use the Employee class to store the information about each employee.  For each employee, we create an Employee object. </p>
 
 <blockquote>
-  <pre><code>class cookbookClass(object):
-    """Description of new class object.
-    
-    attributes: topFoods. 
-    """"
+  <pre><code>sarah = Employee("Sarah", "Thomas", 32)
+print "Employee: %s, %s.  Age %s" % (sarah.lastname, sarah.firstname, str(sarah.age))
 </code></pre>
 </blockquote>
 
-<p>To check if an object has a specific attribute, use the built-in function <code>hasattr</code> which return a <code>True</code>/<code>False</code> value if the the second argument (must be a string) is one of the attributes of the objects (listed as the first object). </p>
+<p>Let’s say Sarah Thomas got married and changed her last name.  To change the value of attribute of the <code>Employee</code> class object, use the dot notation again. </p>
 
 <blockquote>
-  <pre><code>hasattr(x, 'topFoods')
-hasattr(x, '__doc__')
+  <pre><code>sarah.lastname = "Hoppy"
+print "Employee: %s, %s.  Age %s" % (sarah.lastname, sarah.firstname, str(sarah.age))
+</code></pre>
+</blockquote>
+
+<p>To check if an object has a specific attribute, use the built-in attribute <code>hasattr</code> which return a <code>True</code>/<code>False</code> value if the the second argument (must be a string) is one of the attributes of the objects (listed as the first object). </p>
+
+<blockquote>
+  <pre><code>hasattr(sarah, 'age') # True
+hasattr(sarah, 'eye_color') # False
+hasattr(x, '__doc__') # True
 </code></pre>
 </blockquote>
 
@@ -200,60 +219,54 @@ hasattr(x, '__doc__')
     <p>The syntax for invoking a method is different than the syntax for calling a function. </p>
   </li>
   <li>
-    <p>User-defined methods are defined inside the class definition to make the relationship between the class and method explicit.  To define a method called <code>print_foods()</code> associated with our <code>cookbookClass</code> object: </p>
+    <p>User-defined methods are defined inside the class definition to make the relationship between the class and method explicit.  To define a method called <code>calculate_wage()</code> associated with our <code>Employee</code> object: </p>
   </li>
 </ol>
 
 <blockquote>
-  <pre><code>class cookbookClass(object):
-    """Description of new class object.
-    
-    attributes: topFoods, 
-    """"
-    def print_foods(arg):
-        print arg.topFoods.keys()
-</code></pre>
+  <pre><code>class Employee(object):
+    """ Creates and Employee class object. 
+         Attributes: first name, last name, age. """"
 
+    def __init__(self, firstname, lastname, age):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.age = age
+
+    def calculate_wage(self, hours):
+        self.hours = hours
+        return hours * 20.00
+</code></pre>
 </blockquote>
 
-<p>The usual way to call a function is the name of the module, followed by a dot (or period) and the name of the function (e.g. <code>math.pi()</code>).  To call a method called <code>print_foods()</code> on our <code>cookbookClass</code> object, you can do one of the following: </p>
+<p>The usual way to call a function is the name of the module, followed by a dot (or period) and the name of the function (e.g. <code>math.pi()</code>).  To call a method called <code>calculate_wage()</code> on our <code>Employee</code> object, use: </p>
 
 <blockquote>
-  <pre><code>x = cookbookClass()
-x.topFoods = dict(zip(('spaghetti', 'salmon', 'tacos'), (1,2,3)))
+  <pre><code>sarah = Employee("Sarah", "Hoppy", 32)
+sarah.calculate_wage(40)
 </code></pre>
 </blockquote>
+
+<p>where 40 (hours) is the the argument (or <strong>subject</strong>) that the method <code>calculate_wage</code> is invoked on.</p>
+
+<h4 id="the-inheritance-property">The inheritance property.</h4>
+<p>If you want to define a new class of objects that <strong>inherit</strong> all the properties of a previously-defined class, you can easily do that!  The syntax is the keyword <code>class</code> followed by the new name of the class and then in parentheses the name of the old class that the new class will inherit all its properties from.  For example, let’s create a class called <code>PartTimeEmployee</code>.  The only difference is, we want the <code>calculate_wage()</code> function to use a different wage.  </p>
 
 <blockquote>
-  <pre><code>cookbookClass.print_foods(x)
-x.print_foods()
+  <pre><code>class PartTimeEmployee(Employee):
+    def calculate_wage(self, hours):
+        self.hours = hours
+        return hours * 12.00
 </code></pre>
 </blockquote>
 
-<p>where x is the the argument (or <strong>subject</strong>) that the method <code>print_foods</code> is invoked on.  The second way is more concise and the more common way to invoke a method associated with a specific class.</p>
-
-<h4 id="the-init-and-str-method">The init and str method</h4>
-<p>The <code>__init__</code>) method is a method to initialize a set of optional parameters and assigns them as attributes.  </p>
+<p>Now we can define a new part time employee (Jack) and calculate his wage for the number of hours he worked (8). </p>
 
 <blockquote>
-  <pre><code>class Card(object):
-    """Represents a standard playing card."""
-    def __init__(arg, suit=1 rank=12):
-        arg.suit = suit
-        arg.rank = rank
+  <pre><code>jack = PartTimeEmployee("Jack", "Roberts", 22)
+jack.calculate_wage(8)
 </code></pre>
 </blockquote>
-
-<p>We created a new <code>Card</code> class which used the <code>__init__</code> method to take in two optional parameters for each attribute. The default is the queen of diamonds.  </p>
-
-<blockquote>
-  <pre><code>Card(1, 12)
-</code></pre>
-</blockquote>
-
-<p>You use this method inside the class definition of the new object. The <code>__str__</code> method is similar to the <code>__init__</code> method except will return a string representation of an object.  Almost all new classes start with writing <code>__init__</code> to initialize objects and <code>__str__</code> is useful for debugging.  </p>
-
-<p>In addition to these built in methods, you can create your own special methods such as <code>__newmethod__</code>. </p>
 
 
   </div>
