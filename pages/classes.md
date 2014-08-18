@@ -45,6 +45,22 @@ Let's say Sarah Thomas got married and changed her last name.  To change the val
 >	print "Employee: %s, %s.  Age %s" % (sarah.lastname, sarah.firstname, str(sarah.age))
 
 
+We can also use the `__repr__()` function which to include what we want printed to the console as output
+
+>	class Employee(object):
+>	    """ Creates and Employee class object. 
+>	         Attributes: first name, last name, age. """"
+>	    def __init__(self, firstname, lastname, age):
+>	        self.firstname = firstname
+>	        self.lastname = lastname
+>	        self.age = age
+>	    def __repr__(self):
+>	        return 'Employee: %s, %s.  Age %s' % (self.lastname, self.firstname, str(self.age))
+
+>	sarah = Employee("Sarah", "Thomas", 32)
+>	sarah
+
+
 To check if an object has a specific attribute, use the built-in attribute `hasattr` which return a `True`/`False` value if the the second argument (must be a string) is one of the attributes of the objects (listed as the first object). 
 
 >	hasattr(sarah, 'age') # True

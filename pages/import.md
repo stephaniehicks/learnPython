@@ -32,6 +32,10 @@ If you want to read in a file one line at a time, use the methods function `read
 >	fin = open('myfile.txt')
 >	fin.readline()
 
+You can also combine these functions
+
+>	open('myfile.txt').readline()
+
 #### Current line position in file
 The method `tell()` reports the current position of the open file.  When you open a file, the current position is the beginning of the file (position 0). 
 

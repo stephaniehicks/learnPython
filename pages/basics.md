@@ -13,7 +13,7 @@ Not all objects are required to have **attributes** and **methods** to operate o
 # Variables and Operators
 
 #### Variables
-Variable names are case sensitive, can contain numbers and letters, can contain underscores, cannot begin with a number, [cannot contain illegal characters and cannot be one of the 31 keywords in Python](http://en.wikibooks.org/wiki/Think_Python/Variables,_expressions_and_statements#Variable_names_and_keywords): 
+Variable names are case sensitive, can contain numbers and letters, can contain underscores, cannot begin with a number, cannot contain illegal characters and [cannot be one of the 31 keywords in Python](http://en.wikibooks.org/wiki/Think_Python/Variables,_expressions_and_statements#Variable_names_and_keywords): 
 
 >	and, as, assert, break, class, continue, def, del, elif, else, except, 
 >	exec, finally, for, from, global, if, import, in, is, lambda, not, or, 

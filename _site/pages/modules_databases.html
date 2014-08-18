@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Documentation</title>
+    <title>Python modules</title>
     
     <meta name="author" content="Stephanie Hicks">
       
@@ -171,15 +171,29 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>Documentation </h1>
+  <h1>Python modules  <small>Import/export from databases</small></h1>
 </div>
 
 <div class="row-fluid">
   <div class="span12">
     
-<ul>
-  <li><a href="https://github.com/rasbt/markdown-toclify/blob/master/README.md">markdown-toclify</a>: markdown-toclify is a Python command line script that adds a Table of Contents with internal section-links to Markdown documents.</li>
-</ul>
+<p>These are modules which can be used for importing and exporting databases, dataframes</p>
+
+<h4 id="anydbm-pickle-and-shelve">anydbm, pickle and shelve</h4>
+<p>The <code>anydbm</code> module is interfaces and updates database files. The two methods functions to open and close the databases <code>anydbm.open()</code> and <code>anydbmclose()</code>.  To work with this module, the database must have keys and values as strings!  </p>
+
+<p>If your keys or values are not strings, you can use the <code>pickle</code> module to translate any object into a string which can be then stored in a database using the <code>pickle.dumps()</code> function.  When you want to access the database, the module will translate the string back into the original objects using the <code>pickle.loads()</code> function.  </p>
+
+<p>This method of “pickling” the objects from the <code>pickle</code> module combined with the <code>anydbm</code> module has been implemented in the <code>shelve</code> module.  To open and close files using this module use <code>shelve.open()</code> and <code>shelve.close()</code> which uses the <code>pickle</code> module to open and store the objects. </p>
+
+<h4 id="glob-and-listing-files-in-directories">glob and listing files in directories</h4>
+<p>The glob module is useful when listing directories, but you do not have the name of the files (just a wildcard e.g. *.txt).  The <code>glob()</code> function will match all the *.txt files in a directory and return the them as a list</p>
+
+<blockquote>
+  <pre><code>import glob
+glob.glob('*.txt')
+</code></pre>
+</blockquote>
 
 
   </div>

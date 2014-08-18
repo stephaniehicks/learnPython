@@ -6,7 +6,7 @@
     <title>Classes</title>
     
     <meta name="author" content="Stephanie Hicks">
-
+      
     <!-- Enable responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -57,6 +57,34 @@
             
 
 
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
   
     
       
@@ -197,6 +225,27 @@ print "Employee: %s, %s.  Age %s" % (sarah.lastname, sarah.firstname, str(sarah.
 <blockquote>
   <pre><code>sarah.lastname = "Hoppy"
 print "Employee: %s, %s.  Age %s" % (sarah.lastname, sarah.firstname, str(sarah.age))
+</code></pre>
+</blockquote>
+
+<p>We can also use the <code>__repr__()</code> function which to include what we want printed to the console as output</p>
+
+<blockquote>
+  <pre><code>class Employee(object):
+    """ Creates and Employee class object. 
+         Attributes: first name, last name, age. """"
+    def __init__(self, firstname, lastname, age):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.age = age
+    def __repr__(self):
+        return 'Employee: %s, %s.  Age %s' % (self.lastname, self.firstname, str(self.age))
+</code></pre>
+</blockquote>
+
+<blockquote>
+  <pre><code>sarah = Employee("Sarah", "Thomas", 32)
+sarah
 </code></pre>
 </blockquote>
 

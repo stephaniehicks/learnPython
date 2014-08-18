@@ -17,7 +17,7 @@ Why use these modules?  Because working with these modules gives you the perform
 
 # Creating NumPy arrays
 
-To create a `numpy` array, use the `numpy.array()` method on a python `list` or `tuple` or reading data from files. This will create a `ndarray` object. 
+To create a `numpy` array, use the `numpy.array()` method on a python `list` or `tuple` or reading data from files. This will create a fast multidimensional array `ndarray` object. 
 
 >	x = array([1,2,3,4])
 >	y = array([[1,2], [3,4]])
@@ -46,8 +46,10 @@ Function | Description
 `linspace(start,stop,length)` | Create a range between start and stop (both ends included)
 `logspace(start, stop, length, base)` | Create a range in the log space with a define base)
 `mgrid[0:n, 0:m]` | Create a meshgrid 
+`random.randint(a, b, N)` | Generate N random integers between a and b
 `random.rand(n, m)` | Generate uniform random numbers in [0,1] of dim n x m
 `random.randn(n, m)` | Generate standard normal random numbers of dim n x m
+`random.binomial(n, p, size = N)` | Generated N binomial random variables with parameters n, p
 `diag([1,2,3], k=offset)` | Generate a diagonal matrix with the input on the diagonal with an offset
 `zeros((3,3))` | Generate a zeros matrix
 `ones((3,3,))` | Generate a ones matrix
@@ -190,8 +192,8 @@ Function | Description
 `mean(x[:, 0])` | Mean of the first column
 `std(x[0,:])` | Standard deviation of first row
 `var(x[0, :])` | Variance of first row
-`x.min()`, `x.min(axis=0)`, `x.min(axis=`) | global min, min in each column (or row)
-`x.max()`, `x.max(axis=0)`, `x.max(axis=`) | global max, max in each column (or row)
+`x.min()`, `x.min(axis=0)`, `x.min(axis=`1) | global min, min in each column (or row)
+`x.max()`, `x.max(axis=0)`, `x.max(axis=`1) | global max, max in each column (or row)
 `trace(x)` | Trace (Same as `diag(x).sum()`)
 
 

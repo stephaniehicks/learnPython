@@ -27,6 +27,10 @@ Python by itself is pretty cool, but there are some limitations that make it not
 
 >	$ ipython
 
+If you use the argument `--pylab`, then a graphical environment for Python will also be loaded in the backend (e.g. `matplotlib`). 
+
+>	$ ipython --pylab
+
 
 
 # IPython notebook
@@ -34,7 +38,11 @@ Python by itself is pretty cool, but there are some limitations that make it not
 One of the more popular features is the [browser-based IPython notebook](http://ipython.org/notebook.html) which can combine code (and evaluate it), text, equations and plots all in one environment.  To start an IPython notebook session, type `ipython notebook` in the shell: 
 
 >	$ ipython notebook
+>	$ ipython notebook <name_of_downloaded_file.ipynb>
 
+If you have an python notebook that you want to open, place the name of the file after `ipython notebook`. Once you have started an IPython notebook server, the browser will display all the `.ipynb` files in the current working directory.   
+
+I'll discuss more on [ipython and ipython notebook in a little bit](IPython.html). 
 
 # Spyder 
 

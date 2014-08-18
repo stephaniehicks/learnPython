@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Documentation</title>
+    <title>Pandas</title>
     
     <meta name="author" content="Stephanie Hicks">
       
@@ -171,15 +171,40 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>Documentation </h1>
+  <h1>Pandas </h1>
 </div>
 
 <div class="row-fluid">
   <div class="span12">
     
-<ul>
-  <li><a href="https://github.com/rasbt/markdown-toclify/blob/master/README.md">markdown-toclify</a>: markdown-toclify is a Python command line script that adds a Table of Contents with internal section-links to Markdown documents.</li>
-</ul>
+<p>Pandas is a module in Python for working with data structures.  The main object from <a href="http://pandas.pydata.org">Pandas</a> is the <code>DataFrame</code> which organizes data into a column structure with row and column labels. This object can easily subset, aggregate and reshape the data using the array-computing features of NumPy.  </p>
+
+<h1 id="import-pandas">Import Pandas</h1>
+
+<blockquote>
+  <pre><code>import pandas as pd
+import numpy as np
+</code></pre>
+</blockquote>
+
+<h1 id="creating-a-dataframe">Creating a DataFrame</h1>
+
+<blockquote>
+  <pre><code>height = [5.6, 7.0, 4.9, 6.7, 5.2, 5.5, 6.1]
+names = ['Holly', 'Bart', 'Josh', 'Karen', 'Tom', 'Doug', 'Sophie', 'Joe']
+c1.height
+over5.5 = c1.height[c1.height &gt;=5.5]
+</code></pre>
+</blockquote>
+
+<p>To import data from a tab-delimited file,  </p>
+
+<blockquote>
+  <pre><code>data = pd.read_csv('myfile.txt', delimiter='\t', names=headernames).dropna()
+print "Number of rows: %i" % data.shape[0]
+data.head()  # print the first 5 rows
+</code></pre>
+</blockquote>
 
 
   </div>

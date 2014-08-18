@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Exploratory Data Analysis</title>
+    
+    <meta name="author" content="Stephanie Hicks">
+      
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+      <!-- knitr javascript -->
+    <script src="/assets/themes/twitter/knitr.js" type="text/javascript"></script>
+
+    <!-- mathjax javascript -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">Learn Python</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Exploratory Data Analysis  <small>matplotlib</small></h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    
+<p><a href="http://matplotlib.org">Matplotlib</a> is a module which is used for 2D and 3D plotting in python, IPython, or other interfaces such as IPython notebooks.    This module will do a lot of what you would expect from a tool to generate scientific figures.  For example you can use \LaTeX within the figure texts and can save the figures in many different formats such as <code>.eps</code>, <code>.png</code>, <code>.pdf</code>, etc.  </p>
+
+<h1 id="import-matplotlib">Import matplotlib</h1>
+
+<p>We import the <code>pyplot</code> which is part of <code>matplotlib</code>. <code>pyplot</code> is a collection of functions that make <code>matplotlib</code> work like MATLAB.  </p>
+
+<blockquote>
+  <pre><code>%matplotlib inline
+import matplotlib.pyplot as plt
+import matplotlib import rcParams # this module controls the default values for plotting in matplotlib
+</code></pre>
+</blockquote>
+
+<p>For example, to change the font size, line width and figure size, </p>
+
+<blockquote>
+  <pre><code>rcParams['font.size'] = 14
+rcParams['lines.linewidth'] = 2
+rcParams['figure.figsize'] = (10, 6)
+</code></pre>
+</blockquote>
+
+<p><strong>Note</strong>: When you use matplotlib to plot figures in an IPython notebook, you can configure the figures to be embedded in the notebook (vs opening in a new window) using the <code>%matplotlib inline</code> option. </p>
+
+<h1 id="plotting-with-pyplot">Plotting with pyplot</h1>
+<p>You provide a set of <code>pyplot</code> functions to change a figure and then we ask python to show us the figure.  </p>
+
+<blockquote>
+  <pre><code>import numpy as np
+x = np.arange(0, 5, 0.1)
+y = np.sin(x)
+plt.plot(x, y)
+</code></pre>
+</blockquote>
+
+<p>A slightly more complicated version is </p>
+
+<blockquote>
+  <pre><code>plt.plot(x, y, 'b-', x, y*2, 'rs, x, y*4, 'g^')
+plt.legend(loc= "topright")
+plt.legend("X axis")
+plt.ylabel("Sine curve")
+plt.title('Pretty since curve')
+plt.show()
+</code></pre>
+</blockquote>
+
+<p>Here we plot three sine curves with different y values.  the string following each pair of (x,y) values represents the color and type of line plotted.  The first line is a blue line, the second is a sine wave represented by red squares, the third is a sine wave represented by green triangles.  </p>
+
+<h4 id="other-statistical-graphs">Other statistical graphs</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Matplotlib function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>plt.plot(x, y)</code></td>
+      <td>Plot x, y values as lines</td>
+    </tr>
+    <tr>
+      <td><code>plt.scatter(x, y)</code></td>
+      <td>Scatter plots as dots</td>
+    </tr>
+    <tr>
+      <td><code>plt.hist(x, bins)</code></td>
+      <td>Histogram with defined bin cutoff values</td>
+    </tr>
+    <tr>
+      <td><code>plt.bar(pos, heights)</code></td>
+      <td>Bar plot</td>
+    </tr>
+    <tr>
+      <td><code>plt.barh(pos, heights)</code></td>
+      <td>Bar plot (horizontal)</td>
+    </tr>
+    <tr>
+      <td><code>plt.pie()</code></td>
+      <td>Pie chart</td>
+    </tr>
+    <tr>
+      <td><code>plt.boxplot([np.random.rand(1000), np.random.rand(1000) + 1])</code></td>
+      <td>Boxplot</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="customizing-the-matplotlib-pyplot">Customizing the matplotlib pyplot</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Matplotlib.pyplot function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>plt.title()</code></td>
+      <td>Title of plot</td>
+    </tr>
+    <tr>
+      <td><code>plt.xlabel()</code>, <code>plt.ylabel()</code></td>
+      <td>X and Y axis labels</td>
+    </tr>
+    <tr>
+      <td><code>plt.xlim(a,b)</code>, <code>plt.ylim(a,b)</code></td>
+      <td>X and Y axis limits</td>
+    </tr>
+    <tr>
+      <td><code>plt.legend(name, loc="topright")</code></td>
+      <td>Title and location of legend</td>
+    </tr>
+    <tr>
+      <td><code>plt.xticks(loc, labels)</code>, <code>plt.yticks(loc, labels)</code></td>
+      <td>X and Y axis ticks (locations and labels). (use option <code>rotation=45</code> to rotate 45 degrees)</td>
+    </tr>
+    <tr>
+      <td><code>plt.grid()</code></td>
+      <td>Controls the axis grids (on, off, colors, etc)</td>
+    </tr>
+    <tr>
+      <td><code>plt.annotate()</code></td>
+      <td>Create a piece of text referring to a data point (annotation)</td>
+    </tr>
+    <tr>
+      <td><code>plt.subplot(brows, ncols, plot_number)</code></td>
+      <td>Defines which subplot to plot next (e.g. <code>plt.subplot(121)</code> plots 1 row with 2 columns and the last number is the specific subplot</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="resources">Resources</h4>
+
+<ul>
+  <li><a href="http://www.loria.fr/~rougier/teaching/matplotlib/">Basic plots using matplotlib</a></li>
+  <li><a href="http://www.randalolson.com/2014/06/28/how-to-make-beautiful-data-visualizations-in-python-with-matplotlib">Using matplotlib to plot data in IPython</a></li>
+</ul>
+
+
+  </div>
+</div>
+
+
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; 2014 Stephanie Hicks
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

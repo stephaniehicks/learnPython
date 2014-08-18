@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>SciPy</title>
+    <title>Python modules</title>
     
     <meta name="author" content="Stephanie Hicks">
       
@@ -171,83 +171,130 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>SciPy </h1>
+  <h1>Python modules  <small>Cleaning data</small></h1>
 </div>
 
 <div class="row-fluid">
   <div class="span12">
     
-<p>Now that you know a little bit about <a href="numpy.html">NumPy</a> and SciPy is a collection of mathematical and scientific modules built on top of NumPy.  For example, SciPy can handle multidimensional arrays, integration, linear algebra, statistics and optimization.  </p>
+<p>Modules to manipulate regular expressions and string manipulation</p>
 
-<h1 id="import-scipy">Import SciPy</h1>
-<p>To import the SciPy module, use </p>
+<h4 id="re">re</h4>
+<p>This module is used to manipulate regular expressions.  The function <code>sub()</code> searches a string (s) and replaces all the words that match the regular expression. </p>
 
 <blockquote>
-  <pre><code>from numpy import *
-from scipy import *
+  <pre><code>import re
+re.sub(regex, replacementword, stringtosearch)
+re.search()
+re.compile()
 </code></pre>
 </blockquote>
 
-<p>SciPy includes most of NumPy, so importing SciPy should be generally OK. The main SciPy module is made up of many <a href="http://docs.scipy.org/doc/scipy/reference/">submodules containing specialized topics</a>. </p>
+<p>Useful regular expressions in Python</p>
 
 <table>
   <thead>
     <tr>
-      <th>Favorite SciPy submodules</th>
-      <th>What does it contain?</th>
+      <th>Expression</th>
+      <th>Interpretation</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code>scipy.stats</code></td>
-      <td><a href="http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html">statistics</a>: random variables, probability density functions, cumulative distribution functions, survival functions</td>
+      <td>^</td>
+      <td>matches the beginning of a string</td>
     </tr>
     <tr>
-      <td><code>scipy.integrate</code></td>
-      <td><a href="http://docs.scipy.org/doc/scipy/reference/tutorial/integrate.html">integration</a>: single, double, triple integration, trapezoidal rule, Simpson’s rule, differential equation solvers</td>
+      <td>$</td>
+      <td>matches the end of a string</td>
     </tr>
     <tr>
-      <td><code>scipy.signal</code></td>
-      <td><a href="http://docs.scipy.org/doc/scipy/reference/signal.html">signal processing tools</a>: signal processing tools such as wavelets, spectral densities, filters, B-splines</td>
+      <td>\b</td>
+      <td>matches a word boundary</td>
     </tr>
     <tr>
-      <td><code>scipy.optimize</code></td>
-      <td><a href="http://docs.scipy.org/doc/scipy/reference/optimize.html">optimization</a>: find roots, curve fitting, least squares, etc</td>
+      <td>\d</td>
+      <td>matches any numeric digit</td>
     </tr>
     <tr>
-      <td><code>scipy.special</code></td>
-      <td><a href="http://docs.scipy.org/doc/scipy/reference/tutorial/special.html">special functions</a>: very specialized functions in mathematical physics e.g. bessel, gamma</td>
+      <td>\D</td>
+      <td>matches any non-numeric digit</td>
     </tr>
     <tr>
-      <td><code>scipy.linalg</code></td>
-      <td><a href="http://docs.scipy.org/doc/scipy/reference/linalg.html">linear algebra</a>: inverse of a matrix, determinant, Kronecker product, eigenvalue decomposition, SVD, functions for matrices (beyond those in <code>numpy.linalg</code>)</td>
+      <td>x?</td>
+      <td>matches an optional x character</td>
+    </tr>
+    <tr>
+      <td>x*</td>
+      <td>matches x zero or more times</td>
+    </tr>
+    <tr>
+      <td>x+</td>
+      <td>matches x one or more times</td>
+    </tr>
+    <tr>
+      <td>x{n, m}</td>
+      <td>matches x at least n times, but not more than m times</td>
+    </tr>
+    <tr>
+      <td>(a | b | c)</td>
+      <td>matches either a, b or c</td>
     </tr>
   </tbody>
 </table>
 
-<p>If you want to import a SciPy submodule (e.g. the statistics submodule <code>scipy.stats</code>), use </p>
+<h4 id="string">string</h4>
+<ul>
+  <li><code>string.punctuation()</code></li>
+  <li><code>string.strip()</code></li>
+  <li><code>string.replace()</code></li>
+  <li><code>string.translate()</code></li>
+</ul>
+
+<h4 id="collections">collections</h4>
+<p>The <a href="https://docs.python.org/2/library/collections.html">collections</a> module contains functions to expand upon Python’s built in data types (<code>list</code>, <code>tuple</code>, <code>dict</code>, etc).  </p>
+
+<table>
+  <thead>
+    <tr>
+      <th><code>collections</code> class</th>
+      <th>Interpretation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>namedtuple()</code></td>
+      <td>a class similar to a <code>tuple</code> with named fields</td>
+    </tr>
+    <tr>
+      <td><code>deque</code></td>
+      <td>a class similar to a <code>list</code> that can quickly <code>append</code> and <code>pop</code> (on either end)</td>
+    </tr>
+    <tr>
+      <td><code>Counter</code></td>
+      <td>a subclass of <code>dict</code> that can be used for counting hashable objects</td>
+    </tr>
+    <tr>
+      <td><code>OrderedDict</code></td>
+      <td>a subclass of <code>dict</code> that remembers the order entries were added</td>
+    </tr>
+    <tr>
+      <td><code>defaultdict</code></td>
+      <td>a subclass of <code>dict</code> that allows for missing values</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="datetime">datetime</h4>
+<p>The datetime module can be used to print out the date and time. the function <code>now()</code> will print out the current day and time. Some attributes inclue <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>, <code>second</code>. </p>
 
 <blockquote>
-  <pre><code>from scipy import stats
-</code></pre>
-
-</blockquote>
-
-<h1 id="scipystats">scipy.stats</h1>
-<p>Let’s dive a bit deeper in <code>scipy.stats</code>. The real utility of this submodule is to access probability distributions functions (pdfs) and standard statistical tests (e.g. $t$-test).  </p>
-
-<h4 id="probability-distribution-functions">Probability distribution functions</h4>
-<p>There is a large collection of <a href="http://docs.scipy.org/doc/scipy/reference/stats.html">continuous and discrete pdfs</a> in the <code>scipy.stats</code> submodule.  The syntax to simulate random variables from a specific pdf is the name of the distribution  followed by <code>.rvs</code>. To generate $n$=10 $N(0,1)$ random variables, </p>
-
-<blockquote>
-  <pre><code>from scipy.stats import norm
-norm.rvs(loc = 0, scale = 1, size = 10)
+  <pre><code>import datetime 
+now = datetime.now()
+print '%s/%s/%s' % (now.month, now.day, now.year)
 </code></pre>
 </blockquote>
 
-<h4 id="statistical-tests-for-significance">Statistical tests for significance</h4>
-
-<h4 id="resources">Resources</h4>
 
   </div>
 </div>

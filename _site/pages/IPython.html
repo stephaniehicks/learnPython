@@ -6,7 +6,7 @@
     <title>IPython</title>
     
     <meta name="author" content="Stephanie Hicks">
-
+      
     <!-- Enable responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -130,6 +130,34 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -151,35 +179,56 @@
     
 <p><a href="http://ipython.org">IPython</a> is an <em>interactive</em> command-line tool for the Python programming language.  Some of the features include tab completion, shell syntax, data visualizations, tools for parallel computing. One of the more popular features is the <a href="http://ipython.org/notebook.html">browser-based IPython notebook</a> which can combine code (and evaluate it), text, equations and plots all in one environment. The IPython notebook is similar to using <a href="https://www.rstudio.com">Rstudio</a> when writing code in the <a href="http://cran.us.r-project.org">R</a> programming language. </p>
 
-<p>This is a short introduction to using IPython </p>
+<p>To start ipython (or ipython notebook) in a command line, use the <code>ipython</code> (<code>ipython notebook</code>) command</p>
 
-<p>Install setuptools
-https://pypi.python.org/pypi/setuptools#unix-including-mac-os-x-curl</p>
+<blockquote>
+  <pre><code>$ ipython
+</code></pre>
+</blockquote>
 
-<table>
-  <tbody>
-    <tr>
-      <td>curl https://bootstrap.pypa.io/ez_setup.py -o -</td>
-      <td>python</td>
-    </tr>
-  </tbody>
-</table>
+<p>Each ipython notebook is comprised of many “cells” which can have code or text in it. To evaluate a cell, click the “play” button at the top of the notebook or click Shift + Enter. </p>
 
-<p>Once installation is complete, you will find an easy_install program in your Python Scripts subdirectory. F</p>
-
-<p>http://pip.readthedocs.org/en/latest/installing.html
-python get-pip.py</p>
-
-<p>sudo pip install gnureadline</p>
-
-<h1 id="plots-in-ipython">Plots in IPython</h1>
+<h3 id="evaluating-code-in-ipython">Evaluating code in ipython</h3>
 
 <ul>
-  <li><a href="http://www.loria.fr/~rougier/teaching/matplotlib/">Basic plots using matplotlib</a></li>
-  <li><a href="http://www.randalolson.com/2014/06/28/how-to-make-beautiful-data-visualizations-in-python-with-matplotlib">Using matplotlib to plot data in IPython</a></li>
+  <li>To evaluate code, use the <code>&lt;return&gt;</code> </li>
+  <li>Pressing <ctrl-c> will interrupt any code running</ctrl-c></li>
+  <li>Use the <code>%run</code> command to evaluate a <code>.py</code> script inside of <code>ipython</code> (identical to running <code>python myscript.py</code> in command line)</li>
 </ul>
 
-<h1 id="themes-in-ipython">Themes in IPython</h1>
+<blockquote>
+  <pre><code>%run myscript.py
+%run -i myscript .py
+</code></pre>
+</blockquote>
+
+<p>The second line gives access to using variables defined in the ipython namespace</p>
+
+<ul>
+  <li>Use the <code>%paste</code> magic function to take whatever text is on the clipboard and execute it as a single block in the shell (i.e. overcomes code with unexpected indents or new lines)</li>
+  <li>Use the <code>%cpaste</code> magic function (similar to <code>%paste</code>) except you can paste as much code as you would like before evaluating it</li>
+</ul>
+
+<h3 id="getting-help-in-ipython">Getting help in ipython</h3>
+
+<ul>
+  <li>Tab completion can be used to complete any variables (objects, functions, modules, file paths)</li>
+  <li>Use the question mark (<code>?</code>) before or after any variable to get help about the object or show the <code>docstring</code> (documentation)</li>
+  <li>Use a double question mark (<code>??</code>) to show functions source code (if available)</li>
+</ul>
+
+<h3 id="ipython-magic-commands">IPython magic commands</h3>
+
+<p>As you saw above, ipython has a set of <em>magic functions</em> which are special commands that make programming in ipython significantly easier.  To get help use <code>%quickref</code> or <code>%magic</code>. </p>
+
+<p>For example, to delete all variables in the interactive namespace use <code>%reset</code>.  To time a process use <code>%timeit</code>. To print the command input history, use <code>%hist</code>.  To create a bookmark to save aliases for common directories, use <code>%bookmark</code></p>
+
+<blockquote>
+  <pre><code>%bookmark db ~/Dropbox/
+</code></pre>
+</blockquote>
+
+<h3 id="themes-in-ipython">Themes in IPython</h3>
 
 <ul>
   <li><a href="http://blog.henryhhammond.com/theming-ipython/">Customizing and theming IPython in a single .css file</a></li>

@@ -6,7 +6,7 @@
     <title>learnPython</title>
     
     <meta name="author" content="Stephanie Hicks">
-
+      
     <!-- Enable responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -130,6 +130,34 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -151,13 +179,21 @@
     
 <p>Python is a <strong>high-level</strong>, <strong>object-oriented</strong> programming language useful to know for anyone <a href="http://lorenabarba.com/blog/why-i-push-for-python/">analyzing data</a>.  The most important thing to know before learning Python, is that in Python, <em>everything</em> is an <strong>object</strong>.  There is no compiling and no need to define the type of variables before using them.  No need to allocate memory for variables. The code is very easy to learn and easy to read (syntax).  </p>
 
-<p>There is a large scientific community contributing to Python. Three of the most widely used libraries in Python for data analysis are <a href="http://numpy.scipy.org">numpy</a>, <a href="http://www.scipy.org">scipy</a> and <a href="http://www.matplotlib.org">matplotlib</a>. In addition, users can use <a href="http://ipython.org">IPython</a> which is an <em>interactive</em> command-line tool for the Python programming language. </p>
+<p>There is a large scientific community contributing to Python. Three of the most widely used libraries in Python for data analysis are <a href="http://numpy.scipy.org">numpy</a>, <a href="http://www.scipy.org">scipy</a>, <a href="http://pandas.pydata.org">pandas</a>, and <a href="http://www.matplotlib.org">matplotlib</a>. In addition, users can use <a href="http://ipython.org">IPython</a> which is an <em>interactive</em> command-line tool for the Python programming language. When performing data analysis with Python, the tasks will be (generally) broken up into the following categories: </p>
+
+<ol>
+  <li>Scrapping data from web or reading from files / databases</li>
+  <li>Data cleaning, munging, transforming, reshaping</li>
+  <li>Exploratory data analysis e.g. histograms, scatterplots, boxplots</li>
+  <li>Applying statistical models e.g. performing some kind of estimation</li>
+  <li>Reporting results e.g. using graphics or tables</li>
+</ol>
 
 <p>You may be familiar with another programming language such as <a href="http://cran.us.r-project.org">R</a> or <a href="http://www.mathworks.com/products/matlab/">Matlab</a>, <a href="http://www.sas.com/en_us/home.html">SAS</a>, <a href="http://www-01.ibm.com/software/analytics/spss/">SPSS</a>, <a href="http://julialang.org">Julia</a> or <a href="http://www.wolfram.com/mathematica/">Mathematica</a>, but <a href="https://www.python.org">Python</a> is an essential language to know when it comes to <a href="http://seanjtaylor.com/post/39573264781/the-statistics-software-signal">data analysis</a>. As there are many other programming languages out there for data analysis / statistics, I wrote this tutorial (really an <em>expanded cheatsheet</em>) assuming the reader has some previous background in at least one programming language and some statistical background.  The idea <em>what</em> things like <code>for</code> loops are will not be discussed, but rather the syntax of <code>for</code> loops in Python will be discussed.  </p>
 
 <p>I break down this tutorial into sections. The first section contains the essentials of how to program in the Python language.  The second section is more focused on actual data analysis in Python.  I also want to mention this tutorial is currently evolving and I will add material to it frequently over the next few months.  If there is a topic you would like to see included in this tutorial, I would love to hear your suggestions.  </p>
 
-<h4 id="essentials-of-programming-in-python">Essentials of programming in Python:</h4>
+<h3 id="essentials-of-programming-in-python">Essentials of programming in Python:</h3>
 
 <ul>
   <li><a href="pages/startingPython.html">Starting with Python</a></li>
@@ -172,30 +208,37 @@
   </li>
   <li><a href="pages/classes.html">Classes: objects, attributes and methods</a>	</li>
   <li><a href="pages/modules.html">Import Modules</a></li>
-  <li><a href="pages/import.html">Import/export files and databases</a></li>
 </ul>
 
-<h4 id="data-analysis-for-python">Data analysis for Python:</h4>
+<h3 id="data-analysis-for-python">Data analysis for Python:</h3>
 
 <ul>
   <li><a href="pages/IPython.html">IPython</a></li>
-  <li><a href="pages/numpy.html">NumPy</a></li>
-  <li><a href="pages/scipy.html">SciPy</a></li>
-  <li><a href="pages/documentation.html">Documentation</a></li>
 </ul>
 
-<h2 id="further-reading--other-great-resources">Further reading &amp; other great resources:</h2>
-<p>The material for this tutorial was taken from various resources and tutorials found in books and on the web. I have provided a list of the ones that I have found to be most helpful.  </p>
+<p>Scrapping data from web or reading from files / databases and data cleaning, munging, transforming, reshaping</p>
 
 <ul>
-  <li><a href="http://www.greenteapress.com/thinkpython/thinkpython.html">Think Python</a></li>
-  <li><a href="http://www.diveintopython.net">Dive Into Python</a></li>
-  <li><a href="http://www.amazon.com/Python-Data-Analysis-Wrangling-IPython/dp/1449319793">Data analysis for Python</a></li>
-  <li><a href="http://learnpythonthehardway.org/book/">Learn Python The Hard Way</a></li>
-  <li><a href="http://www.newcoder.io">New Coder</a></li>
-  <li><a href="http://puzzles.bostonpython.com">Boston Python Puzzles</a></li>
-  <li><a href="http://www.codecademy.com/">codeacademy</a> - Interactive way to learn the basic Python syntax</li>
-  <li><a href="https://github.com/jrjohansson/scientific-python-lectures">Scientific Python Lectures</a> - Lectures on scientific computing with Python as IPython notebooks</li>
+  <li><a href="pages/import.html">Import/export files and databases</a></li>
+  <li><a href="pages/modules_scraping.html">Modules for scrapping data from web</a></li>
+  <li><a href="pages/modules_databases.html">Modules for importing and exporting from databases</a></li>
+</ul>
+
+<p>Exploratory data analysis (e.g. histograms, scatterplots, boxplots) and applying statistical models</p>
+
+<ul>
+  <li><a href="pages/numpy.html">NumPy</a></li>
+  <li><a href="pages/scipy.html">SciPy</a></li>
+  <li><a href="pages/pandas.html">Pandas</a></li>
+  <li><a href="pages/modules_eda.html">Exploratory data analysis</a></li>
+  <li><a href="pages/modules_statistics.html">Probability and statistics modules</a></li>
+</ul>
+
+<h3 id="further-reading--other-great-resources">Further reading &amp; other great resources:</h3>
+
+<ul>
+  <li><a href="pages/resources.html">Resources</a></li>
+  <li><a href="pages/documentation.html">Documentation</a></li>
 </ul>
 
   </div>

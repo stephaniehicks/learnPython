@@ -6,7 +6,7 @@
     <title>NumPy</title>
     
     <meta name="author" content="Stephanie Hicks">
-
+      
     <!-- Enable responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -130,6 +130,34 @@
       
     
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
 
 
 
@@ -162,7 +190,7 @@
 
 <h1 id="creating-numpy-arrays">Creating NumPy arrays</h1>
 
-<p>To create a <code>numpy</code> array, use the <code>numpy.array()</code> method on a python <code>list</code> or <code>tuple</code> or reading data from files. This will create a <code>ndarray</code> object. </p>
+<p>To create a <code>numpy</code> array, use the <code>numpy.array()</code> method on a python <code>list</code> or <code>tuple</code> or reading data from files. This will create a fast multidimensional array <code>ndarray</code> object. </p>
 
 <blockquote>
   <pre><code>x = array([1,2,3,4])
@@ -240,12 +268,20 @@ type(x), type(y)
       <td>Create a meshgrid</td>
     </tr>
     <tr>
+      <td><code>random.randint(a, b, N)</code></td>
+      <td>Generate N random integers between a and b</td>
+    </tr>
+    <tr>
       <td><code>random.rand(n, m)</code></td>
       <td>Generate uniform random numbers in [0,1] of dim n x m</td>
     </tr>
     <tr>
       <td><code>random.randn(n, m)</code></td>
       <td>Generate standard normal random numbers of dim n x m</td>
+    </tr>
+    <tr>
+      <td><code>random.binomial(n, p, size = N)</code></td>
+      <td>Generated N binomial random variables with parameters n, p</td>
     </tr>
     <tr>
       <td><code>diag([1,2,3], k=offset)</code></td>
@@ -493,11 +529,11 @@ shape(x * yT)
       <td>Variance of first row</td>
     </tr>
     <tr>
-      <td><code>x.min()</code>, <code>x.min(axis=0)</code>, <code>x.min(axis=</code>)</td>
+      <td><code>x.min()</code>, <code>x.min(axis=0)</code>, <code>x.min(axis=</code>1)</td>
       <td>global min, min in each column (or row)</td>
     </tr>
     <tr>
-      <td><code>x.max()</code>, <code>x.max(axis=0)</code>, <code>x.max(axis=</code>)</td>
+      <td><code>x.max()</code>, <code>x.max(axis=0)</code>, <code>x.max(axis=</code>1)</td>
       <td>global max, max in each column (or row)</td>
     </tr>
     <tr>
@@ -544,13 +580,7 @@ print f(3)
 
 <blockquote>
   <pre><code>if (x &gt; 0).any()
-</code></pre>
-</blockquote>
-
-<p>or </p>
-
-<blockquote>
-  <pre><code>if (x &gt; 0).all()
+if (x &gt; 0).all()
 </code></pre>
 </blockquote>
 

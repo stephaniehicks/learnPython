@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Python modules</title>
+    
+    <meta name="author" content="Stephanie Hicks">
+      
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+      <!-- knitr javascript -->
+    <script src="/assets/themes/twitter/knitr.js" type="text/javascript"></script>
+
+    <!-- mathjax javascript -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">Learn Python</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Python modules  <small>Scraping data from web</small></h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    
+<h4 id="urllib">urllib</h4>
+<p>This builtin Python module is useful to getting information about and retrieving data from the web. The function <code>urlopen()</code> open a URL (similar to opening a file).  The file-like object has some of the methods as a file object.  For example, to read the entire HTML of the webpage into a single string, use the method <code>read()</code>. <code>readlines()</code> can read in the text line by line. </p>
+
+<blockquote>
+  <pre><code>import urllib
+x = urllib.urlopen("http://diveintopython.org")
+htmlSource = x.read()
+x.close()
+print htmlSource
+</code></pre>
+</blockquote>
+
+<p>Once you have the HTML source code, you have to parse it and clean it up.  </p>
+
+<h4 id="requests">requests</h4>
+<p>The <a href="http://docs.python-requests.org/en/latest/">requests</a> module is a more user-friendly version of urllib with more features.  The function <code>requests.get()</code> creates a <code>request</code> object containing the information about a given webpage and the parameter <code>.text</code> downloads the text from the webpage. The parameter <code>.url</code> returns the url. </p>
+
+<blockquote>
+  <pre><code>import requests
+url = 'http://www.google.com'
+r = requests.get(url)
+print r.text
+print r.url 
+</code></pre>
+</blockquote>
+
+<p>The webpage is returned as a block of text which will then need to be parsed to extract the interesting information. </p>
+
+<p>If you do not want to explicitly type the URL, you can specify a base URL with a <code>get</code> dictionary</p>
+
+<blockquote>
+  <pre><code>url = 'http://www.imdb.com/search/title'
+params = dict(sort='num_votes,desc', start=1, title_type='feature', year='1950,2012')
+r = requests.get(url, params=params)
+print r.url 
+</code></pre>
+</blockquote>
+
+<h1 id="modules-parsing-html-and-xml-pages">Modules: parsing html and xml pages</h1>
+
+<h4 id="pattern">pattern</h4>
+<p>The <a href="http://www.clips.ua.ac.be/pages/pattern">pattern</a> module can be used to parse HTML and XML pages. The <code>pattern.web</code> module is a submodule of <code>pattern</code> which can be used to parse HTML <a href="http://en.wikipedia.org/wiki/Document_Object_Model">Document Object Model</a> (DOM), strip HTML tags, and </p>
+
+<blockquote>
+  <pre><code>from pattern import web
+</code></pre>
+</blockquote>
+
+<p>The HTML DOM parser in <code>pattern.web</code> is very easy to use.  Use the <code>Element()</code> function to parse the text from the webpage.  For example, if we want to parse the text from google.com by <code>script</code>, we would </p>
+
+<blockquote>
+  <pre><code>r = requests.get("http://www.google.com")
+dom = web.Element(r.text)
+dom.by_tag('script')
+</code></pre>
+</blockquote>
+
+<p>This returns a list of nested <code>Element</code>s with a given tag name (e.g. <code>script</code>, <code>graph</code>, <code>meta</code>, <code>div</code>, etc). The typical use is to use a <code>for</code> loop to loop through this list. e.g. </p>
+
+<blockquote>
+  <pre><code>url = 'http://www.imdb.com/search/title'
+params = dict(sort='num_votes,desc', start=1, title_type='feature', year='1950,2012')
+r = requests.get(url, params=params)
+
+dom = web.Element(r.text)
+for movie in dom.by_tag('td.title'):
+    title = movie.by_tag('a')[0].content
+    rating = movie.by_tag('span.value')[0].content
+    print title, rating
+</code></pre>
+</blockquote>
+
+<h4 id="beautifulsoup">BeautifulSoup</h4>
+<p>The <a href="">BeautifulSoup</a> module is similar to parsing HTML and XML pages using <a href="http://www.clips.ua.ac.be/pages/pattern">pattern</a>. To import the module, use</p>
+
+<blockquote>
+  <pre><code>from BeautifulSoup import BeautifulSoup
+</code></pre>
+</blockquote>
+
+<p>To extra the movie titles and ratings as above in the pattern module, use </p>
+
+<blockquote>
+  <pre><code>url = 'http://www.imdb.com/search/title'
+params = dict(sort='num_votes,desc', start=1, title_type='feature', year='1950,2012')
+r = requests.get(url, params=params)
+
+dom = web.Element(r.text)
+for movie in bs.findAll('td', 'title'):
+    title = movie.find('a').contents[0]
+    rating = movie.find('span', 'value').contents[0]
+    print title, rating
+</code></pre>
+</blockquote>
+
+<h4 id="sgmllib">sgmllib</h4>
+<p>The <a href="https://docs.python.org/2/library/sgmllib.html">sgmllib</a> module is a simple SGML (Standard Generalized Mark-up Language) parser.  The goal of the module is to process HTML code.  The main function is <code>SGMLParser</code> which parses HTML code into 8 kinds of data: </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Definition</th>
+      <th>Example</th>
+      <th>SGMLParser function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>start tag</em></td>
+      <td>an HTML tag that starts a block</td>
+      <td>&lt;html&gt;, &lt;head&gt;, &lt;body&gt;</td>
+      <td><code>start_tagname</code>, <code>do_tagname</code></td>
+    </tr>
+    <tr>
+      <td><em>end tag</em></td>
+      <td>an HTML tag that ends a block</td>
+      <td>&lt;/html&gt;, &lt;/head&gt;, &lt;/body&gt;</td>
+      <td><code>end_tagname</code></td>
+    </tr>
+    <tr>
+      <td><em>character reference</em></td>
+      <td>an escaped character referenced by its decimal</td>
+      <td> </td>
+      <td><code>handle_charref</code></td>
+    </tr>
+    <tr>
+      <td><em>entity reference</em></td>
+      <td>an HTML entity</td>
+      <td>\&amp; copy;</td>
+      <td><code>handle_entityref</code></td>
+    </tr>
+    <tr>
+      <td><em>comment</em></td>
+      <td>an HTML comment</td>
+      <td>comments inclosed in &lt;|– … –&gt;</td>
+      <td><code>handle_comment</code></td>
+    </tr>
+    <tr>
+      <td><em>processing instruction</em></td>
+      <td>an HTML processing instruction</td>
+      <td>instruction enclosed in &lt;? … &gt;</td>
+      <td><code>handle_pi</code></td>
+    </tr>
+    <tr>
+      <td><em>declaration</em></td>
+      <td>an HTML declaration</td>
+      <td>DOCTYPE enclosed in &lt;! … &gt;</td>
+      <td><code>handle_dec1</code></td>
+    </tr>
+    <tr>
+      <td><em>text data</em></td>
+      <td>a block of text</td>
+      <td>anything that does not fall into the other 7 categories</td>
+      <td><code>handle_data</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="modules-parsing-json-objects">Modules: parsing JSON objects</h1>
+
+<h4 id="json">json</h4>
+<p>The <a href="https://docs.python.org/2/library/json.html">json</a> module can be used to parse JSON (JavaScript Object Notation) objects to a Python dictionary. </p>
+
+<blockquote>
+  <pre><code>import json
+</code></pre>
+</blockquote>
+
+<p>The <code>json.loads()</code>function can be used to parse by line</p>
+
+<blockquote>
+  <pre><code>path = 'myjsonfile.txt'
+mydict = [json.loads(line) for line in open(path)]
+</code></pre>
+</blockquote>
+
+<p>This returns a list of nested <code>Element</code>s with a given tag name (e.g. <code>script</code>, <code>graph</code>, <code>meta</code>, <code>div</code>, etc). The typical use is to use a <code>for</code> loop to loop through this list. e.g. </p>
+
+<blockquote>
+  <pre><code>url = 'http://www.imdb.com/search/title'
+params = dict(sort='num_votes,desc', start=1, title_type='feature', year='1950,2012')
+r = requests.get(url, params=params)
+
+dom = web.Element(r.text)
+for movie in dom.by_tag('td.title'):
+    title = movie.by_tag('a')[0].content
+    rating = movie.by_tag('span.value')[0].content
+    print title, rating
+</code></pre>
+</blockquote>
+
+
+  </div>
+</div>
+
+
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; 2014 Stephanie Hicks
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+
