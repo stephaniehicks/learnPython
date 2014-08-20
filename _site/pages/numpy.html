@@ -177,30 +177,33 @@
 <div class="row-fluid">
   <div class="span12">
     
-<p>NumPy and SciPy are modules in Python for scientific computing.  <a href="http://www.numpy.org">NumPy</a> lets you do fast, vectorized operations on arrays and <a href="http://www.scipy.org">SciPy</a> is a collection of mathematical and scientific modules built on top of NumPy.  </p>
+<p>NumPy and SciPy are modules in Python for scientific computing.  <a href="http://www.numpy.org">NumPy</a> lets you do fast, vectorized operations on arrays.  Why use this module?  </p>
 
-<p>Why use these modules?  Because working with these modules gives you the performance of using low-level code (e.g. C or Fortran) with the benefit of writing the code in an interpreted scripting language (all while keeping the native Python code). For example, the objects created by NumPy (e.g. arrays) are memory efficient and support mathematical functions.  </p>
+<ul>
+  <li>It gives you the performance of using low-level code (e.g. C or Fortran) with the benefit of writing the code in an interpreted scripting language (all while keeping the native Python code). </li>
+  <li>It gives you a fast, memory-efficient multidimensional array called <code>ndarray</code> which allows you perform vectorized operations on (and supports mathematical functions such as linear algebra and random number generation)</li>
+</ul>
 
 <h1 id="import-numpy">Import NumPy</h1>
 
 <blockquote>
-  <pre><code>from numpy import *
+  <pre><code>import numpy as np
 </code></pre>
 </blockquote>
 
 <h1 id="creating-numpy-arrays">Creating NumPy arrays</h1>
 
-<p>To create a <code>numpy</code> array, use the <code>numpy.array()</code> method on a python <code>list</code> or <code>tuple</code> or reading data from files. This will create a fast multidimensional array <code>ndarray</code> object. </p>
+<p>To create a fast, multidimensional <code>ndarray</code> object, use the <code>np.array()</code> method on a python <code>list</code> or <code>tuple</code> or reading data from files. </p>
 
 <blockquote>
-  <pre><code>x = array([1,2,3,4])
-y = array([[1,2], [3,4]])
+  <pre><code>x = np.array([1,2,3,4])
+y = np.array([[1,2], [3,4]])
 type(x), type(y)
 </code></pre>
 </blockquote>
 
 <h4 id="properties-of-numpy-arrays">Properties of NumPy arrays</h4>
-<p>There are a set of properties about the numpy arrays such the dimensions, the size, etc.  </p>
+<p>There are a set of properties about the <code>ndarray</code> object such the dimensions, the size, etc.  </p>
 
 <table>
   <thead>
@@ -220,7 +223,7 @@ type(x), type(y)
     </tr>
     <tr>
       <td><code>y.dtype</code></td>
-      <td>Data type</td>
+      <td>Data type of array</td>
     </tr>
     <tr>
       <td><code>y.astype(float)</code></td>
@@ -241,7 +244,7 @@ type(x), type(y)
   </tbody>
 </table>
 
-<h4 id="various-other-ways-to-generate-numpy-arrays">Various other ways to generate NumPy arrays</h4>
+<h4 id="other-various-ways-to-generate-numpy-arrays">Other various ways to generate NumPy arrays</h4>
 
 <table>
   <thead>
@@ -252,69 +255,119 @@ type(x), type(y)
   </thead>
   <tbody>
     <tr>
-      <td><code>arange(start,stop,step)</code></td>
+      <td><code>np.arange(start,stop,step)</code></td>
       <td>Create a range between the start and stop arguments</td>
     </tr>
     <tr>
-      <td><code>linspace(start,stop,length)</code></td>
+      <td><code>np.linspace(start,stop,length)</code></td>
       <td>Create a range between start and stop (both ends included)</td>
     </tr>
     <tr>
-      <td><code>logspace(start, stop, length, base)</code></td>
+      <td><code>np.logspace(start, stop, length, base)</code></td>
       <td>Create a range in the log space with a define base)</td>
     </tr>
     <tr>
-      <td><code>mgrid[0:n, 0:m]</code></td>
+      <td><code>np.mgrid[0:n, 0:m]</code></td>
       <td>Create a meshgrid</td>
     </tr>
     <tr>
-      <td><code>random.randint(a, b, N)</code></td>
-      <td>Generate N random integers between a and b</td>
-    </tr>
-    <tr>
-      <td><code>random.rand(n, m)</code></td>
-      <td>Generate uniform random numbers in [0,1] of dim n x m</td>
-    </tr>
-    <tr>
-      <td><code>random.randn(n, m)</code></td>
-      <td>Generate standard normal random numbers of dim n x m</td>
-    </tr>
-    <tr>
-      <td><code>random.binomial(n, p, size = N)</code></td>
-      <td>Generated N binomial random variables with parameters n, p</td>
-    </tr>
-    <tr>
-      <td><code>diag([1,2,3], k=offset)</code></td>
+      <td><code>np.diag([1,2,3], k=offset)</code></td>
       <td>Generate a diagonal matrix with the input on the diagonal with an offset</td>
     </tr>
     <tr>
-      <td><code>zeros((3,3))</code></td>
-      <td>Generate a zeros matrix</td>
+      <td><code>np.zeros((3,3))</code></td>
+      <td>Generate a zeros matrix with given length or shape</td>
     </tr>
     <tr>
-      <td><code>ones((3,3,))</code></td>
-      <td>Generate a ones matrix</td>
+      <td><code>np.ones((3,3,))</code></td>
+      <td>Generate a ones matrix with given length or shape</td>
+    </tr>
+    <tr>
+      <td><code>np.empty((m,n))</code></td>
+      <td>Generate an array without initializing any values (pass a tuple for the shape)</td>
+    </tr>
+    <tr>
+      <td><code>np.eye(n)</code></td>
+      <td>Generate an n x n identity matrix</td>
     </tr>
   </tbody>
 </table>
 
-<h4 id="reshaping-resizing-and-stacking-numpy-arrays">Reshaping, resizing and stacking Numpy arrays</h4>
+<p>In addition, the <code>numpy.random</code> module can be used to create arrays using a random number generation </p>
+
+<blockquote>
+  <pre><code>from numpy import random
+</code></pre>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>np.random.randint(a, b, N)</code></td>
+      <td>Generate N random integers between a and b</td>
+    </tr>
+    <tr>
+      <td><code>np.random.rand(n, m)</code></td>
+      <td>Generate uniform random numbers in [0,1] of dim n x m</td>
+    </tr>
+    <tr>
+      <td><code>np.random.randn(n, m)</code></td>
+      <td>Generate standard normal random numbers of dim n x m</td>
+    </tr>
+    <tr>
+      <td><code>np.random.binomial(n, p, size = N)</code></td>
+      <td>Generate N binomial random variables with parameters n, p</td>
+    </tr>
+    <tr>
+      <td><code>np.random.normal(size=N)</code></td>
+      <td>Generate N standard normal random variables</td>
+    </tr>
+    <tr>
+      <td><code>np.random.shuffle()</code></td>
+      <td>Randomly permute a sequence in place</td>
+    </tr>
+    <tr>
+      <td><code>np.random.beta()</code></td>
+      <td>Generate N standard normal random variables</td>
+    </tr>
+    <tr>
+      <td><code>np.random.chisquare()</code></td>
+      <td>Generate N chisquare random variables</td>
+    </tr>
+    <tr>
+      <td><code>np.random.gamma()</code></td>
+      <td>Generate N gamma random variables</td>
+    </tr>
+    <tr>
+      <td><code>np.random.uniform()</code></td>
+      <td>Generate N uniform random variables</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="reshaping-resizing-and-stacking-numpy-arrays">Reshaping, resizing and stacking NumPy arrays</h4>
 
 <p>To reshape an array, use <code>reshape()</code>:</p>
 
 <blockquote>
-  <pre><code>z = arange(0, 10)
-z.reshape((2,5)) # dim 2 x 5
-shape(z)
+  <pre><code>z = np.arange(0, 10)
+z = z.reshape((2,5)) # dim 2 x 5
+np.shape(z)
 </code></pre>
 </blockquote>
 
 <p>To flatten an array (convert a higher dimensional array into a vector), use <code>flatten()</code>: </p>
 
 <blockquote>
-  <pre><code>A = random.rand(4,4)
+  <pre><code>A = np.random.rand(4,4)
 B = A.flatten()
-shape(B)
+np.shape(B)
 </code></pre>
 </blockquote>
 
@@ -347,52 +400,56 @@ shape(B)
       <td>Repeat each element in z <code>n</code> times.</td>
     </tr>
     <tr>
-      <td><code>tile(z, n)</code></td>
+      <td><code>z.sort()</code></td>
+      <td>Sorts the elements in place</td>
+    </tr>
+    <tr>
+      <td><code>np.tile(z, n)</code></td>
       <td>Repeat the entire array z <code>n</code> times.</td>
     </tr>
     <tr>
-      <td><code>concatenate((a,b), axis = 0)</code></td>
+      <td><code>np.concatenate((a,b), axis = 0)</code></td>
       <td>Concatenate two arrays (a, b) along the columns</td>
     </tr>
     <tr>
-      <td><code>concatenate((a,b), axis = 1)</code></td>
+      <td><code>np.concatenate((a,b), axis = 1)</code></td>
       <td>Concatenate two arrays (a, b) along the rows</td>
     </tr>
     <tr>
-      <td><code>hstack((a,b))</code></td>
+      <td><code>np.hstack((a,b))</code></td>
       <td>horizontally stack two arrays</td>
     </tr>
     <tr>
-      <td><code>vstack((a,b))</code></td>
+      <td><code>np.vstack((a,b))</code></td>
       <td>vertically stack two arrays</td>
     </tr>
   </tbody>
 </table>
 
 <h4 id="reading-and-writing-from-csv-files">Reading and writing from CSV files</h4>
-<p>To read comma-separated values (CSV) data from a file into numpy arrays, use the <code>numpy.genfromtxt()</code> function in <code>numpy</code>.  </p>
+<p>To read comma-separated values (CSV) data from a file into numpy arrays, use the <code>np.genfromtxt()</code> function in <code>np</code>.  </p>
 
 <blockquote>
-  <pre><code>data = genfromtxt('myfile.csv')
-data.shape
+  <pre><code>data = np.genfromtxt('myfile.csv')
+np.shape(data)
 </code></pre>
 </blockquote>
 
-<p>To save a <code>numpy</code> array in a CSV format, use <code>numpy.savetxt()</code> where <code>fmt</code> specifies the format to save in</p>
+<p>To save a <code>ndarray</code> object in a CSV format, use <code>np.savetxt()</code> where <code>fmt</code> specifies the format to save in</p>
 
 <blockquote>
   <pre><code>dat = random.rand(3,3)
-savetxt("output.csv", dat, fmt = '%.5f')
+np.savetxt("output.csv", dat, fmt = '%.5f')
 </code></pre>
 </blockquote>
 
 <h4 id="reading-and-writing-from-numpys-native-file-format">Reading and writing from NumPy’s native file format</h4>
-<p>To read from the numpy native file format (<code>.npy</code>), use the <code>numpy.save()</code> and <code>numpy.load()</code> functions. </p>
+<p>To read from the numpy native file format (<code>.npy</code>), use the <code>np.save()</code> and <code>np.load()</code> functions. </p>
 
 <blockquote>
   <pre><code>dat = random.rand(3,3)
-save("output.npy", dat, fmt = '%.5f')
-load("output.npy"))
+np.save("output.npy", dat, fmt = '%.5f')
+np.load("output.npy"))
 output.npy
 </code></pre>
 </blockquote>
@@ -409,32 +466,106 @@ y = array([[1.1,2.2], [3.1,4.2]], dtype = float)
 </code></pre>
 </blockquote>
 
-<h4 id="indexing-arrays">Indexing arrays</h4>
+<h4 id="indexing-and-slicing-arrays">Indexing and slicing arrays</h4>
 <p>To extract elements of the NumPy arrays, use the bracket operator and the slice (i.e. colon) operator.  To slice specific elements in the array, use <code>dat[lower:upper:step]</code>. To extract the diagonal (and subdiagonal) elements, use <code>diag()</code>. </p>
 
 <blockquote>
   <pre><code>dat = random.rand(3:3)
-dat[0, :] # row 1
-dat[:, 0] # column 1
-dat[0:3:2, 0] # first and third elements in column 1
+dat[0, :] 				# row 1
+dat[:, 0] 				# column 1
+dat[0:3:2, 0] 			# first and third elements in column 1
 diag(dat, -1) 
 </code></pre>
 </blockquote>
+
+<blockquote>
+  <pre><code>x = np.arange(32).reshape((8, 4)) 	# returns an 8 x 4 array
+x[0] 							# returns the first row
+x[4:, :3] 						# returns rows 5 and down (excluding the last column)
+x[[1, 5, 7, 2], [0, 3, 1, 2]] 			# selects elements (1, 0), (5, 3), (7, 1), (2, 2)
+</code></pre>
+</blockquote>
+
+<h4 id="element-wise-transformations-on-arrays">Element-wise transformations on arrays</h4>
+<p>There are many vectorized wrappers that take in one scalar and produce one ore more scalars (e.g. <code>np.exp()</code>, <code>np.sqrt()</code>) </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>np.abs(x)</code></td>
+      <td>absolute value of each element</td>
+    </tr>
+    <tr>
+      <td><code>np.sqrt(x)</code></td>
+      <td>square root of each element</td>
+    </tr>
+    <tr>
+      <td><code>np.square(x)</code></td>
+      <td>square of each element</td>
+    </tr>
+    <tr>
+      <td><code>np.exp(x)</code></td>
+      <td>exponential of each element</td>
+    </tr>
+    <tr>
+      <td><code>np.maximum(x, y)</code></td>
+      <td>element-wise maximum from two arrays x and y</td>
+    </tr>
+    <tr>
+      <td><code>np.minimum(x,y)</code></td>
+      <td>element-wise minimum</td>
+    </tr>
+    <tr>
+      <td><code>np.sign(x)</code></td>
+      <td>compute the sign of each element: 1 (pos), 0 (zero), -1 (neg)</td>
+    </tr>
+    <tr>
+      <td><code>np.subtract(x, y)</code></td>
+      <td>subtract elements in y from elements in x</td>
+    </tr>
+    <tr>
+      <td><code>np.power(x, y)</code></td>
+      <td>raise elements in first array x to powers in second array y</td>
+    </tr>
+    <tr>
+      <td><code>np.meshgrid(x, y)</code></td>
+      <td>takes in two 1D arrays and produces two 2D matrices of all pairs (x, y)</td>
+    </tr>
+    <tr>
+      <td><code>np.where(cond, x, y)</code></td>
+      <td>ifelse statement</td>
+    </tr>
+  </tbody>
+</table>
 
 <h4 id="subsetting-arrays-using-a-mask">Subsetting arrays using a mask</h4>
 <p>You can subset for elements in an array using a conditional statement. </p>
 
 <blockquote>
-  <pre><code>z = array([i for i in range(11)])
+  <pre><code>z = np.array([i for i in range(11)])
 my_mask = (2 &lt; z) * (z &lt; 8) # check is the elements of z are larger than 2 and less than 8
 z[my_mask]
 </code></pre>
 </blockquote>
 
-<p>To determine the position index of a mask, use the <code>where()</code> function. The <code>take()</code> function is similar to the subsetting above, except it works on </p>
+<p>You can also use the <code>np.where()</code> function. </p>
 
 <blockquote>
-  <pre><code>keep_indices = where(my_mask)
+  <pre><code>np.random.rand(11)
+np.where(my_mask, z, y) 		# Picks elements in x when `cond` is true, else elements in y
+</code></pre>
+</blockquote>
+
+<p>To determine the position index of a mask, use the <code>np.where()</code> function. The <code>take()</code> function is similar to the subsetting above</p>
+
+<blockquote>
+  <pre><code>keep_indices = np.where(my_mask)
 z.take(keep_indices)
 take(z, keep_indices)
 </code></pre>
@@ -449,11 +580,50 @@ choose(which, choices)
 </code></pre>
 </blockquote>
 
+<h4 id="unique-and-set-logic-on-arrays">Unique and set logic on arrays</h4>
+
+<p>Other useful functions in <code>numpy</code> include <code>np.unique()</code> and other set logic functions.  These are set operations for one-dimensional <code>ndarrays</code>.  </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>np.unique(x)</code></td>
+      <td>Returns the <em>sorted</em>, unique values in  x</td>
+    </tr>
+    <tr>
+      <td><code>np.intersect1d(x, y)</code></td>
+      <td>Returns the <em>sorted</em>, common elements in x and y</td>
+    </tr>
+    <tr>
+      <td><code>np.union1d(x, y)</code></td>
+      <td>Returns the <em>sorted</em>, union of elements</td>
+    </tr>
+    <tr>
+      <td><code>np.in1d(x, y)</code></td>
+      <td>Returns a <code>bool</code> array indicating if each element of x is in y</td>
+    </tr>
+    <tr>
+      <td><code>np.setdiff1d(x, y)</code></td>
+      <td>Set difference of elements in x not in y</td>
+    </tr>
+    <tr>
+      <td><code>np.setor1d(x, y)</code></td>
+      <td>Set symmetric difference of elements in either array (but not both)</td>
+    </tr>
+  </tbody>
+</table>
+
 <h4 id="iterating-over-array-elements">Iterating over array elements</h4>
 <p>Iterating over array elements is not suggested (very slow compared to vectorized operations), but sometimes they are unavoidable.  To iterate over array elements, use a <code>for</code> loop: </p>
 
 <blockquote>
-  <pre><code>z = arange(0, 10)
+  <pre><code>z = np.arange(0, 10)
 for elem in z:
     print elem
 </code></pre>
@@ -461,28 +631,28 @@ for elem in z:
 
 <h4 id="linear-algebra">Linear algebra</h4>
 
-<p>Performing matrix and vector operations is very straightforward with NumPy.  Arithmetic operators (+, - , * ) can be used with arrays. </p>
+<p>Performing matrix and vector operations is very straightforward with NumPy.  Arithmetic operators (<code>+</code>, <code>-</code> , <code>*</code> ) can be used with arrays. </p>
 
 <blockquote>
-  <pre><code>A = array([ [n+m for n in range(5)] for m in range(5)])
+  <pre><code>A = np.array([ [n+m for n in range(5)] for m in range(5)])
 A + 5
 A * 10
 A * A  # element wise multiplication 
-dot(A, A) # matrix multiplication on arrays
+np.dot(A.T, A) # or inner matrix product multiplication on arrays
 </code></pre>
 </blockquote>
 
 <h1 id="creating-numpy-matrices">Creating NumPy matrices</h1>
 
-<p>To convert a numpy <code>array</code> to a numpy <code>matrix</code>, use the <code>matrix()</code> function.  This allows the standard arithmetic operators (+, -, *) to use matrix algebra. </p>
+<p>To convert a <code>ndarray</code> to a numpy <code>matrix</code>, use the <code>np.matrix()</code> function.  This allows the standard arithmetic operators (<code>+</code>, <code>-</code>, <code>*</code>) to use matrix algebra. </p>
 
 <blockquote>
-  <pre><code>x = matrix(A)
-y = matrix(arange(0, 5))
-yT = y.T # makes it a column vector
+  <pre><code>x = np.matrix(A)
+y = np.matrix(np.arange(0, 5))
+yT = y.T # transposes array and makes it a column vector
 x * x
 x * yT
-shape(x * yT)
+np.shape(x * yT)
 </code></pre>
 </blockquote>
 
@@ -497,35 +667,27 @@ shape(x * yT)
   </thead>
   <tbody>
     <tr>
-      <td><code>inv(x)</code></td>
-      <td>Inverse of the matrix x</td>
+      <td><code>np.sum(x, axis = 0)</code> (or <code>x.sum()</code>)</td>
+      <td>Sum of the values (along a given dimension)</td>
     </tr>
     <tr>
-      <td><code>det(x)</code></td>
-      <td>Determinant of matrix x</td>
-    </tr>
-    <tr>
-      <td><code>sum(x)</code> (or <code>x.sum()</code>)</td>
-      <td>Sum of the values</td>
-    </tr>
-    <tr>
-      <td><code>prod(x + 1)</code></td>
+      <td><code>np.prod(x + 1)</code></td>
       <td>Product of all values</td>
     </tr>
     <tr>
-      <td><code>cumsum(x)</code></td>
+      <td><code>np.cumsum(x)</code></td>
       <td>Cumulative sum</td>
     </tr>
     <tr>
-      <td><code>mean(x[:, 0])</code></td>
+      <td><code>np.mean(x[:, axis = 0])</code></td>
       <td>Mean of the first column</td>
     </tr>
     <tr>
-      <td><code>std(x[0,:])</code></td>
+      <td><code>np.std(x[0,:])</code></td>
       <td>Standard deviation of first row</td>
     </tr>
     <tr>
-      <td><code>var(x[0, :])</code></td>
+      <td><code>np.var(x[0, :])</code></td>
       <td>Variance of first row</td>
     </tr>
     <tr>
@@ -537,8 +699,62 @@ shape(x * yT)
       <td>global max, max in each column (or row)</td>
     </tr>
     <tr>
-      <td><code>trace(x)</code></td>
+      <td><code>np.trace(x)</code></td>
       <td>Trace (Same as <code>diag(x).sum()</code>)</td>
+    </tr>
+    <tr>
+      <td><code>np.transpose()</code></td>
+      <td>Similar to using <code>.T</code> to transpose arrays, but accepts a tuple of axis numbers to permute the axes</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In addition, the module <code>numpy.linalg</code> contains a set of functions for matrix decomposition and inverses</p>
+
+<blockquote>
+  <pre><code>from numpy.linalg import inv, qr, det
+</code></pre>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>inv</code></td>
+      <td>Returns the inverse of a square matrix</td>
+    </tr>
+    <tr>
+      <td><code>det</code></td>
+      <td>Returns the matrix determinant</td>
+    </tr>
+    <tr>
+      <td><code>diag</code></td>
+      <td>Diagonal of square matrix</td>
+    </tr>
+    <tr>
+      <td><code>dvd</code></td>
+      <td>Singular value decomposition</td>
+    </tr>
+    <tr>
+      <td><code>qr</code></td>
+      <td>QR decomposition</td>
+    </tr>
+    <tr>
+      <td><code>eig</code></td>
+      <td>Returns the eigenvalues and eigenvectors of a square matrix</td>
+    </tr>
+    <tr>
+      <td><code>solve</code></td>
+      <td>Solves for $x$ in $Ax = b$ where $A$ is square</td>
+    </tr>
+    <tr>
+      <td><code>lstsq</code></td>
+      <td>Least squares solution</td>
     </tr>
   </tbody>
 </table>

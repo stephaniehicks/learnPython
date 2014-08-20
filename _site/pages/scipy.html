@@ -183,8 +183,8 @@
 <p>To import the SciPy module, use </p>
 
 <blockquote>
-  <pre><code>from numpy import *
-from scipy import *
+  <pre><code>import numpy as np
+import scipy as sp
 </code></pre>
 </blockquote>
 
@@ -199,27 +199,27 @@ from scipy import *
   </thead>
   <tbody>
     <tr>
-      <td><code>scipy.stats</code></td>
+      <td><code>sp.stats</code></td>
       <td><a href="http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html">statistics</a>: random variables, probability density functions, cumulative distribution functions, survival functions</td>
     </tr>
     <tr>
-      <td><code>scipy.integrate</code></td>
+      <td><code>sp.integrate</code></td>
       <td><a href="http://docs.scipy.org/doc/scipy/reference/tutorial/integrate.html">integration</a>: single, double, triple integration, trapezoidal rule, Simpson’s rule, differential equation solvers</td>
     </tr>
     <tr>
-      <td><code>scipy.signal</code></td>
+      <td><code>sp.signal</code></td>
       <td><a href="http://docs.scipy.org/doc/scipy/reference/signal.html">signal processing tools</a>: signal processing tools such as wavelets, spectral densities, filters, B-splines</td>
     </tr>
     <tr>
-      <td><code>scipy.optimize</code></td>
+      <td><code>sp.optimize</code></td>
       <td><a href="http://docs.scipy.org/doc/scipy/reference/optimize.html">optimization</a>: find roots, curve fitting, least squares, etc</td>
     </tr>
     <tr>
-      <td><code>scipy.special</code></td>
+      <td><code>sp.special</code></td>
       <td><a href="http://docs.scipy.org/doc/scipy/reference/tutorial/special.html">special functions</a>: very specialized functions in mathematical physics e.g. bessel, gamma</td>
     </tr>
     <tr>
-      <td><code>scipy.linalg</code></td>
+      <td><code>sp.linalg</code></td>
       <td><a href="http://docs.scipy.org/doc/scipy/reference/linalg.html">linear algebra</a>: inverse of a matrix, determinant, Kronecker product, eigenvalue decomposition, SVD, functions for matrices (beyond those in <code>numpy.linalg</code>)</td>
     </tr>
   </tbody>
@@ -228,13 +228,13 @@ from scipy import *
 <p>If you want to import a SciPy submodule (e.g. the statistics submodule <code>scipy.stats</code>), use </p>
 
 <blockquote>
-  <pre><code>from scipy import stats
+  <pre><code>from sp import stats
 </code></pre>
 
 </blockquote>
 
-<h1 id="scipystats">scipy.stats</h1>
-<p>Let’s dive a bit deeper in <code>scipy.stats</code>. The real utility of this submodule is to access probability distributions functions (pdfs) and standard statistical tests (e.g. $t$-test).  </p>
+<h1 id="spstats">sp.stats</h1>
+<p>Let’s dive a bit deeper in <code>sp.stats</code>. The real utility of this submodule is to access probability distributions functions (pdfs) and standard statistical tests (e.g. $t$-test).  </p>
 
 <h4 id="probability-distribution-functions">Probability distribution functions</h4>
 <p>There is a large collection of <a href="http://docs.scipy.org/doc/scipy/reference/stats.html">continuous and discrete pdfs</a> in the <code>scipy.stats</code> submodule.  The syntax to simulate random variables from a specific pdf is the name of the distribution  followed by <code>.rvs</code>. To generate $n$=10 $N(0,1)$ random variables, </p>

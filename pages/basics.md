@@ -21,16 +21,16 @@ Variable names are case sensitive, can contain numbers and letters, can contain 
 
 
 #### Operators
-* Numeric operators are +, -, *, /, ** (exponent), % (modulus if applied to integers)
-* String and list operators: + and * . 
-* Assignment operator: =
+* Numeric operators are `+`, `-`, `*`, `/`, `**` (exponent), `%` (modulus if applied to integers)
+* String and list operators: `+` and `*` . 
+* Assignment operator: `=`
 * The augmented assignment operator `+=` (or `-=`) can be used like n += x which is equal to n = n + x 
-* Boolean relational operators: == (equal), != (not equal), >, <, >= (greater than or equal to), <= (less than or equal to)
+* Boolean relational operators: `==` (equal), `!=` (not equal), `>`, `<`, `>=` (greater than or equal to), `<=` (less than or equal to)
 	* Boolean expressions will produce `True` or `False`
-* Logical operators: `and`, `or`, and `not`. e.g. x > 1 `and` x <=5
+* Logical operators: `and`, `or`, and `not`. e.g. x `>` 1 `and` x `<=` 5
 	* Any nonzero number is interpreted as `True` 
 	* Values are evaluated left to right. e.g. 'yes' and 'no' will return 'no' because 'yes' is evaluated as True AND 'no' is evaluated as True.
-	* 0, ' ', [ ], ( ), { }, `None` are evaluated as False. 
+	* `0`, `' '`, `[ ]`, `( )`, `{ }`, `None` are evaluated as False. 
 	* Order of operations for logic operators: `not`, `and`, `or`. Use parentheses `( )`  to evaluate in order of preference.
 
 #### Format operators

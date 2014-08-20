@@ -177,7 +177,146 @@
 <div class="row-fluid">
   <div class="span12">
     
-<p>Modules to manipulate regular expressions and string manipulation</p>
+<h1 id="modules-parsing-html-and-xml-pages">Modules: parsing html and xml pages</h1>
+
+<h4 id="pattern">pattern</h4>
+<p>The <a href="http://www.clips.ua.ac.be/pages/pattern">pattern</a> module can be used to parse HTML and XML pages. The <code>pattern.web</code> module is a submodule of <code>pattern</code> which can be used to parse HTML <a href="http://en.wikipedia.org/wiki/Document_Object_Model">Document Object Model</a> (DOM), strip HTML tags, and </p>
+
+<blockquote>
+  <pre><code>from pattern import web
+</code></pre>
+</blockquote>
+
+<p>The HTML DOM parser in <code>pattern.web</code> is very easy to use.  Use the <code>Element()</code> function to parse the text from the webpage.  For example, if we want to parse the text from google.com by <code>script</code>, we would </p>
+
+<blockquote>
+  <pre><code>r = requests.get("http://www.google.com")
+dom = web.Element(r.text)
+dom.by_tag('script')
+</code></pre>
+</blockquote>
+
+<p>This returns a list of nested <code>Element</code>s with a given tag name (e.g. <code>script</code>, <code>graph</code>, <code>meta</code>, <code>div</code>, etc). The typical use is to use a <code>for</code> loop to loop through this list. e.g. </p>
+
+<blockquote>
+  <pre><code>url = 'http://www.imdb.com/search/title'
+params = dict(sort='num_votes,desc', start=1, title_type='feature', year='1950,2012')
+r = requests.get(url, params=params)
+
+dom = web.Element(r.text)
+for movie in dom.by_tag('td.title'):
+    title = movie.by_tag('a')[0].content
+    rating = movie.by_tag('span.value')[0].content
+    print title, rating
+</code></pre>
+</blockquote>
+
+<h4 id="beautifulsoup">BeautifulSoup</h4>
+<p>The <a href="">BeautifulSoup</a> module is similar to parsing HTML and XML pages using <a href="http://www.clips.ua.ac.be/pages/pattern">pattern</a>. To import the module, use</p>
+
+<blockquote>
+  <pre><code>from BeautifulSoup import BeautifulSoup
+</code></pre>
+</blockquote>
+
+<p>To extra the movie titles and ratings as above in the pattern module, use </p>
+
+<blockquote>
+  <pre><code>url = 'http://www.imdb.com/search/title'
+params = dict(sort='num_votes,desc', start=1, title_type='feature', year='1950,2012')
+r = requests.get(url, params=params)
+
+dom = web.Element(r.text)
+for movie in bs.findAll('td', 'title'):
+    title = movie.find('a').contents[0]
+    rating = movie.find('span', 'value').contents[0]
+    print title, rating
+</code></pre>
+</blockquote>
+
+<h4 id="sgmllib">sgmllib</h4>
+<p>The <a href="https://docs.python.org/2/library/sgmllib.html">sgmllib</a> module is a simple SGML (Standard Generalized Mark-up Language) parser.  The goal of the module is to process HTML code.  The main function is <code>SGMLParser</code> which parses HTML code into 8 kinds of data: </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Definition</th>
+      <th>Example</th>
+      <th>SGMLParser function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>start tag</em></td>
+      <td>an HTML tag that starts a block</td>
+      <td>&lt;html&gt;, &lt;head&gt;, &lt;body&gt;</td>
+      <td><code>start_tagname</code>, <code>do_tagname</code></td>
+    </tr>
+    <tr>
+      <td><em>end tag</em></td>
+      <td>an HTML tag that ends a block</td>
+      <td>&lt;/html&gt;, &lt;/head&gt;, &lt;/body&gt;</td>
+      <td><code>end_tagname</code></td>
+    </tr>
+    <tr>
+      <td><em>character reference</em></td>
+      <td>an escaped character referenced by its decimal</td>
+      <td> </td>
+      <td><code>handle_charref</code></td>
+    </tr>
+    <tr>
+      <td><em>entity reference</em></td>
+      <td>an HTML entity</td>
+      <td>\&amp; copy;</td>
+      <td><code>handle_entityref</code></td>
+    </tr>
+    <tr>
+      <td><em>comment</em></td>
+      <td>an HTML comment</td>
+      <td>comments inclosed in &lt;|– … –&gt;</td>
+      <td><code>handle_comment</code></td>
+    </tr>
+    <tr>
+      <td><em>processing instruction</em></td>
+      <td>an HTML processing instruction</td>
+      <td>instruction enclosed in &lt;? … &gt;</td>
+      <td><code>handle_pi</code></td>
+    </tr>
+    <tr>
+      <td><em>declaration</em></td>
+      <td>an HTML declaration</td>
+      <td>DOCTYPE enclosed in &lt;! … &gt;</td>
+      <td><code>handle_dec1</code></td>
+    </tr>
+    <tr>
+      <td><em>text data</em></td>
+      <td>a block of text</td>
+      <td>anything that does not fall into the other 7 categories</td>
+      <td><code>handle_data</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="modules-parsing-json-objects">Modules: parsing JSON objects</h1>
+
+<h4 id="json">json</h4>
+<p>The <a href="https://docs.python.org/2/library/json.html">json</a> module can be used to parse JSON (JavaScript Object Notation) objects to a Python dictionary. </p>
+
+<blockquote>
+  <pre><code>import json
+</code></pre>
+</blockquote>
+
+<p>The <code>json.loads()</code>function can be used to parse by line</p>
+
+<blockquote>
+  <pre><code>path = 'myjsonfile.txt'
+mydict = [json.loads(line) for line in open(path)]
+</code></pre>
+</blockquote>
+
+<h1 id="modules-to-manipulate-regular-expressions-and-string-manipulation">Modules to manipulate regular expressions and string manipulation</h1>
 
 <h4 id="re">re</h4>
 <p>This module is used to manipulate regular expressions.  The function <code>sub()</code> searches a string (s) and replaces all the words that match the regular expression. </p>

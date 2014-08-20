@@ -39,14 +39,14 @@ I break down this tutorial into sections. The first section contains the essenti
 * [IPython](pages/IPython.html)
 
 
-Scrapping data from web or reading from files / databases and data cleaning, munging, transforming, reshaping
+Scrapping data from web. Reading data from files / databases. 
 
 * [Import/export files and databases](pages/import.html)
 * [Modules for scrapping data from web](pages/modules_scraping.html)
 * [Modules for importing and exporting from databases](pages/modules_databases.html)
 
 
-Exploratory data analysis (e.g. histograms, scatterplots, boxplots) and applying statistical models
+Data cleaning, munging, transforming, reshaping. Exploratory data analysis. Statistical models. 
 
 * [NumPy](pages/numpy.html)
 * [SciPy](pages/scipy.html)
