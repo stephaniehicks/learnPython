@@ -155,7 +155,7 @@ To extract elements of the NumPy arrays, use the bracket operator and the slice 
 
 
 #### Element-wise transformations on arrays
-There are many vectorized wrappers that take in one scalar and produce one ore more scalars (e.g. `np.exp()`, `np.sqrt()`) 
+There are many vectorized wrappers that take in one scalar and produce one ore more scalars (e.g. `np.exp()`, `np.sqrt()`). This element-wise array methods are also known as NumPy `ufuncs`. 
 
 Function | Description 
 --- | --- 
@@ -230,6 +230,12 @@ Performing matrix and vector operations is very straightforward with NumPy.  Ari
 >	A * A  # element wise multiplication 
 >	np.dot(A.T, A) # or inner matrix product multiplication on arrays
 
+#### Broadcasting
+
+*Broadcasting* is the term for arithmetic methods between multiple NumPy arrays For example, the difference between a 2D array and one of its rows is evaluated as the row vector is subtracted from each column in the 2D array.  
+
+>	c = DataFrame(np.arange(12.).reshape((3, 4)))
+>	c - c[0]
 
 
 # Creating NumPy matrices 

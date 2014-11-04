@@ -177,32 +177,326 @@
 <div class="row-fluid">
   <div class="span12">
     
-<p>Pandas is a module in Python for working with data structures.  The main object from <a href="http://pandas.pydata.org">Pandas</a> is the <code>DataFrame</code> which organizes data into a column structure with row and column labels. This object can easily subset, aggregate and reshape the data using the array-computing features of NumPy.  </p>
+<p>Pandas is a module in Python for working with data structures.  The two main objects from <a href="http://pandas.pydata.org">Pandas</a> are the <code>Series</code> and <code>DataFrame</code>. This object can easily subset, aggregate and reshape the data using the array-computing features of NumPy.  </p>
 
-<h1 id="import-pandas">Import Pandas</h1>
+<h2 id="import-pandas">Import Pandas</h2>
 
 <blockquote>
-  <pre><code>import pandas as pd
+  <pre><code>from pandas import Series, DataFrame
+import pandas as pd
 import numpy as np
 </code></pre>
 </blockquote>
 
-<h1 id="creating-a-dataframe">Creating a DataFrame</h1>
-
-<blockquote>
-  <pre><code>height = [5.6, 7.0, 4.9, 6.7, 5.2, 5.5, 6.1]
-names = ['Holly', 'Bart', 'Josh', 'Karen', 'Tom', 'Doug', 'Sophie', 'Joe']
-c1.height
-over5.5 = c1.height[c1.height &gt;=5.5]
-</code></pre>
-</blockquote>
-
-<p>To import data from a tab-delimited file,  </p>
+<h2 id="import-data-from-a-tab-delimited-file-to-a-dataframe">Import data from a tab-delimited file to a DataFrame</h2>
 
 <blockquote>
   <pre><code>data = pd.read_csv('myfile.txt', delimiter='\t', names=headernames).dropna()
 print "Number of rows: %i" % data.shape[0]
 data.head()  # print the first 5 rows
+</code></pre>
+</blockquote>
+
+<h2 id="series">Series</h2>
+<p>The <code>Series</code> is a one-dimensional array-like object with associated data labels called the <em>index</em>.  The <code>values</code> and <code>index</code> of the <code>Series</code> can be accessed using attributes of the object.  Similar to strings and tuples, the <code>index</code> of a <code>Series</code> is <strong>immutable</strong> (same is true for a <code>DataFrame</code> later on). 
+&gt;	x = Series([5, 10, 15, 20])
+&gt;	x.values
+&gt;	x.index</p>
+
+<p>The default index for a <code>Series</code> is the set of integers starting at 0 through the length of the data (e.g. $N - 1$). To define a new index, use <code>index</code> in the <code>Series</code> definition. These indexes can be used to select a subset of the <code>Series</code>. Other subsetting such as using boolean arrays also work. </p>
+
+<blockquote>
+  <pre><code>x = pd.Series([5, 10, 15, 20], index = ['Holly', 'Bart', 'Josh', 'Karen'])
+x[['Josh', 'Holly']]
+x[x &gt; 10 ]
+</code></pre>
+</blockquote>
+
+<p>Both the <code>Series</code> itself and its index have a <code>name</code> attribute. </p>
+
+<blockquote>
+  <pre><code>x.name = 'age'
+x.index.name = 'firstName'
+</code></pre>
+</blockquote>
+
+<p>The index of a <code>Series</code> can also re-ordered</p>
+
+<blockquote>
+  <pre><code>x.index = ['Josh', 'Holly', 'Bart', 'Karen']
+</code></pre>
+</blockquote>
+
+<h4 id="series-and-dictionaries">Series and dictionaries</h4>
+<p>This object is very similar to an ordered <code>dict</code> because of the mapping between the index and values.  In fact you can use the <code>in</code> operator to check if an index exists in the object You can also directly pass a <code>dict</code> to a <code>Series</code>. </p>
+
+<blockquote>
+  <pre><code>'Bart' in x
+y = Series[{'Holly': 5, 'Bart': 10, 'Alan': 27, 'Beau': 5}]
+</code></pre>
+</blockquote>
+
+<p><strong>Note</strong>: The resulting <code>Series</code> will have the <code>dict</code>’s keys in a sorted order. </p>
+
+<h4 id="series-and-missing-data">Series and missing data</h4>
+<p>When creating a <code>Series</code>, you can have missing data (i.e. <code>NaN</code> values).  to testing for missing data, use <code>pd.isnull</code> and <code>pd.notnull</code> </p>
+
+<blockquote>
+  <pre><code>pd.isnull(x)
+pd.notnull(x)
+</code></pre>
+</blockquote>
+
+<h4 id="arithmetic-methods-for-a-series">Arithmetic methods for a Series</h4>
+
+<p>One important feature of working with pandas is the flexibility of working with different objects with different indexes.  When you add the objects (with possibly different sizes and shapes) together, the resulting objects will the union of all the index pairs.  For example, when combining </p>
+
+<blockquote>
+  <pre><code>x + y
+</code></pre>
+</blockquote>
+
+<p>this returns a new <code>Series</code> with the union of all the indexes and values in <code>x</code> and <code>y</code>. </p>
+
+<h2 id="creating-a-dataframe">Creating a DataFrame</h2>
+
+<p>The <code>DataFrame</code> is an extension of the <code>Series</code> because instead of just being one-dimensional, it organizes data into a column structure with row and column labels. This allows the user to have a collection of columns of data with different <code>type</code>s.  The <code>DataFrame</code> has a both row and column index.  The column names can be found using the attribute <code>columns</code>. The <code>values</code> and <code>index</code> can be….</p>
+
+<blockquote>
+  <pre><code>data = {'height' : 5.6, 7.0, 4.9, 6.7, 5.2, 5.5, 6.1, 5.4], 
+       'age' : [15, 21, 15, 20, 22, 41, 18, 38]}
+z = DataFrame(data)
+z.columns  		# column names
+z.values			# values
+z.index			# index
+z.ix				# indexing field
+</code></pre>
+</blockquote>
+
+<p>To extract a specific column, you can use <code>[ ]</code> (brackets) or attribute notation.  If you specify a sequence of columns, the <code>DataFrame</code> will return the columns you ask for.  If you pass a column that isn’t in your data set, then it will return <code>NaN</code> values. </p>
+
+<blockquote>
+  <pre><code>z.height
+z['height']
+z = DataFrame(data, columns = ['height', 'age', 'weight'])
+</code></pre>
+</blockquote>
+
+<p>Altering the value of a column can be done too. </p>
+
+<blockquote>
+  <pre><code>z['weight'] = 180		# assigns 180 to all the values in the `weight` column
+z['footSize'] = 7			# assigning values to a column that doesn't exist creates a new column
+z.index = ['Holly', 'Bart', 'Josh', 'Karen', 'Tom', 'Doug', 'Sophie'']		# assigns the index values
+</code></pre>
+</blockquote>
+
+<p>Both the <code>DataFrame</code> itself, its <code>index</code> and its <code>columns</code> have a <code>name</code> attribute. </p>
+
+<blockquote>
+  <pre><code>z.name = 'Team1'
+z.index.name = 'firstName'
+z.columns.name
+</code></pre>
+</blockquote>
+
+<h4 id="ways-to-create-a-dataframe-mostly-taken-from-data-analysis-for-pythonhttpwwwamazoncompython-data-analysis-wrangling-ipythondp1449319793">Ways to create a DataFrame [Mostly taken from <a href="http://www.amazon.com/Python-Data-Analysis-Wrangling-IPython/dp/1449319793">Data analysis for Python</a>]</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Approach</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dict of arrays, lists, or tuples</td>
+      <td>Each group of elements becomes a column (all groups must be the same length)</td>
+    </tr>
+    <tr>
+      <td>dict of dicts</td>
+      <td>If you have a nested <code>dict</code> of <code>dict</code>s then when you pass it to a <code>DataFrame</code>, the outer <code>dict</code> keys will be the columns and the inner keys will be the rows.</td>
+    </tr>
+    <tr>
+      <td>dict of Series</td>
+      <td>Each <code>value</code> becomes a column</td>
+    </tr>
+    <tr>
+      <td>2D ndarray</td>
+      <td>Use the <code>numpy</code> <code>ndarray</code> with optional row and column labels</td>
+    </tr>
+    <tr>
+      <td>Another DataFrame</td>
+      <td>Combine <code>DataFrame</code>s using their <code>index</code>es</td>
+    </tr>
+    <tr>
+      <td>list of dicts or Series</td>
+      <td>Each item in the <code>list</code> becomes a <em>row</em> in the <code>DataFrame</code>. Union of the <code>dict</code> <code>keys</code> (or <code>Series</code> <code>index</code>es) is the column names</td>
+    </tr>
+    <tr>
+      <td>list of lists or tuples</td>
+      <td>Similar idea to the <code>ndarray</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="index-methods">Index methods</h2>
+
+<p>There are a set of methods that specifically operate on the <code>index</code> of a <code>DataFrame</code> (i.e. <code>z.index</code>). <strong>Note</strong>: These methods do not alter the index, but rather creates a new index that has been modified using one of the following methods. </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>unique</code></td>
+      <td>Return the unique values in the index</td>
+    </tr>
+    <tr>
+      <td><code>is_unique</code></td>
+      <td>Returns a <code>Bool</code> if index has no duplicates</td>
+    </tr>
+    <tr>
+      <td><code>insert(n, elem)</code></td>
+      <td>Insert <code>elem</code> at position <code>n</code></td>
+    </tr>
+    <tr>
+      <td><code>delete(n)</code></td>
+      <td>Delete the <code>value</code> at position <code>n</code></td>
+    </tr>
+    <tr>
+      <td><code>drop(elem)</code></td>
+      <td>Drop the <code>elem</code> value</td>
+    </tr>
+    <tr>
+      <td><code>union</code></td>
+      <td>Return the union of indexes</td>
+    </tr>
+    <tr>
+      <td><code>intersection</code></td>
+      <td>Return the intersection of indexes</td>
+    </tr>
+    <tr>
+      <td><code>diff</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>append</code></td>
+      <td>Append a new index object</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="manipulating-a-series-and-dataframe">Manipulating a Series and DataFrame</h2>
+
+<p>These are methods that apply to both a <code>Series</code> and a <code>DataFrame</code>.  Typically when change the index, this will only apply to the row indexes of a <code>DataFrame</code>, but there is usually an option to change the column index as well.  </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Example</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>T</code></td>
+      <td>x.T, z.T</td>
+      <td>Transposes object</td>
+    </tr>
+    <tr>
+      <td><code>reindex</code></td>
+      <td>x.reindex([new index order], columns)</td>
+      <td>Create new object conformed to a new index. Check out <code>fill</code> or <code>bill</code> for interpolation options. Use arg <code>columns</code> to reindex columns.</td>
+    </tr>
+    <tr>
+      <td><code>ix</code></td>
+      <td>z.ix(a, b)</td>
+      <td>Subset the ‘a’ rows and the ‘b’ columns. Also another form of reindexing.</td>
+    </tr>
+    <tr>
+      <td><code>drop</code></td>
+      <td>z.drop(‘Jack’)</td>
+      <td>Drop one ore more rows or columns. Default is the row-index, but use <code>axis = 1</code> to drop from columns.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <pre><code>z.reindex(index = , method = 'ffill', columns = ['age'])
+z.ix[['Bart', Holly'], :)
+z.drop('age', axis = 1)
+</code></pre>
+</blockquote>
+
+<p><strong>Note</strong>: You can index and slice similar to working with an <code>ndarray</code>, except you can use the indexes rather than just integers.  The only difference is <em>slicing</em> is inclusive (not exclusive which is normal Python). You can also use <code>Bool</code> to subset the <code>Series</code> or <code>DataFrame</code>.</p>
+
+<blockquote>
+  <pre><code>z['Josh': 'Doug']
+z[:3]			# rows returned: Holly, Bart and Josh
+z[z['height'] &gt; 5.5] # rows returned: all heights &gt; 5.5
+</code></pre>
+</blockquote>
+
+<h4 id="arithmetic-methods-for-two-or-more-dataframes">Arithmetic methods for two or more DataFrames</h4>
+
+<p>Similar to adding the values in two or more <code>Series</code> objects, you can add <code>DataFrame</code> objects with different indices and columns. If indices don’t overlap, then <code>NaN</code> are returned for those values.  </p>
+
+<blockquote>
+  <pre><code>a = DataFrame(np.arange(9.).reshape((3, 3)), columns=list('bcd'), index=['Holly', 'Bart', 'Jack'])
+b = DataFrame(np.arange(12.).reshape((4, 3)), columns=list('bde'), index=['Bart', 'Karen', 'Jack', 'Darren'])
+a + b
+</code></pre>
+</blockquote>
+
+<p>If you want to fill in the value with something else beside <code>NaN</code>, use the method <code>add</code> with the <code>fill_value</code> argument. </p>
+
+<blockquote>
+  <pre><code>a.add(b, fill_value=0)
+</code></pre>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>a.add(b)</code></td>
+      <td>Add two DataFrames</td>
+    </tr>
+    <tr>
+      <td><code>a.sub(b)</code></td>
+      <td>Subtract two DataFrames</td>
+    </tr>
+    <tr>
+      <td><code>a.mul(b)</code></td>
+      <td>Multiple two DataFrames</td>
+    </tr>
+    <tr>
+      <td><code>a.div(b)</code></td>
+      <td>Divide two DataFrames</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="arithmetic-methods-for-series-and-dataframes">Arithmetic methods for Series and DataFrames</h4>
+
+<p>Arithmetic methods between a Series and a DataFrame is also common. The default is the index of the Series will be matched to the columns of the DataFrame (also known as <strong>broadcasting</strong>). If an index is not found in either the Series of the columns of the DataFrame, then the objects will be <em>re-indexed</em> to form the union.  To broadcast (or match) on the rows of the DataFrame, use the method <code>sub</code>. </p>
+
+<blockquote>
+  <pre><code>c = DataFrame(np.arange(12.).reshape((3, 4)))
+c - c[0]
+c.sub(c[0], axis = 0)
 </code></pre>
 </blockquote>
 
