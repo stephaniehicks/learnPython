@@ -24,11 +24,11 @@ I break down this tutorial into sections. The first section contains the essenti
 ### Essentials of programming in Python: 
 
 * [Starting with Python](pages/startingPython.html)
-* [Variables, functions, conditionals and iteration](pages/basics.html)
+* [Variables, functions, conditionals and iteration](http://nbviewer.ipython.org/github/stephaniehicks/learnPython/blob/gh-pages/pages/basics.ipynb)
 * [Strings, lists, dictionaries and tuples](pages/sldt.html)
-	* [Strings](pages/strings.html)
+	* [Strings](http://nbviewer.ipython.org/github/stephaniehicks/learnPython/blob/gh-pages/pages/strings.ipynb)
 	* [Lists](pages/lists.html)
-	* [Dictionaries](pages/dictionaries.html)
+	* [Dictionaries](http://nbviewer.ipython.org/github/stephaniehicks/learnPython/blob/gh-pages/pages/dictionaries.ipynb)
 	* [Tuples](pages/tuples.html)
 * [Classes: objects, attributes and methods](pages/classes.html)	
 * [Import Modules](pages/modules.html)
