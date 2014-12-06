@@ -27,9 +27,9 @@ I break down this tutorial into sections. The first section contains the essenti
 * [Variables, functions, conditionals and iteration](http://nbviewer.ipython.org/github/stephaniehicks/learnPython/blob/gh-pages/pages/basics.ipynb)
 * [Strings, lists, dictionaries and tuples](pages/sldt.html)
 	* [Strings](http://nbviewer.ipython.org/github/stephaniehicks/learnPython/blob/gh-pages/pages/strings.ipynb)
-	* [Lists](pages/lists.html)
+	* [Lists](http://nbviewer.ipython.org/github/stephaniehicks/learnPython/blob/gh-pages/pages/lists.ipynb)
 	* [Dictionaries](http://nbviewer.ipython.org/github/stephaniehicks/learnPython/blob/gh-pages/pages/dictionaries.ipynb)
-	* [Tuples](pages/tuples.html)
+	* [Tuples](http://nbviewer.ipython.org/github/stephaniehicks/learnPython/blob/gh-pages/pages/tuples.ipynb)
 * [Classes: objects, attributes and methods](pages/classes.html)	
 * [Import Modules](pages/modules.html)
 
