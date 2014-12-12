@@ -9,9 +9,9 @@ The material for this tutorial was taken from various resources and tutorials fo
 
 #### Books/PDFs on learning Python
 
-* [Dive Into Python](http://www.diveintopython.net)
-* [Data analysis for Python](http://www.amazon.com/Python-Data-Analysis-Wrangling-IPython/dp/1449319793)
-* [Learn Python The Hard Way](http://learnpythonthehardway.org/book/) 
+* [Dive Into Python](http://www.diveintopython.net) 
+* [Data analysis for Python](http://www.amazon.com/Python-Data-Analysis-Wrangling-IPython/dp/1449319793) 
+* [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Think Python](http://www.greenteapress.com/thinkpython/thinkpython.html) - Free book on the basics of Python
 * [Think Complexity](http://greenteapress.com/compmod/) -  Picks up where Think Python left off. 
 

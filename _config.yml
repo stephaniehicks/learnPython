@@ -8,8 +8,8 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Learn Python
-tagline: Learn how to use Python for data analysis
+title : learnPython
+tagline:
 author : 
   name : Stephanie Hicks
   email : stephaniechicks@gmail.com

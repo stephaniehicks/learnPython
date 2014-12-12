@@ -155,7 +155,11 @@ The glob module is useful when listing directories, but you do not have the name
 
 
 # Databases
-A *database* is a specific type of file with a purpose of storing data.  For example, if you have created a dictionary with *keys* and *values*, you can create and update the dictionary database file.  To work with databases, import the Python module `anydbm`. 
+A *database* is a specific type of file with a purpose of storing data.  For example, if you have created a dictionary with *keys* and *values*, you can create and update the dictionary database file. 
+
+#### anydbm, pickle and shelve
+
+The `anydbm` module is interfaces and updates database files. The two methods functions to open and close the databases `anydbm.open()` and `anydbmclose()`.  To work with this module, the database must have keys and values as strings!  
 
 To open a database (and create it if it doesn't already exist): 
 
@@ -167,7 +171,7 @@ where the 'c' means to create the database if it doesn't exist.  While interfaci
 >	db.close()
 
 #### Pickling a database
-The module `anydbm` ONLY works with databases that have keys and values as strings. If your keys or values are not strings, you can use the `pickle` module to translate any object into a string which can be then stored in a database.  When you want to access the database, the module will translate the string back into the original objects.  
+The module `anydbm` ONLY works with databases that have keys and values as strings. If your keys or values are not strings, you can use the `pickle` module to translate any object into a string which can be then stored in a database using the `pickle.dumps()` function.  When you want to access the database, the module will translate the string back into the original objects  using the `pickle.loads()` function.  
 
 >	import pickle
 
@@ -181,7 +185,8 @@ The methods function `pickle.dumps()` takes in any object and returns the string
 **Note**: pickling and unpickling the object is the same copying the object. It will have the same value, but it not the same object.  
 
 #### Shelve module
-The [module](http://python.wikia.com/wiki/Shelve) `shelve` has combined the function in the `anydbm` and `pickle` modules into one easy set of functions to use to interact with databases. 
+
+This method of "pickling" the objects from the `pickle` module combined with the `anydbm` module has been implemented in the `shelve` [module](http://python.wikia.com/wiki/Shelve).  To open and close files using this module use `shelve.open()` and `shelve.close()` which uses the `pickle` module to open and store the objects. 
 
 >	import shelve
 >	shelve.open('mydatabase.db')
@@ -191,6 +196,15 @@ To interact with this database, use the `shelve()` function
 >	newVar = shelve['mykey']
 >	shelve['mykey'] = newVar
 >	shelve.close('mydatabase.db')
+
+#### glob and listing files in directories
+
+The glob module is useful when listing directories, but you do not have the name of the files (just a wildcard e.g. *.txt).  The `glob()` function will match all the *.txt files in a directory and return the them as a list
+
+>	import glob
+>	glob.glob('*.txt')
+
+
 
 
 
