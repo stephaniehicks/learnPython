@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Starting with Python
-tagline: Opening Python and Running Python Scripts
+title: Getting Started
+tagline: Python, IPython and IPython Notebooks
 ---
 {% include JB/setup %}
 

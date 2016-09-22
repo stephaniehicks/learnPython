@@ -13,8 +13,6 @@ Pandas is a module in Python for working with data structures.  The two main obj
 >	import pandas as pd
 >	import numpy as np
 
-
-
 ## Series
 
 The `Series` is a one-dimensional array-like object with associated data labels called the *index*.  The `values` and `index` of the `Series` can be accessed using attributes of the object.  Similar to strings and tuples, the `index` of a `Series` is **immutable** (same is true for a `DataFrame` later on). 
