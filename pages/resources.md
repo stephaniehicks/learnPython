@@ -29,6 +29,6 @@ The material for this tutorial was taken from various resources and tutorials fo
 
 #### Other fun resources
 
-* [Matrix Cheatsheet in MATLAB, Python NumPy, R and Julia](http://sebastianraschka.com/Articles/2014_matrix_cheatsheet_table.html)
+* [Matrix Cheatsheet in MATLAB, Python NumPy, R and Julia](http://sebastianraschka.com/Articles/2014_matrix_cheatsheet.html)
 * [Python one-liners](http://newdatascientist.com/blog/2013/08/04/python-one-liners/)
 * [Python and Bioinformatics](http://intro-prog-bioinfo-2013.wikispaces.com)
