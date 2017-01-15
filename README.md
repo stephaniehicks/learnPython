@@ -1,3 +1,3 @@
-# GitHub Pages Tutorial
+# learnPython Tutorial. 
 
-This is a tutorial about how to create GitHub Pages. 
+This is a GitHub repository that I created to learn Python. The website can be found at [stephaniehicks.com/learnPython](http://www.stephaniehicks.com/learnPython/). 
